@@ -21,29 +21,30 @@ import ballerina/data.jsondata;
 import ballerina/http;
 
 # SEMP (starting in `v2`) is a RESTful API for configuring, monitoring, and administering a Solace PubSub+ broker. This specification defines the following API:
-# 
-# 
+#
+#
 # API|Base Path|Purpose
 # :---|:---|:---
 # Configuration|/SEMP/v2/config|Reading and writing configuration
-# 
-# 
-# 
+#
+#
+#
 # The following APIs are also available:
-# 
-# 
+#
+#
 # API|Base Path|Purpose
 # :---|:---|:---
 # Action|/SEMP/v2/action|Performing actions
 # Monitoring|/SEMP/v2/monitor|Querying operational state
-# 
-# 
-# 
+#
+#
+#
 # For tutorials, architectural and protocol design documentation, and other information about the SEMP API, consult the [SEMP documentation](https://docs.solace.com/Admin/SEMP/Using-SEMP.htm) on the Solace website. The SEMP API specifications are also [available for download](https://solace.com/downloads/).
-# 
+#
 # If you need additional support, please contact us at [support@solace.com](mailto:support@solace.com).
 public isolated client class Client {
     final http:Client clientEp;
+
     # Gets invoked to initialize the `connector`.
     #
     # + config - The configurations to be used when initializing the `connector` 
@@ -148,7 +149,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The list of Certificate Authority objects' attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getCertAuthorities(map<string|string[]> headers = {}, *GetCertAuthoritiesQueries queries) returns CertAuthoritiesResponse|error {
@@ -164,7 +165,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The Certificate Authority object's attributes. 
     # + return - The Certificate Authority object's attributes after being created, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function createCertAuthority(CertAuthority payload, map<string|string[]> headers = {}, *CreateCertAuthorityQueries queries) returns CertAuthorityResponse|error {
@@ -183,7 +184,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The Certificate Authority object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getCertAuthority(string certAuthorityName, map<string|string[]> headers = {}, *GetCertAuthorityQueries queries) returns CertAuthorityResponse|error {
@@ -200,7 +201,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The Certificate Authority object's attributes. 
     # + return - The Certificate Authority object's attributes after being replaced, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function replaceCertAuthority(string certAuthorityName, CertAuthority payload, map<string|string[]> headers = {}, *ReplaceCertAuthorityQueries queries) returns CertAuthorityResponse|error {
@@ -218,7 +219,7 @@ public isolated client class Client {
     # + certAuthorityName - The name of the Certificate Authority.
     # + headers - Headers to be sent with the request 
     # + return - The request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function deleteCertAuthority(string certAuthorityName, map<string|string[]> headers = {}) returns SempMetaOnlyResponse|error {
@@ -233,7 +234,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The Certificate Authority object's attributes. 
     # + return - The Certificate Authority object's attributes after being updated, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function updateCertAuthority(string certAuthorityName, CertAuthority payload, map<string|string[]> headers = {}, *UpdateCertAuthorityQueries queries) returns CertAuthorityResponse|error {
@@ -252,7 +253,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The list of OCSP Responder Trusted Common Name objects' attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getCertAuthorityOcspTlsTrustedCommonNames(string certAuthorityName, map<string|string[]> headers = {}, *GetCertAuthorityOcspTlsTrustedCommonNamesQueries queries) returns CertAuthorityOcspTlsTrustedCommonNamesResponse|error {
@@ -269,7 +270,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The OCSP Responder Trusted Common Name object's attributes. 
     # + return - The OCSP Responder Trusted Common Name object's attributes after being created, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function createCertAuthorityOcspTlsTrustedCommonName(string certAuthorityName, CertAuthorityOcspTlsTrustedCommonName payload, map<string|string[]> headers = {}, *CreateCertAuthorityOcspTlsTrustedCommonNameQueries queries) returns CertAuthorityOcspTlsTrustedCommonNameResponse|error {
@@ -289,7 +290,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The OCSP Responder Trusted Common Name object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getCertAuthorityOcspTlsTrustedCommonName(string certAuthorityName, string ocspTlsTrustedCommonName, map<string|string[]> headers = {}, *GetCertAuthorityOcspTlsTrustedCommonNameQueries queries) returns CertAuthorityOcspTlsTrustedCommonNameResponse|error {
@@ -305,7 +306,7 @@ public isolated client class Client {
     # + ocspTlsTrustedCommonName - The expected Trusted Common Name of the OCSP responder remote certificate.
     # + headers - Headers to be sent with the request 
     # + return - The request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function deleteCertAuthorityOcspTlsTrustedCommonName(string certAuthorityName, string ocspTlsTrustedCommonName, map<string|string[]> headers = {}) returns SempMetaOnlyResponse|error {
@@ -1003,7 +1004,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The list of Trusted Common Name objects' attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getDmrClusterLinkTlsTrustedCommonNames(string dmrClusterName, string remoteNodeName, map<string|string[]> headers = {}, *GetDmrClusterLinkTlsTrustedCommonNamesQueries queries) returns DmrClusterLinkTlsTrustedCommonNamesResponse|error {
@@ -1021,7 +1022,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The Trusted Common Name object's attributes. 
     # + return - The Trusted Common Name object's attributes after being created, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function createDmrClusterLinkTlsTrustedCommonName(string dmrClusterName, string remoteNodeName, DmrClusterLinkTlsTrustedCommonName payload, map<string|string[]> headers = {}, *CreateDmrClusterLinkTlsTrustedCommonNameQueries queries) returns DmrClusterLinkTlsTrustedCommonNameResponse|error {
@@ -1042,7 +1043,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The Trusted Common Name object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getDmrClusterLinkTlsTrustedCommonName(string dmrClusterName, string remoteNodeName, string tlsTrustedCommonName, map<string|string[]> headers = {}, *GetDmrClusterLinkTlsTrustedCommonNameQueries queries) returns DmrClusterLinkTlsTrustedCommonNameResponse|error {
@@ -1059,7 +1060,7 @@ public isolated client class Client {
     # + tlsTrustedCommonName - The expected trusted common name of the remote certificate.
     # + headers - Headers to be sent with the request 
     # + return - The request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function deleteDmrClusterLinkTlsTrustedCommonName(string dmrClusterName, string remoteNodeName, string tlsTrustedCommonName, map<string|string[]> headers = {}) returns SempMetaOnlyResponse|error {
@@ -1394,7 +1395,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The list of Publish Topic Exception objects' attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnAclProfilePublishExceptions(string msgVpnName, string aclProfileName, map<string|string[]> headers = {}, *GetMsgVpnAclProfilePublishExceptionsQueries queries) returns MsgVpnAclProfilePublishExceptionsResponse|error {
@@ -1412,7 +1413,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The Publish Topic Exception object's attributes. 
     # + return - The Publish Topic Exception object's attributes after being created, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function createMsgVpnAclProfilePublishException(string msgVpnName, string aclProfileName, MsgVpnAclProfilePublishException payload, map<string|string[]> headers = {}, *CreateMsgVpnAclProfilePublishExceptionQueries queries) returns MsgVpnAclProfilePublishExceptionResponse|error {
@@ -1434,7 +1435,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The Publish Topic Exception object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnAclProfilePublishException(string msgVpnName, string aclProfileName, string topicSyntax, string publishExceptionTopic, map<string|string[]> headers = {}, *GetMsgVpnAclProfilePublishExceptionQueries queries) returns MsgVpnAclProfilePublishExceptionResponse|error {
@@ -1452,7 +1453,7 @@ public isolated client class Client {
     # + publishExceptionTopic - The topic for the exception to the default action taken. May include wildcard characters.
     # + headers - Headers to be sent with the request 
     # + return - The request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function deleteMsgVpnAclProfilePublishException(string msgVpnName, string aclProfileName, string topicSyntax, string publishExceptionTopic, map<string|string[]> headers = {}) returns SempMetaOnlyResponse|error {
@@ -1528,7 +1529,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The list of Subscribe Topic Exception objects' attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnAclProfileSubscribeExceptions(string msgVpnName, string aclProfileName, map<string|string[]> headers = {}, *GetMsgVpnAclProfileSubscribeExceptionsQueries queries) returns MsgVpnAclProfileSubscribeExceptionsResponse|error {
@@ -1546,7 +1547,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The Subscribe Topic Exception object's attributes. 
     # + return - The Subscribe Topic Exception object's attributes after being created, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function createMsgVpnAclProfileSubscribeException(string msgVpnName, string aclProfileName, MsgVpnAclProfileSubscribeException payload, map<string|string[]> headers = {}, *CreateMsgVpnAclProfileSubscribeExceptionQueries queries) returns MsgVpnAclProfileSubscribeExceptionResponse|error {
@@ -1568,7 +1569,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The Subscribe Topic Exception object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnAclProfileSubscribeException(string msgVpnName, string aclProfileName, string topicSyntax, string subscribeExceptionTopic, map<string|string[]> headers = {}, *GetMsgVpnAclProfileSubscribeExceptionQueries queries) returns MsgVpnAclProfileSubscribeExceptionResponse|error {
@@ -1586,7 +1587,7 @@ public isolated client class Client {
     # + subscribeExceptionTopic - The topic for the exception to the default action taken. May include wildcard characters.
     # + headers - Headers to be sent with the request 
     # + return - The request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function deleteMsgVpnAclProfileSubscribeException(string msgVpnName, string aclProfileName, string topicSyntax, string subscribeExceptionTopic, map<string|string[]> headers = {}) returns SempMetaOnlyResponse|error {
@@ -2022,7 +2023,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The list of OAuth Provider objects' attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnAuthenticationOauthProviders(string msgVpnName, map<string|string[]> headers = {}, *GetMsgVpnAuthenticationOauthProvidersQueries queries) returns MsgVpnAuthenticationOauthProvidersResponse|error {
@@ -2039,7 +2040,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The OAuth Provider object's attributes. 
     # + return - The OAuth Provider object's attributes after being created, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function createMsgVpnAuthenticationOauthProvider(string msgVpnName, MsgVpnAuthenticationOauthProvider payload, map<string|string[]> headers = {}, *CreateMsgVpnAuthenticationOauthProviderQueries queries) returns MsgVpnAuthenticationOauthProviderResponse|error {
@@ -2059,7 +2060,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The OAuth Provider object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnAuthenticationOauthProvider(string msgVpnName, string oauthProviderName, map<string|string[]> headers = {}, *GetMsgVpnAuthenticationOauthProviderQueries queries) returns MsgVpnAuthenticationOauthProviderResponse|error {
@@ -2077,7 +2078,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The OAuth Provider object's attributes. 
     # + return - The OAuth Provider object's attributes after being replaced, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function replaceMsgVpnAuthenticationOauthProvider(string msgVpnName, string oauthProviderName, MsgVpnAuthenticationOauthProvider payload, map<string|string[]> headers = {}, *ReplaceMsgVpnAuthenticationOauthProviderQueries queries) returns MsgVpnAuthenticationOauthProviderResponse|error {
@@ -2096,7 +2097,7 @@ public isolated client class Client {
     # + oauthProviderName - The name of the OAuth Provider.
     # + headers - Headers to be sent with the request 
     # + return - The request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function deleteMsgVpnAuthenticationOauthProvider(string msgVpnName, string oauthProviderName, map<string|string[]> headers = {}) returns SempMetaOnlyResponse|error {
@@ -2112,7 +2113,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The OAuth Provider object's attributes. 
     # + return - The OAuth Provider object's attributes after being updated, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function updateMsgVpnAuthenticationOauthProvider(string msgVpnName, string oauthProviderName, MsgVpnAuthenticationOauthProvider payload, map<string|string[]> headers = {}, *UpdateMsgVpnAuthenticationOauthProviderQueries queries) returns MsgVpnAuthenticationOauthProviderResponse|error {
@@ -2493,7 +2494,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The list of Trusted Common Name objects' attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnBridgeTlsTrustedCommonNames(string msgVpnName, string bridgeName, string bridgeVirtualRouter, map<string|string[]> headers = {}, *GetMsgVpnBridgeTlsTrustedCommonNamesQueries queries) returns MsgVpnBridgeTlsTrustedCommonNamesResponse|error {
@@ -2512,7 +2513,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The Trusted Common Name object's attributes. 
     # + return - The Trusted Common Name object's attributes after being created, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function createMsgVpnBridgeTlsTrustedCommonName(string msgVpnName, string bridgeName, string bridgeVirtualRouter, MsgVpnBridgeTlsTrustedCommonName payload, map<string|string[]> headers = {}, *CreateMsgVpnBridgeTlsTrustedCommonNameQueries queries) returns MsgVpnBridgeTlsTrustedCommonNameResponse|error {
@@ -2534,7 +2535,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The Trusted Common Name object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnBridgeTlsTrustedCommonName(string msgVpnName, string bridgeName, string bridgeVirtualRouter, string tlsTrustedCommonName, map<string|string[]> headers = {}, *GetMsgVpnBridgeTlsTrustedCommonNameQueries queries) returns MsgVpnBridgeTlsTrustedCommonNameResponse|error {
@@ -2552,7 +2553,7 @@ public isolated client class Client {
     # + tlsTrustedCommonName - The expected trusted common name of the remote certificate.
     # + headers - Headers to be sent with the request 
     # + return - The request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function deleteMsgVpnBridgeTlsTrustedCommonName(string msgVpnName, string bridgeName, string bridgeVirtualRouter, string tlsTrustedCommonName, map<string|string[]> headers = {}) returns SempMetaOnlyResponse|error {
@@ -5698,7 +5699,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The list of Trusted Common Name objects' attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNames(string msgVpnName, string restDeliveryPointName, string restConsumerName, map<string|string[]> headers = {}, *GetMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNamesQueries queries) returns MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNamesResponse|error {
@@ -5717,7 +5718,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The Trusted Common Name object's attributes. 
     # + return - The Trusted Common Name object's attributes after being created, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function createMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName(string msgVpnName, string restDeliveryPointName, string restConsumerName, MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName payload, map<string|string[]> headers = {}, *CreateMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNameQueries queries) returns MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNameResponse|error {
@@ -5739,7 +5740,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The Trusted Common Name object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName(string msgVpnName, string restDeliveryPointName, string restConsumerName, string tlsTrustedCommonName, map<string|string[]> headers = {}, *GetMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNameQueries queries) returns MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonNameResponse|error {
@@ -5757,7 +5758,7 @@ public isolated client class Client {
     # + tlsTrustedCommonName - The expected trusted common name of the remote certificate.
     # + headers - Headers to be sent with the request 
     # + return - The request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function deleteMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName(string msgVpnName, string restDeliveryPointName, string restConsumerName, string tlsTrustedCommonName, map<string|string[]> headers = {}) returns SempMetaOnlyResponse|error {
@@ -5771,7 +5772,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The list of Sequenced Topic objects' attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnSequencedTopics(string msgVpnName, map<string|string[]> headers = {}, *GetMsgVpnSequencedTopicsQueries queries) returns MsgVpnSequencedTopicsResponse|error {
@@ -5788,7 +5789,7 @@ public isolated client class Client {
     # + queries - Queries to be sent with the request 
     # + payload - The Sequenced Topic object's attributes. 
     # + return - The Sequenced Topic object's attributes after being created, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function createMsgVpnSequencedTopic(string msgVpnName, MsgVpnSequencedTopic payload, map<string|string[]> headers = {}, *CreateMsgVpnSequencedTopicQueries queries) returns MsgVpnSequencedTopicResponse|error {
@@ -5808,7 +5809,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The Sequenced Topic object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getMsgVpnSequencedTopic(string msgVpnName, string sequencedTopic, map<string|string[]> headers = {}, *GetMsgVpnSequencedTopicQueries queries) returns MsgVpnSequencedTopicResponse|error {
@@ -5824,7 +5825,7 @@ public isolated client class Client {
     # + sequencedTopic - Topic for applying sequence numbers.
     # + headers - Headers to be sent with the request 
     # + return - The request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function deleteMsgVpnSequencedTopic(string msgVpnName, string sequencedTopic, map<string|string[]> headers = {}) returns SempMetaOnlyResponse|error {
@@ -7036,7 +7037,7 @@ public isolated client class Client {
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - The System Information object's attributes, and the request metadata. 
-    # 
+    #
     # # Deprecated
     @deprecated
     remote isolated function getSystemInformation(map<string|string[]> headers = {}, *GetSystemInformationQueries queries) returns SystemInformationResponse|error {

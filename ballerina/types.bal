@@ -51,36 +51,36 @@ public type GetMsgVpnTelemetryProfileQueries record {
 
 public type MsgVpnDistributedCache record {
     # The name of the Distributed Cache.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string cacheName?;
     # The virtual router of the Distributed Cache.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The default value is `"auto"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "auto" - The Distributed Cache is automatically assigned a virtual router at creation, depending on the broker's active-standby role.
     # </pre>
-    #  Available since 2.28.
+    # Available since 2.28.
     "auto" cacheVirtualRouter?;
     # Enable or disable the Distributed Cache.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The heartbeat interval, in seconds, used by the Cache Instances to monitor connectivity with the message broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10`.
     int heartbeat?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The scheduled delete message day(s), specified as "daily" or a comma-separated list of days. Days must be specified as "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", or "Sat", with no spaces, and in sorted order from Sunday to Saturday. The empty-string ("") can also be specified, indicating no schedule is configured ("scheduledDeleteMsgTimeList" must also be configured to the empty-string).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string scheduledDeleteMsgDayList?;
     # The scheduled delete message time(s), specified as "hourly" or a comma-separated list of 24-hour times in the form hh:mm, or h:mm. There must be no spaces, and times (up to 4) must be in sorted order from 0:00 to 23:59. The empty-string ("") can also be specified, indicating no schedule is configured ("scheduledDeleteMsgDayList" must also be configured to the empty-string).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string scheduledDeleteMsgTimeList?;
 };
@@ -165,19 +165,19 @@ public type GetMsgVpnKafkaSendersQueries record {
 # The thresholds for the egress flow count event of the Message VPN, relative to `maxEgressFlowCount`.
 public type MsgVpnEventEgressFlowCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -220,31 +220,31 @@ public type OauthProfileResourceServerRequiredClaimsResponse record {
 
 public type MsgVpn record {
     # The name of another Message VPN which this Message VPN is an alias for. When this Message VPN is enabled, the alias has no effect. When this Message VPN is disabled, Clients (but not Bridges and routing Links) logging into this Message VPN are automatically logged in to the other Message VPN, and authentication and authorization take place in the context of the other Message VPN.
-    # 
+    #
     # Aliases may form a non-circular chain, cascading one to the next.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.14.
     string alias?;
     # Enable or disable allowing endpoints to override the DMQ Eligible flag provided by the publisher.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.49.
     boolean allowDmqEligibleEndpointOverrideEnabled?;
     # Enable or disable basic authentication for clients connecting to the Message VPN. Basic authentication is authentication that involves the use of a username and password to prove identity. If a user provides credentials for a different authentication scheme, this setting is not applicable.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean authenticationBasicEnabled?;
     # The name of the RADIUS or LDAP Profile to use for basic authentication.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"default"`.
     string authenticationBasicProfileName?;
     # The RADIUS domain to use for basic authentication.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationBasicRadiusDomain?;
     # The type of basic authentication to use for clients connecting to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"radius"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "internal" - Internal database. Authentication is against Client Usernames.
     # "ldap" - LDAP authentication. An LDAP profile name must be provided.
@@ -253,36 +253,36 @@ public type MsgVpn record {
     # </pre>
     "internal"|"ldap"|"radius"|"none" authenticationBasicType?;
     # Enable or disable allowing an incoming client connection to specify a Client Username via the API connect method. When disabled, the system will use the configured username source settings to determine which client username will be used.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean authenticationClientCertAllowApiProvidedUsernameEnabled?;
     # Enable or disable certificate matching rules. When disabled, any valid certificate is accepted.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.27.
     boolean authenticationClientCertCertificateMatchingRulesEnabled?;
     # Enable or disable client certificate authentication for clients connecting to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean authenticationClientCertEnabled?;
     # The maximum depth for a client certificate chain. The depth of a chain is defined as the number of signing CA certificates that are present in the chain back to a trusted self-signed root CA certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int authenticationClientCertMaxChainDepth?;
     # The desired behavior for client certificate revocation checking.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"allow-valid"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "allow-all" - Allow the client to authenticate, the result of client certificate revocation check is ignored.
     # "allow-unknown" - Allow the client to authenticate even if the revocation status of his certificate cannot be determined.
     # "allow-valid" - Allow the client to authenticate only when the revocation check returned an explicit positive response.
     # </pre>
-    #  Available since 2.6.
+    # Available since 2.6.
     "allow-all"|"allow-unknown"|"allow-valid" authenticationClientCertRevocationCheckMode?;
     # The field from the client certificate to use as the client username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"common-name"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "certificate-thumbprint" - The username is computed as the SHA-1 hash over the entire DER-encoded contents of the client certificate.
     # "common-name" - The username is extracted from the certificate's first instance of the Common Name attribute in the Subject DN.
@@ -291,79 +291,79 @@ public type MsgVpn record {
     # "uid" - The username is extracted from the certificate's first instance of the User Identifier attribute in the Subject DN.
     # "uid-last" - The username is extracted from the certificate's last instance of the User Identifier attribute in the Subject DN.
     # </pre>
-    #  Available since 2.6.
+    # Available since 2.6.
     "certificate-thumbprint"|"common-name"|"common-name-last"|"subject-alternate-name-msupn"|"uid"|"uid-last" authenticationClientCertUsernameSource?;
     # Enable or disable validation of the "Not Before" and "Not After" validity dates in the client certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean authenticationClientCertValidateDateEnabled?;
     # Enable or disable allowing an incoming client connection to specify a Client Username via the API connect method. When disabled, the Kerberos Principal name is always used.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean authenticationKerberosAllowApiProvidedUsernameEnabled?;
     # Enable or disable Kerberos authentication for clients connecting to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean authenticationKerberosEnabled?;
     # The name of the profile to use when the client does not supply a profile name.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.25.
     string authenticationOauthDefaultProfileName?;
     # The name of the provider to use when the client does not supply a provider name.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Deprecated since 2.25. authenticationOauthDefaultProviderName and authenticationOauthProviders replaced by authenticationOauthDefaultProfileName and authenticationOauthProfiles.
     string authenticationOauthDefaultProviderName?;
     # Enable or disable OAuth authentication for clients connecting to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.13.
     boolean authenticationOauthEnabled?;
     # The name of the attribute that is retrieved from the LDAP server as part of the LDAP search when authorizing a client connecting to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"memberOf"`.
     string authorizationLdapGroupMembershipAttributeName?;
     # Enable or disable client-username domain trimming for LDAP lookups of client connections. When enabled, the value of $CLIENT_USERNAME (when used for searching) will be truncated at the first occurrence of the @ character. For example, if the client-username is in the form of an email address, then the domain portion will be removed.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.13.
     boolean authorizationLdapTrimClientUsernameDomainEnabled?;
     # The name of the LDAP Profile to use for client authorization.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authorizationProfileName?;
     # The type of authorization to use for clients connecting to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"internal"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "ldap" - LDAP authorization.
     # "internal" - Internal authorization.
     # </pre>
     "ldap"|"internal" authorizationType?;
     # Enable or disable validation of the Common Name (CN) in the server certificate from the remote broker. If enabled, the Common Name is checked against the list of Trusted Common Names configured for the Bridge. Common Name validation is not performed if Server Certificate Name Validation is enabled, even if Common Name validation is enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
     boolean bridgingTlsServerCertEnforceTrustedCommonNameEnabled?;
     # The maximum depth for a server certificate chain. The depth of a chain is defined as the number of signing CA certificates that are present in the chain back to a trusted self-signed root CA certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int bridgingTlsServerCertMaxChainDepth?;
     # Enable or disable validation of the "Not Before" and "Not After" validity dates in the server certificate. When disabled, a certificate will be accepted even if the certificate is not valid based on these dates.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean bridgingTlsServerCertValidateDateEnabled?;
     # Enable or disable the standard TLS authentication mechanism of verifying the name used to connect to the bridge. If enabled, the name used to connect to the bridge is checked against the names specified in the certificate returned by the remote broker. Legacy Common Name validation is not performed if Server Certificate Name Validation is enabled, even if Common Name validation is also enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.18.
     boolean bridgingTlsServerCertValidateNameEnabled?;
     # Enable or disable managing of cache instances over the message bus.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". The default value is `true`. Deprecated since 2.28. Distributed cache management is now redundancy aware and thus no longer requires administrative intervention for operational state.
     boolean distributedCacheManagementEnabled?;
     # Enable or disable Dynamic Message Routing (DMR) for the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.11.
     boolean dmrEnabled?;
     # Enable or disable the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The thresholds for the client connection count event of the Message VPN, relative to `maxConnectionCount`.
@@ -379,27 +379,27 @@ public type MsgVpn record {
     # The thresholds for the receive message rate event of the Message VPN.
     MsgVpnEventIngressMsgRateThreshold eventIngressMsgRateThreshold?;
     # The threshold, in kilobytes, after which a message is considered to be large for the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1024`.
     int eventLargeMsgThreshold?;
     # A prefix applied to all published Events in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string eventLogTag?;
     # The thresholds for the message spool usage event of the Message VPN, relative to `maxMsgSpoolUsage`.
     MsgVpnEventMsgSpoolUsageThreshold eventMsgSpoolUsageThreshold?;
     # Enable or disable Client level Event message publishing.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean eventPublishClientEnabled?;
     # Enable or disable Message VPN level Event message publishing.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean eventPublishMsgVpnEnabled?;
     # Subscription level Event message publishing mode.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"off"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "off" - Disable client level event message publishing.
     # "on-with-format-v1" - Enable client level event message publishing with format v1.
@@ -409,11 +409,11 @@ public type MsgVpn record {
     # </pre>
     "off"|"on-with-format-v1"|"on-with-no-unsubscribe-events-on-disconnect-format-v1"|"on-with-format-v2"|"on-with-no-unsubscribe-events-on-disconnect-format-v2" eventPublishSubscriptionMode?;
     # Enable or disable Event publish topics in MQTT format.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean eventPublishTopicFormatMqttEnabled?;
     # Enable or disable Event publish topics in SMF format.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean eventPublishTopicFormatSmfEnabled?;
     # The thresholds for the AMQP client connection count event of the Message VPN, relative to `serviceAmqpMaxConnectionCount`. Available since 2.7.
@@ -433,114 +433,114 @@ public type MsgVpn record {
     # The thresholds for the transaction count event of the Message VPN, relative to `maxTransactionCount`.
     MsgVpnEventTransactionCountThreshold eventTransactionCountThreshold?;
     # Enable or disable the export of subscriptions in the Message VPN to other routers in the network over Neighbor links.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean exportSubscriptionsEnabled?;
     # Enable or disable JNDI access for clients in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.2.
     boolean jndiEnabled?;
     # The maximum number of client connections to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform.
     int maxConnectionCount?;
     # The maximum number of transmit flows that can be created in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int maxEgressFlowCount?;
     # The maximum number of Queues and Topic Endpoints that can be created in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int maxEndpointCount?;
     # The maximum number of receive flows that can be created in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int maxIngressFlowCount?;
     # The maximum number of simultaneous Kafka Broker connections of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform. Available since 2.39.
     int:Signed32 maxKafkaBrokerConnectionCount?;
     # The maximum message spool usage by the Message VPN, in megabytes.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxMsgSpoolUsage?;
     # The maximum number of local subscriptions that can be added to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `500000`.
     int maxSubscriptionCount?;
     # The maximum number of transacted sessions that can be created in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default varies by platform.
     int maxTransactedSessionCount?;
     # The maximum number of transactions that can be created in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default varies by platform.
     int maxTransactionCount?;
     # The maximum total memory usage of the MQTT Retain feature for this Message VPN, in MB. If the maximum memory is reached, any arriving retain messages that require more memory are discarded. A value of -1 indicates that the memory is bounded only by the global max memory limit. A value of 0 prevents MQTT Retain from becoming operational.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `-1`. Available since 2.11.
     int:Signed32 mqttRetainMaxMemory?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The acknowledgment (ACK) propagation interval for the replication Bridge, in number of replicated messages.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `20`.
     int replicationAckPropagationIntervalMsgCount?;
     # The Client Username the replication Bridge uses to login to the remote Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string replicationBridgeAuthenticationBasicClientUsername?;
     # The password for the Client Username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string replicationBridgeAuthenticationBasicPassword?;
     # The PEM formatted content for the client certificate used by this bridge to login to the Remote Message VPN. It must consist of a private key and between one and three certificates comprising the certificate trust chain.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). The default value is `""`. Available since 2.9.
     string replicationBridgeAuthenticationClientCertContent?;
     # The password for the client certificate.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). The default value is `""`. Available since 2.9.
     string replicationBridgeAuthenticationClientCertPassword?;
     # The authentication scheme for the replication Bridge in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"basic"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "basic" - Basic Authentication Scheme (via username and password).
     # "client-certificate" - Client Certificate Authentication Scheme (via certificate file or content).
     # </pre>
     "basic"|"client-certificate" replicationBridgeAuthenticationScheme?;
     # Enable or disable use of compression for the replication Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean replicationBridgeCompressedDataEnabled?;
     # The size of the window used for guaranteed messages published to the replication Bridge, in messages.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `255`.
     int replicationBridgeEgressFlowWindowSize?;
     # The number of seconds that must pass before retrying the replication Bridge connection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `3`.
     int replicationBridgeRetryDelay?;
     # Enable or disable use of encryption (TLS) for the replication Bridge connection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean replicationBridgeTlsEnabled?;
     # The Client Profile for the unidirectional replication Bridge in the Message VPN. It is used only for the TCP parameters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"#client-profile"`.
     string replicationBridgeUnidirectionalClientProfileName?;
     # Enable or disable replication for the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean replicationEnabled?;
     # The behavior to take when enabling replication for the Message VPN, depending on the existence of the replication Queue.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"fail-on-existing-queue"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "fail-on-existing-queue" - The data replication queue must not already exist.
     # "force-use-existing-queue" - The data replication queue must already exist. Any data messages on the Queue will be forwarded to interested applications. IMPORTANT: Before using this mode be certain that the messages are not stale or otherwise unsuitable to be forwarded. This mode can only be specified when the existing queue is configured the same as is currently specified under replication configuration otherwise the enabling of replication will fail.
@@ -548,231 +548,231 @@ public type MsgVpn record {
     # </pre>
     "fail-on-existing-queue"|"force-use-existing-queue"|"force-recreate-queue" replicationEnabledQueueBehavior?;
     # The maximum message spool usage by the replication Bridge local Queue (quota), in megabytes.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60000`.
     int replicationQueueMaxMsgSpoolUsage?;
     # Enable or disable whether messages discarded on the replication Bridge local Queue are rejected back to the sender.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean replicationQueueRejectMsgToSenderOnDiscardEnabled?;
     # Enable or disable whether guaranteed messages published to synchronously replicated Topics are rejected back to the sender when synchronous replication becomes ineligible.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean replicationRejectMsgWhenSyncIneligibleEnabled?;
     # The replication role for the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"standby"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "active" - Assume the Active role in replication for the Message VPN.
     # "standby" - Assume the Standby role in replication for the Message VPN.
     # </pre>
     "active"|"standby" replicationRole?;
     # The transaction replication mode for all transactions within the Message VPN. Changing this value during operation will not affect existing transactions; it is only used upon starting a transaction.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"async"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "sync" - Messages are acknowledged when replicated (spooled remotely).
     # "async" - Messages are acknowledged when pending replication (spooled locally).
     # </pre>
     "sync"|"async" replicationTransactionMode?;
     # Enable or disable validation of the Common Name (CN) in the server certificate from the remote REST Consumer. If enabled, the Common Name is checked against the list of Trusted Common Names configured for the REST Consumer. Common Name validation is not performed if Server Certificate Name Validation is enabled, even if Common Name validation is enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
     boolean restTlsServerCertEnforceTrustedCommonNameEnabled?;
     # The maximum depth for a REST Consumer server certificate chain. The depth of a chain is defined as the number of signing CA certificates that are present in the chain back to a trusted self-signed root CA certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int restTlsServerCertMaxChainDepth?;
     # Enable or disable validation of the "Not Before" and "Not After" validity dates in the REST Consumer server certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean restTlsServerCertValidateDateEnabled?;
     # Enable or disable the standard TLS authentication mechanism of verifying the name used to connect to the remote REST Consumer. If enabled, the name used to connect to the remote REST Consumer is checked against the names specified in the certificate returned by the remote broker. Legacy Common Name validation is not performed if Server Certificate Name Validation is enabled, even if Common Name validation is also enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.17.
     boolean restTlsServerCertValidateNameEnabled?;
     # Enable or disable "admin client" SEMP over the message bus commands for the current Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean sempOverMsgBusAdminClientEnabled?;
     # Enable or disable "admin distributed-cache" SEMP over the message bus commands for the current Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean sempOverMsgBusAdminDistributedCacheEnabled?;
     # Enable or disable "admin" SEMP over the message bus commands for the current Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean sempOverMsgBusAdminEnabled?;
     # Enable or disable SEMP over the message bus for the current Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean sempOverMsgBusEnabled?;
     # Enable or disable "show" SEMP over the message bus commands for the current Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean sempOverMsgBusShowEnabled?;
     # The maximum number of AMQP client connections that can be simultaneously connected to the Message VPN. This value may be higher than supported by the platform.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform. Available since 2.7.
     int serviceAmqpMaxConnectionCount?;
     # Enable or disable the plain-text AMQP service in the Message VPN. Disabling causes clients connected to the corresponding listen-port to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.7.
     boolean serviceAmqpPlainTextEnabled?;
     # The port number for plain-text AMQP clients that connect to the Message VPN. The port must be unique across the message backbone. A value of 0 means that the listen-port is unassigned and cannot be enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceAmqpPlainTextEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.7.
     int serviceAmqpPlainTextListenPort?;
     # Enable or disable the use of encryption (TLS) for the AMQP service in the Message VPN. Disabling causes clients currently connected over TLS to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.7.
     boolean serviceAmqpTlsEnabled?;
     # The port number for AMQP clients that connect to the Message VPN over TLS. The port must be unique across the message backbone. A value of 0 means that the listen-port is unassigned and cannot be enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceAmqpTlsEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.7.
     int serviceAmqpTlsListenPort?;
     # Determines when to request a client certificate from an incoming MQTT client connecting via a TLS port.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"when-enabled-in-message-vpn"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "always" - Always ask for a client certificate regardless of the "message-vpn > authentication > client-certificate > shutdown" configuration.
     # "never" - Never ask for a client certificate regardless of the "message-vpn > authentication > client-certificate > shutdown" configuration.
     # "when-enabled-in-message-vpn" - Only ask for a client-certificate if client certificate authentication is enabled under "message-vpn >  authentication > client-certificate > shutdown".
     # </pre>
-    #  Available since 2.21.
+    # Available since 2.21.
     "always"|"never"|"when-enabled-in-message-vpn" serviceMqttAuthenticationClientCertRequest?;
     # The maximum number of MQTT client connections that can be simultaneously connected to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform. Available since 2.1.
     int serviceMqttMaxConnectionCount?;
     # Enable or disable the plain-text MQTT service in the Message VPN. Disabling causes clients currently connected to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.1.
     boolean serviceMqttPlainTextEnabled?;
     # The port number for plain-text MQTT clients that connect to the Message VPN. The port must be unique across the message backbone. A value of 0 means that the listen-port is unassigned and cannot be enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceMqttPlainTextEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.1.
     int serviceMqttPlainTextListenPort?;
     # Enable or disable the use of encryption (TLS) for the MQTT service in the Message VPN. Disabling causes clients currently connected over TLS to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.1.
     boolean serviceMqttTlsEnabled?;
     # The port number for MQTT clients that connect to the Message VPN over TLS. The port must be unique across the message backbone. A value of 0 means that the listen-port is unassigned and cannot be enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceMqttTlsEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.1.
     int serviceMqttTlsListenPort?;
     # Enable or disable the use of encrypted WebSocket (WebSocket over TLS) for the MQTT service in the Message VPN. Disabling causes clients currently connected by encrypted WebSocket to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.1.
     boolean serviceMqttTlsWebSocketEnabled?;
     # The port number for MQTT clients that connect to the Message VPN using WebSocket over TLS. The port must be unique across the message backbone. A value of 0 means that the listen-port is unassigned and cannot be enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceMqttTlsWebSocketEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.1.
     int serviceMqttTlsWebSocketListenPort?;
     # Enable or disable the use of WebSocket for the MQTT service in the Message VPN. Disabling causes clients currently connected by WebSocket to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.1.
     boolean serviceMqttWebSocketEnabled?;
     # The port number for plain-text MQTT clients that connect to the Message VPN using WebSocket. The port must be unique across the message backbone. A value of 0 means that the listen-port is unassigned and cannot be enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceMqttWebSocketEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.1.
     int serviceMqttWebSocketListenPort?;
     # Determines when to request a client certificate from an incoming REST Producer connecting via a TLS port.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"when-enabled-in-message-vpn"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "always" - Always ask for a client certificate regardless of the "message-vpn > authentication > client-certificate > shutdown" configuration.
     # "never" - Never ask for a client certificate regardless of the "message-vpn > authentication > client-certificate > shutdown" configuration.
     # "when-enabled-in-message-vpn" - Only ask for a client-certificate if client certificate authentication is enabled under "message-vpn >  authentication > client-certificate > shutdown".
     # </pre>
-    #  Available since 2.21.
+    # Available since 2.21.
     "always"|"never"|"when-enabled-in-message-vpn" serviceRestIncomingAuthenticationClientCertRequest?;
     # The handling of Authorization headers for incoming REST connections. Authorization header handling settings apply only when the Message VPN is in gateway mode.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"drop"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "drop" - Do not attach the Authorization header to the message as a user property. This configuration is most secure.
     # "forward" - Forward the Authorization header, attaching it to the message as a user property in the same way as other headers. For best security, use the drop setting.
     # "legacy" - If the Authorization header was used for authentication to the broker, do not attach it to the message. If the Authorization header was not used for authentication to the broker, attach it to the message as a user property in the same way as other headers. For best security, use the drop setting.
     # </pre>
-    #  Available since 2.19.
+    # Available since 2.19.
     "drop"|"forward"|"legacy" serviceRestIncomingAuthorizationHeaderHandling?;
     # The maximum number of REST incoming client connections that can be simultaneously connected to the Message VPN. This value may be higher than supported by the platform.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform.
     int serviceRestIncomingMaxConnectionCount?;
     # Enable or disable the plain-text REST service for incoming clients in the Message VPN. Disabling causes clients currently connected to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean serviceRestIncomingPlainTextEnabled?;
     # The port number for incoming plain-text REST clients that connect to the Message VPN. The port must be unique across the message backbone. A value of 0 means that the listen-port is unassigned and cannot be enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceRestIncomingPlainTextEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int serviceRestIncomingPlainTextListenPort?;
     # Enable or disable the use of encryption (TLS) for the REST service for incoming clients in the Message VPN. Disabling causes clients currently connected over TLS to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean serviceRestIncomingTlsEnabled?;
     # The port number for incoming REST clients that connect to the Message VPN over TLS. The port must be unique across the message backbone. A value of 0 means that the listen-port is unassigned and cannot be enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceRestIncomingTlsEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int serviceRestIncomingTlsListenPort?;
     # The REST service mode for incoming REST clients that connect to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"messaging"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "gateway" - Act as a message gateway through which REST messages are propagated.
     # "messaging" - Act as a message broker on which REST messages are queued.
     # </pre>
-    #  Available since 2.6.
+    # Available since 2.6.
     "gateway"|"messaging" serviceRestMode?;
     # The maximum number of REST Consumer (outgoing) client connections that can be simultaneously connected to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default varies by platform.
     int serviceRestOutgoingMaxConnectionCount?;
     # The maximum number of SMF client connections that can be simultaneously connected to the Message VPN. This value may be higher than supported by the platform.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default varies by platform.
     int serviceSmfMaxConnectionCount?;
     # Enable or disable the plain-text SMF service in the Message VPN. Disabling causes clients currently connected to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean serviceSmfPlainTextEnabled?;
     # Enable or disable the use of encryption (TLS) for the SMF service in the Message VPN. Disabling causes clients currently connected over TLS to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean serviceSmfTlsEnabled?;
     # Determines when to request a client certificate from a Web Transport client connecting via a TLS port.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"when-enabled-in-message-vpn"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "always" - Always ask for a client certificate regardless of the "message-vpn > authentication > client-certificate > shutdown" configuration.
     # "never" - Never ask for a client certificate regardless of the "message-vpn > authentication > client-certificate > shutdown" configuration.
     # "when-enabled-in-message-vpn" - Only ask for a client-certificate if client certificate authentication is enabled under "message-vpn >  authentication > client-certificate > shutdown".
     # </pre>
-    #  Available since 2.21.
+    # Available since 2.21.
     "always"|"never"|"when-enabled-in-message-vpn" serviceWebAuthenticationClientCertRequest?;
     # The maximum number of Web Transport client connections that can be simultaneously connected to the Message VPN. This value may be higher than supported by the platform.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform.
     int serviceWebMaxConnectionCount?;
     # Enable or disable the plain-text Web Transport service in the Message VPN. Disabling causes clients currently connected to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean serviceWebPlainTextEnabled?;
     # Enable or disable the use of TLS for the Web Transport service in the Message VPN. Disabling causes clients currently connected over TLS to be disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean serviceWebTlsEnabled?;
     # Enable or disable the allowing of TLS SMF clients to downgrade their connections to plain-text connections. Changing this will not affect existing connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean tlsAllowDowngradeToPlainTextEnabled?;
 };
@@ -780,19 +780,19 @@ public type MsgVpn record {
 # The thresholds for the receive flow count event at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventIngressFlowCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -877,19 +877,19 @@ public type CreateOauthProfileQueries record {
 # The thresholds for the transactions event at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventTransactionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -902,13 +902,13 @@ public type MsgVpnJndiTopicResponse record {
 
 public type MsgVpnBridgeRemoteSubscription record {
     # The name of the Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string bridgeName?;
     # The virtual router of the Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "primary" - The Bridge is used for the primary virtual router.
     # "backup" - The Bridge is used for the backup virtual router.
@@ -916,15 +916,15 @@ public type MsgVpnBridgeRemoteSubscription record {
     # </pre>
     "primary"|"backup"|"auto" bridgeVirtualRouter?;
     # Enable or disable deliver-always for the Bridge remote subscription topic instead of a deliver-to-one remote priority. A given topic for the Bridge may be deliver-to-one or deliver-always but not both.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     boolean deliverAlwaysEnabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The topic of the Bridge remote subscription.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string remoteSubscriptionTopic?;
 };
@@ -946,30 +946,30 @@ public type GetMsgVpnAclProfileSubscribeShareNameExceptionsQueries record {
 
 public type MsgVpnQueueTemplate record {
     # The access type for delivering messages to consumer flows.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"exclusive"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "exclusive" - Exclusive delivery of messages to the first bound consumer flow.
     # "non-exclusive" - Non-exclusive delivery of messages to bound consumer flows in a round-robin (if partition count is zero) or partitioned (if partition count is non-zero) fashion.
     # </pre>
     "exclusive"|"non-exclusive" accessType?;
     # Enable or disable the propagation of consumer acknowledgments (ACKs) received on the active replication Message VPN to the standby replication Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean consumerAckPropagationEnabled?;
     # The name of the Dead Message Queue (DMQ).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"#DEAD_MSG_QUEUE"`.
     string deadMsgQueue?;
     # The delay, in seconds, to apply to messages arriving on the Queue before the messages are eligible for delivery. This attribute does not apply to MQTT queues created from this template, but it may apply in future releases. Therefore, to maintain forward compatibility, do not set this value on templates that might be used for MQTT queues.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.22.
     int deliveryDelay?;
     # Controls the durability of queues created from this template. If non-durable, the created queue will be non-durable, regardless of the specified durability. If none, the created queue will have the requested durability.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - The durability of the endpoint will be as requested on create.
     # "non-durable" - The durability of the created queue will be non-durable, regardless of what was requested.
@@ -982,37 +982,37 @@ public type MsgVpnQueueTemplate record {
     # The thresholds for the maximum allowed number of any priority messages queued in the Queue event, relative to `rejectLowPriorityMsgLimit`.
     MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold eventRejectLowPriorityMsgLimitThreshold?;
     # The maximum number of consumer flows that can bind.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int maxBindCount?;
     # The maximum number of messages delivered but not acknowledged per flow.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000`.
     int maxDeliveredUnackedMsgsPerFlow?;
     # The maximum message size allowed, in bytes (B).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000000`.
     int:Signed32 maxMsgSize?;
     # The maximum message spool usage allowed, in megabytes (MB). A value of 0 only allows spooling of the last message received and disables quota checking.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `5000`.
     int maxMsgSpoolUsage?;
     # The maximum number of message redelivery attempts that will occur prior to the message being discarded or moved to the DMQ. A value of 0 means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxRedeliveryCount?;
     # The maximum time in seconds a message can stay in a Queue when `respectTtlEnabled` is `"true"`. A message expires when the lesser of the sender assigned time-to-live (TTL) in the message and the `maxTtl` configured for the Queue, is exceeded. A value of 0 disables expiry.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxTtl?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The permission level for all consumers, excluding the owner.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"no-access"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "no-access" - Disallows all access.
     # "read-only" - Read-only access to the messages.
@@ -1022,45 +1022,45 @@ public type MsgVpnQueueTemplate record {
     # </pre>
     "no-access"|"read-only"|"consume"|"modify-topic"|"delete" permission?;
     # A pattern used to determine which Queues use settings from this Template. Two different wildcards can be used in the pattern: * and &gt;. Similar to topic filters or subscription patterns, a &gt; matches anything (but only when used at the end), and a * matches zero or more characters but never a slash (/). A &gt; is only a wildcard when used at the end, after a /. A * is only allowed at the end, after a slash (/).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string queueNameFilter?;
     # The name of the Queue Template.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string queueTemplateName?;
     # Enable or disable a message redelivery delay. When false, messages are redelivered as soon as possible.  When true, messages are redelivered according to the initial, max and multiplier.  This should only be enabled when redelivery is enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.33.
     boolean redeliveryDelayEnabled?;
     # The delay to be used between the first 2 redelivery attempts.  This value is in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`. Available since 2.33.
     int:Signed32 redeliveryDelayInitialInterval?;
     # The maximum delay to be used between any 2 redelivery attempts.  This value is in milliseconds.  Due to technical limitations, some redelivery attempt delays may slightly exceed this value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `64000`. Available since 2.33.
     int:Signed32 redeliveryDelayMaxInterval?;
     # The amount each delay interval is multiplied by after each failed delivery attempt.  This number is in a fixed-point decimal format in which you must divide by 100 to get the floating point value. For example, a value of 125 would cause the delay to be multiplied by 1.25.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `200`. Available since 2.33.
     int:Signed32 redeliveryDelayMultiplier?;
     # Enable or disable message redelivery. When enabled, the number of redelivery attempts is controlled by maxRedeliveryCount. When disabled, the message will never be delivered from the queue more than once.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.18.
     boolean redeliveryEnabled?;
     # Enable or disable the checking of low priority messages against the `rejectLowPriorityMsgLimit`. This may only be enabled if `rejectMsgToSenderOnDiscardBehavior` does not have a value of `"never"`.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean rejectLowPriorityMsgEnabled?;
     # The number of messages of any priority above which low priority messages are not admitted but higher priority messages are allowed.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int rejectLowPriorityMsgLimit?;
     # Determines when to return negative acknowledgments (NACKs) to sending clients on message discards. Note that NACKs prevent the message from being delivered to any destination and Transacted Session commits to fail.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"when-queue-enabled"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "never" - Silently discard messages.
     # "when-queue-enabled" - NACK each message discard back to the client, except messages that are discarded because an endpoint is administratively disabled.
@@ -1068,15 +1068,15 @@ public type MsgVpnQueueTemplate record {
     # </pre>
     "never"|"when-queue-enabled"|"always" rejectMsgToSenderOnDiscardBehavior?;
     # Enable or disable the respecting of DMQ Eligible for messages in the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.49.
     boolean respectDmqEligibleEnabled?;
     # Enable or disable the respecting of message priority. When enabled, messages are delivered in priority order, from 9 (highest) to 0 (lowest).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean respectMsgPriorityEnabled?;
     # Enable or disable the respecting of the time-to-live (TTL) for messages. When enabled, expired messages are discarded or moved to the DMQ.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean respectTtlEnabled?;
 };
@@ -1248,31 +1248,31 @@ public type GetMsgVpnBridgeRemoteSubscriptionsQueries record {
 
 public type MsgVpnDistributedCacheClusterInstance record {
     # Enable or disable auto-start for the Cache Instance. When enabled, the Cache Instance will automatically attempt to transition from the Stopped operational state to Up whenever it restarts or reconnects to the message broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean autoStartEnabled?;
     # The name of the Distributed Cache.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string cacheName?;
     # The name of the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clusterName?;
     # Enable or disable the Cache Instance.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The name of the Cache Instance.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string instanceName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # Enable or disable stop-on-lost-message for the Cache Instance. When enabled, the Cache Instance will transition to the stopped operational state upon losing a message. When stopped, it cannot accept or respond to cache requests, but continues to cache messages.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean stopOnLostMsgEnabled?;
 };
@@ -1318,81 +1318,81 @@ public type MsgVpnClientProfileLinks record {
 
 public type MsgVpnKafkaReceiver record {
     # The AWS Access Key identifier, typically beginning "AKIA...".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamAccessKeyId?;
     # The AWS Region code, such as "us-east-1".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamRegion?;
     # The AWS Access Key secret.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamSecretAccessKey?;
     # The External ID is a unique identifier that might be required when assuming a role. Used with STS only; optional.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamStsExternalId?;
     # The Amazon Resource Name (ARN) of the role to assume, typically beginning "arn:aws:iam::...". Used with STS only.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamStsRoleArn?;
     # An identifier for the assumed role's session. Used with STS only.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamStsRoleSessionName?;
     # The password for the Username. To be used when authenticationScheme is "basic".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationBasicPassword?;
     # The username the Kafka Receiver uses to login to the remote Kafka broker. To be used when authenticationScheme is "basic".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationBasicUsername?;
     # The PEM formatted content for the client certificate used by the Kafka Receiver to login to the remote Kafka broker. To be used when authenticationScheme is "client-certificate". Alternatively this will be used for other values of authenticationScheme when the Kafka Broker has an `ssl.client.auth` setting of "requested" or "required" and KIP-684 (mTLS) is supported by the Kafka Broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`.
     string authenticationClientCertContent?;
     # The password for the client certificate. To be used when authenticationScheme is "client-certificate". Alternatively this will be used for other values of authenticationScheme when the Kafka Broker has an `ssl.client.auth` setting of "requested" or "required" and KIP-684 (mTLS) is supported by the Kafka Broker.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`.
     string authenticationClientCertPassword?;
     # The base64-encoded content of this User Principal's keytab.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.40.
     string authenticationKerberosKeytabContent?;
     # The name of this User Principal's keytab file.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.40.
     string authenticationKerberosKeytabFileName?;
     # The Kerberos service name of the remote Kafka broker, not including /hostname@REALM.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.40.
     string authenticationKerberosServiceName?;
     # The Kerberos user principal name of the Kafka Receiver. This must include the @&lt;REALM&gt; suffix.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.40.
     string authenticationKerberosUserPrincipalName?;
     # The OAuth client ID. To be used when authenticationScheme is "oauth-client".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationOauthClientId?;
     # The OAuth scope. To be used when authenticationScheme is "oauth-client".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationOauthClientScope?;
     # The OAuth client secret. To be used when authenticationScheme is "oauth-client".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationOauthClientSecret?;
     # The OAuth token endpoint URL that the Kafka Receiver will use to request a token for login to the Kafka broker. Must begin with "https". To be used when authenticationScheme is "oauth-client".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationOauthClientTokenEndpoint?;
     # The authentication scheme for the Kafka Receiver. The bootstrap addresses must resolve to an appropriately configured and compatible listener port on the Kafka Broker for the given scheme.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - Anonymous Authentication. Used with Kafka Broker PLAINTEXT listener ports.
     # "aws-msk-iam" - Amazon Web Services (AWS) Managed Streaming for Kafka (MSK) Identity and Access Management (IAM) Authentication. Requires encryption.
@@ -1405,97 +1405,97 @@ public type MsgVpnKafkaReceiver record {
     # </pre>
     "none"|"aws-msk-iam"|"aws-msk-iam-sts"|"basic"|"scram"|"client-certificate"|"kerberos"|"oauth-client" authenticationScheme?;
     # The hash used for SCRAM authentication. To be used when authenticationScheme is "scram".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"sha-512"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "sha-256" - SHA-2 256 bits.
     # "sha-512" - SHA-2 512 bits.
     # </pre>
     "sha-256"|"sha-512" authenticationScramHash?;
     # The password for the Username. To be used when authenticationScheme is "scram".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationScramPassword?;
     # The username the Kafka Receiver uses to login to the remote Kafka broker. To be used when authenticationScheme is "scram".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationScramUsername?;
     # Delay (in ms) to wait to accumulate a batch of messages to receive. Batching is done on a per-partition basis.
-    # 
+    #
     # This corresponds to the Kafka consumer API `fetch.max.wait.ms` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `500`.
     int:Signed32 batchDelay?;
     # Maximum size of a message batch, in bytes (B). Batching is done on a per-partition basis.
-    # 
+    #
     # This corresponds to the Kafka consumer API `fetch.min.bytes` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int:Signed32 batchMaxSize?;
     # Comma separated list of addresses (and optional ports) of brokers in the Kafka Cluster from which the state of the entire Kafka Cluster can be learned. If a port is not provided with an address it will default to 9092.
-    # 
+    #
     # This corresponds to the Kafka consumer API `bootstrap.servers` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string bootstrapAddressList?;
     # Enable or disable the Kafka Receiver.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The id of the Kafka consumer group for the Receiver.
-    # 
+    #
     # This corresponds to the Kafka consumer API `group.id` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string groupId?;
     # The time (in ms) between sending keepalives to the group.
-    # 
+    #
     # This corresponds to the Kafka consumer API `heartbeat.interval.ms` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3000`.
     int:Signed32 groupKeepaliveInterval?;
     # The time (in ms) until unresponsive group members are removed, triggering a partition rebalance across other members of the group.
-    # 
+    #
     # This corresponds to the Kafka consumer API `session.timeout.ms` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `45000`.
     int:Signed32 groupKeepaliveTimeout?;
     # The membership type of the Kafka consumer group for the Receiver. Static members can leave and rejoin the group (within groupKeepaliveTimeout) without prompting a group rebalance.
-    # 
+    #
     # This corresponds to the Kafka consumer API `group.instance.id` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"dynamic"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "dynamic" - Dynamic Membership.
     # "static" - Static Membership.
     # </pre>
     "dynamic"|"static" groupMembershipType?;
     # The ordered, comma-separated list of schemes used for partition assignment of the consumer group for this Receiver. Both Eager ("range", "roundrobin") and Cooperative ("cooperative-sticky") schemes are supported. The elected group leader will choose the first common strategy provided by all members of the group. Eager and Cooperative schemes must not be mixed. For more information on these schemes, see Kafka documentation.
-    # 
+    #
     # This corresponds to the Kafka consumer API `partition.assignment.strategy` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"range,roundrobin"`.
     string groupPartitionSchemeList?;
     # The name of the Kafka Receiver.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string kafkaReceiverName?;
     # A comma-separated list of POSIX.2 regular expressions. Commas within each regular expression must be escaped as double commas. Any matching topic names will be ignored in broker metadata.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string metadataTopicExcludeList?;
     # The time between refreshes of topic metadata from the Kafka Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `30000`.
     int:Signed32 metadataTopicRefreshInterval?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # Enable or disable encryption (TLS) for the Kafka Receiver. The bootstrap addresses must resolve to PLAINTEXT or SASL_PLAINTEXT listener ports when disabled, and SSL or SASL_SSL listener ports when enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean transportTlsEnabled?;
 };
@@ -1505,27 +1505,27 @@ public type About record {
 
 public type MsgVpnReplayLog record {
     # Enable or disable the transmission of messages from the Replay Log.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager or vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean egressEnabled?;
     # Enable or disable the reception of messages to the Replay Log.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager or vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean ingressEnabled?;
     # The maximum spool usage allowed by the Replay Log, in megabytes (MB). If this limit is exceeded, old messages will be trimmed.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager or vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxSpoolUsage?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the Replay Log.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string replayLogName?;
     # Enable or disable topic filtering for the Replay Log.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager or vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.27.
     boolean topicFilterEnabled?;
 };
@@ -1549,45 +1549,45 @@ public type ReplaceMsgVpnTelemetryProfileTraceFilterQueries record {
 # The thresholds for the SMF client connection count event of the Message VPN, relative to `serviceSmfMaxConnectionCount`.
 public type MsgVpnEventServiceSmfConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type MsgVpnBridgeTlsTrustedCommonName record {
     # The name of the Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
     string bridgeName?;
     # The virtual router of the Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "primary" - The Bridge is used for the primary virtual router.
     # "backup" - The Bridge is used for the backup virtual router.
     # "auto" - The Bridge is automatically assigned a virtual router at creation, depending on the broker's active-standby role.
     # </pre>
-    #  Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
+    # Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
     "primary"|"backup"|"auto" bridgeVirtualRouter?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
     string msgVpnName?;
     # The expected trusted common name of the remote certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
     string tlsTrustedCommonName?;
 };
@@ -1602,9 +1602,9 @@ public type CreateMsgVpnBridgeQueries record {
 
 public type OauthProfileDefaultMsgVpnAccessLevelException record {
     # The message VPN access level.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - User has no access to a Message VPN.
     # "read-only" - User has read-only access to a Message VPN.
@@ -1612,11 +1612,11 @@ public type OauthProfileDefaultMsgVpnAccessLevelException record {
     # </pre>
     "none"|"read-only"|"read-write" accessLevel?;
     # The name of the message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string msgVpnName?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string oauthProfileName?;
 };
@@ -1664,19 +1664,19 @@ public type MsgVpnAclProfileSubscribeTopicExceptionLinks record {
 # The thresholds for the Queue consumer flows event, relative to `maxBindCount`.
 public type MsgVpnQueueTemplateEventBindCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -1764,78 +1764,78 @@ public type GetDmrClusterQueries record {
 
 public type MsgVpnClientProfile record {
     # Enable or disable allowing Bridge clients using the Client Profile to connect. Changing this setting does not affect existing Bridge client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean allowBridgeConnectionsEnabled?;
     # Enable or disable allowing clients using the Client Profile to bind to endpoints with the cut-through forwarding delivery mode. Changing this value does not affect existing client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Deprecated since 2.22. This attribute has been deprecated. Please visit the Solace Product Lifecycle Policy web page for details on deprecated features.
     boolean allowCutThroughForwardingEnabled?;
     # The types of Queues and Topic Endpoints that clients using the client-profile can create. Changing this value does not affect existing client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"all"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "all" - Client can create any type of endpoint.
     # "durable" - Client can create only durable endpoints.
     # "non-durable" - Client can create only non-durable endpoints.
     # </pre>
-    #  Available since 2.14.
+    # Available since 2.14.
     "all"|"durable"|"non-durable" allowGuaranteedEndpointCreateDurability?;
     # Enable or disable allowing clients using the Client Profile to create topic endpoints or queues. Changing this value does not affect existing client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean allowGuaranteedEndpointCreateEnabled?;
     # Enable or disable allowing clients using the Client Profile to receive guaranteed messages. Changing this setting does not affect existing client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean allowGuaranteedMsgReceiveEnabled?;
     # Enable or disable allowing clients using the Client Profile to send guaranteed messages. Changing this setting does not affect existing client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean allowGuaranteedMsgSendEnabled?;
     # Enable or disable allowing shared subscriptions. Changing this setting does not affect existing subscriptions.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.11.
     boolean allowSharedSubscriptionsEnabled?;
     # Enable or disable allowing clients using the Client Profile to establish transacted sessions. Changing this setting does not affect existing client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean allowTransactedSessionsEnabled?;
     # The name of a queue to copy settings from when a new queue is created by a client using the Client Profile. The referenced queue must exist in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Deprecated since 2.14. This attribute has been replaced with `apiQueueManagementCopyFromOnCreateTemplateName`.
     string apiQueueManagementCopyFromOnCreateName?;
     # The name of a queue template to copy settings from when a new queue is created by a client using the Client Profile. If the referenced queue template does not exist, queue creation will fail when it tries to resolve this template.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.14.
     string apiQueueManagementCopyFromOnCreateTemplateName?;
     # The name of a topic endpoint to copy settings from when a new topic endpoint is created by a client using the Client Profile. The referenced topic endpoint must exist in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Deprecated since 2.14. This attribute has been replaced with `apiTopicEndpointManagementCopyFromOnCreateTemplateName`.
     string apiTopicEndpointManagementCopyFromOnCreateName?;
     # The name of a topic endpoint template to copy settings from when a new topic endpoint is created by a client using the Client Profile. If the referenced topic endpoint template does not exist, topic endpoint creation will fail when it tries to resolve this template.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.14.
     string apiTopicEndpointManagementCopyFromOnCreateTemplateName?;
     # The name of the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clientProfileName?;
     # Enable or disable allowing clients using the Client Profile to use compression.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.10.
     boolean compressionEnabled?;
     # The amount of time to delay the delivery of messages to clients using the Client Profile after the initial message has been delivered (the eliding delay interval), in milliseconds. A value of 0 means there is no delay in delivering messages to clients.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int elidingDelay?;
     # Enable or disable message eliding for clients using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean elidingEnabled?;
     # The maximum number of topics tracked for message eliding per client connection using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `256`.
     int elidingMaxTopicCount?;
     # The thresholds for the message spool usage event of Queues and Topic Endpoints provisioned by clients, relative to `maxMsgSpoolUsage` for these Queues and Topic Endpoints. Changing these values during operation does not affect existing sessions. For provisioned durable Queues and Topic Endpoints, this value applies when initially provisioned, but can then be changed afterwards by configuring the Queue or Topic Endpoint.
@@ -1859,194 +1859,194 @@ public type MsgVpnClientProfile record {
     # The thresholds for the transaction count event of the Client Profile, relative to `maxTransactionCount`.
     MsgVpnClientProfileEventTransactionCountThreshold eventTransactionCountThreshold?;
     # The maximum number of AMQP links per AMQP client using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `146625`. Available since 2.46.
     int:Signed32 maxAmqpLinkCount?;
     # The maximum number of client connections per Client Username using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform.
     int maxConnectionCountPerClientUsername?;
     # The maximum number of transmit flows that can be created by one client using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int maxEgressFlowCount?;
     # The maximum number of queues and topic endpoints that can be created by clients with the same Client Username using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int maxEndpointCountPerClientUsername?;
     # The maximum number of receive flows that can be created by one client using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int maxIngressFlowCount?;
     # The maximum number of publisher and consumer messages combined that is allowed within a transaction for each client associated with this client-profile. Exceeding this limit will result in a transaction prepare or commit failure. Changing this value during operation will not affect existing sessions. It is only validated at transaction creation time. Large transactions consume more resources and are more likely to require retrieving messages from the ADB or from disk to process the transaction prepare or commit requests. The transaction processing rate may diminish if a large number of messages must be retrieved from the ADB or from disk. Care should be taken to not use excessively large transactions needlessly to avoid exceeding resource limits and to avoid reducing the overall broker performance.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `256`. Available since 2.20.
     int:Signed32 maxMsgsPerTransaction?;
     # The maximum number of subscriptions per client using the Client Profile. This limit is not enforced when a client adds a subscription to an endpoint, except for MQTT QoS 1 subscriptions. In addition, this limit is not enforced when a subscription is added using a management interface, such as CLI or SEMP.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default varies by platform.
     int maxSubscriptionCount?;
     # The maximum number of transacted sessions that can be created by one client using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10`.
     int maxTransactedSessionCount?;
     # The maximum number of transactions that can be created by one client using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default varies by platform.
     int maxTransactionCount?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The maximum depth of the "Control 1" (C-1) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `20000`.
     int:Signed32 queueControl1MaxDepth?;
     # The number of messages that are always allowed entry into the "Control 1" (C-1) priority queue, regardless of the `queueControl1MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `4`.
     int:Signed32 queueControl1MinMsgBurst?;
     # The maximum depth of the "Direct 1" (D-1) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `20000`.
     int:Signed32 queueDirect1MaxDepth?;
     # The number of messages that are always allowed entry into the "Direct 1" (D-1) priority queue, regardless of the `queueDirect1MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `4`.
     int:Signed32 queueDirect1MinMsgBurst?;
     # The maximum depth of the "Direct 2" (D-2) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `20000`.
     int:Signed32 queueDirect2MaxDepth?;
     # The number of messages that are always allowed entry into the "Direct 2" (D-2) priority queue, regardless of the `queueDirect2MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `4`.
     int:Signed32 queueDirect2MinMsgBurst?;
     # The maximum depth of the "Direct 3" (D-3) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `20000`.
     int:Signed32 queueDirect3MaxDepth?;
     # The number of messages that are always allowed entry into the "Direct 3" (D-3) priority queue, regardless of the `queueDirect3MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `4`.
     int:Signed32 queueDirect3MinMsgBurst?;
     # The maximum depth of the "Guaranteed 1" (G-1) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `20000`.
     int:Signed32 queueGuaranteed1MaxDepth?;
     # The number of messages that are always allowed entry into the "Guaranteed 1" (G-1) priority queue, regardless of the `queueGuaranteed1MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `255`.
     int:Signed32 queueGuaranteed1MinMsgBurst?;
     # Enable or disable the sending of a negative acknowledgment (NACK) to a client using the Client Profile when discarding a guaranteed message due to no matching subscription found.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.2.
     boolean rejectMsgToSenderOnNoSubscriptionMatchEnabled?;
     # Enable or disable allowing clients using the Client Profile to connect to the Message VPN when its replication state is standby.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean replicationAllowClientConnectWhenStandbyEnabled?;
     # The minimum client keepalive timeout which will be enforced for client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `30`. Available since 2.19.
     int:Signed32 serviceMinKeepaliveTimeout?;
     # The maximum number of SMF client connections per Client Username using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform.
     int serviceSmfMaxConnectionCountPerClientUsername?;
     # Enable or disable the enforcement of a minimum keepalive timeout for SMF clients.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.19.
     boolean serviceSmfMinKeepaliveEnabled?;
     # The timeout for inactive Web Transport client sessions using the Client Profile, in seconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `30`.
     int serviceWebInactiveTimeout?;
     # The maximum number of Web Transport client connections per Client Username using the Client Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform.
     int serviceWebMaxConnectionCountPerClientUsername?;
     # The maximum Web Transport payload size before fragmentation occurs for clients using the Client Profile, in bytes. The size of the header is not included.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000000`.
     int serviceWebMaxPayload?;
     # Obsolete.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". The default value is `2`. Deprecated since 2.48. The value is now ignored.
     int tcpCongestionWindowSize?;
     # The number of TCP keepalive retransmissions to a client using the Client Profile before declaring that it is not available.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `5`.
     int tcpKeepaliveCount?;
     # The amount of time a client connection using the Client Profile must remain idle before TCP begins sending keepalive probes, in seconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int tcpKeepaliveIdleTime?;
     # The amount of time between TCP keepalive retransmissions to a client using the Client Profile when no acknowledgment is received, in seconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int tcpKeepaliveInterval?;
     # The TCP maximum segment size for clients using the Client Profile, in bytes. Changes are applied to all existing connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1460`.
     int tcpMaxSegmentSize?;
     # Obsolete.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". The default value is `256`. Deprecated since 2.48. The value is now ignored.
     int tcpMaxWindowSize?;
     # Enable or disable allowing a client using the Client Profile to downgrade an encrypted connection to plain text.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.8.
     boolean tlsAllowDowngradeToPlainTextEnabled?;
 };
 
 public type MsgVpnTelemetryProfileReceiverAclConnectException record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The IP address/netmask of the receiver connect exception in CIDR form.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string receiverAclConnectExceptionAddress?;
     # The name of the Telemetry Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string telemetryProfileName?;
 };
 
 public type MsgVpnCertMatchingRule record {
     # Enable or disable a certificate matching rule.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the rule.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string ruleName?;
 };
 
 public type MsgVpnAclProfileSubscribeTopicException record {
     # The name of the ACL Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string aclProfileName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The topic for the exception to the default action taken. May include wildcard characters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string subscribeTopicException?;
     # The syntax of the topic for the exception to the default action taken.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "smf" - Topic uses SMF syntax.
     # "mqtt" - Topic uses MQTT syntax.
@@ -2073,19 +2073,19 @@ public type MsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefixLink
 # The thresholds for the Client Username endpoint count event of the Client Profile, relative to `maxEndpointCountPerClientUsername`.
 public type MsgVpnClientProfileEventEndpointCountPerClientUsernameThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -2169,19 +2169,19 @@ public type GetAboutUserMsgVpnsQueries record {
 # The thresholds for the receiver connection count event, relative to `receiverMaxConnectionCountPerClientUsername`.
 public type MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -2204,19 +2204,19 @@ public type GetMsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefixe
 # The thresholds for the receive flow count event of the Client Profile, relative to `maxIngressFlowCount`.
 public type MsgVpnClientProfileEventIngressFlowCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -2297,38 +2297,38 @@ public type MsgVpnTopicEndpointResponse record {
 # The thresholds for the endpoints count event at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventEndpointCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type MsgVpnTelemetryProfileTraceFilter record {
     # Enable or disable the trace filter. When the filter is disabled, the filter's subscriptions will not trigger a message to be traced.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the Telemetry Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string telemetryProfileName?;
     # A name used to identify the trace filter. Consider a name that describes the subscriptions contained within the filter, such as the name of the application and/or the scenario in which the trace filter might be enabled, such as "appNameDebug".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string traceFilterName?;
 };
@@ -2369,199 +2369,199 @@ public type GetMsgVpnRestDeliveryPointQueueBindingsQueries record {
 
 public type MsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefix record {
     # The name of the Distributed Cache.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string cacheName?;
     # The name of the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clusterName?;
     # The name of the remote Home Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string homeClusterName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # A topic prefix for global topics available from the remote Home Cache Cluster. A wildcard (/&gt;) is implied at the end of the prefix.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string topicPrefix?;
 };
 
 public type MsgVpnJndiConnectionFactory record {
     # Enable or disable whether new JMS connections can use the same Client identifier (ID) as an existing connection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.3.
     boolean allowDuplicateClientIdEnabled?;
     # The description of the Client.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string clientDescription?;
     # The Client identifier (ID). If not specified, a unique value for it will be generated.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string clientId?;
     # The name of the JMS Connection Factory.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string connectionFactoryName?;
     # Enable or disable overriding by the Subscriber (Consumer) of the deliver-to-one (DTO) property on messages. When enabled, the Subscriber can receive all DTO tagged messages.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean dtoReceiveOverrideEnabled?;
     # The priority for receiving deliver-to-one (DTO) messages by the Subscriber (Consumer) if the messages are published on the local broker that the Subscriber is directly connected to.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int:Signed32 dtoReceiveSubscriberLocalPriority?;
     # The priority for receiving deliver-to-one (DTO) messages by the Subscriber (Consumer) if the messages are published on a remote broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int:Signed32 dtoReceiveSubscriberNetworkPriority?;
     # Enable or disable the deliver-to-one (DTO) property on messages sent by the Publisher (Producer).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean dtoSendEnabled?;
     # Enable or disable whether a durable endpoint will be dynamically created on the broker when the client calls "Session.createDurableSubscriber()" or "Session.createQueue()". The created endpoint respects the message time-to-live (TTL) according to the "dynamicEndpointRespectTtlEnabled" property.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean dynamicEndpointCreateDurableEnabled?;
     # Enable or disable whether dynamically created durable and non-durable endpoints respect the message time-to-live (TTL) property.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean dynamicEndpointRespectTtlEnabled?;
     # The timeout for sending the acknowledgment (ACK) for guaranteed messages received by the Subscriber (Consumer), in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int:Signed32 guaranteedReceiveAckTimeout?;
     # The maximum number of attempts to reconnect to the host or list of hosts after the guaranteed  messaging connection has been lost. The value "-1" means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `-1`. Available since 2.14.
     int:Signed32 guaranteedReceiveReconnectRetryCount?;
     # The amount of time to wait before making another attempt to connect or reconnect to the host after the guaranteed messaging connection has been lost, in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3000`. Available since 2.14.
     int:Signed32 guaranteedReceiveReconnectRetryWait?;
     # The size of the window for guaranteed messages received by the Subscriber (Consumer), in messages.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `18`.
     int:Signed32 guaranteedReceiveWindowSize?;
     # The threshold for sending the acknowledgment (ACK) for guaranteed messages received by the Subscriber (Consumer) as a percentage of `guaranteedReceiveWindowSize`.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int:Signed32 guaranteedReceiveWindowSizeAckThreshold?;
     # The timeout for receiving the acknowledgment (ACK) for guaranteed messages sent by the Publisher (Producer), in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `2000`.
     int:Signed32 guaranteedSendAckTimeout?;
     # The size of the window for non-persistent guaranteed messages sent by the Publisher (Producer), in messages. For persistent messages the window size is fixed at 1.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `255`.
     int:Signed32 guaranteedSendWindowSize?;
     # The default delivery mode for messages sent by the Publisher (Producer).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"persistent"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "persistent" - The broker spools messages (persists in the Message Spool) as part of the send operation.
     # "non-persistent" - The broker does not spool messages (does not persist in the Message Spool) as part of the send operation.
     # </pre>
     "persistent"|"non-persistent" messagingDefaultDeliveryMode?;
     # Enable or disable whether messages sent by the Publisher (Producer) are Dead Message Queue (DMQ) eligible by default.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean messagingDefaultDmqEligibleEnabled?;
     # Enable or disable whether messages sent by the Publisher (Producer) are Eliding eligible by default.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean messagingDefaultElidingEligibleEnabled?;
     # Enable or disable inclusion (adding or replacing) of the JMSXUserID property in messages sent by the Publisher (Producer).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean messagingJmsxUserIdEnabled?;
     # The level of compression to apply to the message payload, from 1 (least compression) to 9 (most compression). A value of 0 means no compression.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.42.
     int:Signed32 messagingPayloadCompressionLevel?;
     # Enable or disable encoding of JMS text messages in Publisher (Producer) messages as XML payload. When disabled, JMS text messages are encoded as a binary attachment.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean messagingTextInXmlPayloadEnabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The ZLIB compression level for the connection to the broker. The value "0" means no compression, and the value "-1" means the compression level is specified in the JNDI Properties file.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `-1`.
     int:Signed32 transportCompressionLevel?;
     # The maximum number of retry attempts to establish an initial connection to the host or list of hosts. The value "0" means a single attempt (no retries), and the value "-1" means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int:Signed32 transportConnectRetryCount?;
     # The maximum number of retry attempts to establish an initial connection to each host on the list of hosts. The value "0" means a single attempt (no retries), and the value "-1" means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int:Signed32 transportConnectRetryPerHostCount?;
     # The timeout for establishing an initial connection to the broker, in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `30000`.
     int:Signed32 transportConnectTimeout?;
     # Enable or disable usage of Direct Transport mode. When enabled, NON-PERSISTENT messages are sent as direct messages and non-durable topic consumers and temporary queue consumers consume using direct subscriptions rather than from guaranteed endpoints. If disabled all messaging uses guaranteed transport.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean transportDirectTransportEnabled?;
     # The maximum number of consecutive application-level keepalive messages sent without the broker response before the connection to the broker is closed.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int:Signed32 transportKeepaliveCount?;
     # Enable or disable usage of application-level keepalive messages to maintain a connection with the broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean transportKeepaliveEnabled?;
     # The interval between application-level keepalive messages, in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3000`.
     int:Signed32 transportKeepaliveInterval?;
     # Enable or disable delivery of asynchronous messages directly from the I/O thread. Contact support before enabling this property.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean transportMsgCallbackOnIoThreadEnabled?;
     # Enable or disable optimization for the Direct Transport delivery mode. If enabled, the client application is limited to one Publisher (Producer) and one non-durable Subscriber (Consumer).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean transportOptimizeDirectEnabled?;
     # The connection port number on the broker for SMF clients. The value "-1" means the port is specified in the JNDI Properties file.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `-1`.
     int:Signed32 transportPort?;
     # The timeout for reading a reply from the broker, in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000`.
     int:Signed32 transportReadTimeout?;
     # The size of the receive socket buffer, in bytes. It corresponds to the SO_RCVBUF socket option.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `65536`.
     int:Signed32 transportReceiveBufferSize?;
     # The maximum number of attempts to reconnect to the host or list of hosts after the connection has been lost. The value "-1" means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int:Signed32 transportReconnectRetryCount?;
     # The amount of time before making another attempt to connect or reconnect to the host after the connection has been lost, in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3000`.
     int:Signed32 transportReconnectRetryWait?;
     # The size of the send socket buffer, in bytes. It corresponds to the SO_SNDBUF socket option.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `65536`.
     int:Signed32 transportSendBufferSize?;
     # Enable or disable the TCP_NODELAY option. When enabled, Nagle's algorithm for TCP/IP congestion control (RFC 896) is disabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean transportTcpNoDelayEnabled?;
     # Enable or disable this as an XA Connection Factory. When enabled, the Connection Factory can be cast to "XAConnectionFactory", "XAQueueConnectionFactory" or "XATopicConnectionFactory".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean xaEnabled?;
 };
@@ -2584,7 +2584,7 @@ public type AboutApiLinks record {
 
 public type MsgVpnTelemetryProfile record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The thresholds for the Queue consumer flows event, relative to `queueMaxBindCount`.
@@ -2592,66 +2592,66 @@ public type MsgVpnTelemetryProfile record {
     # The thresholds for the message spool usage event of the Queue, relative to `queueMaxMsgSpoolUsage`.
     MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold queueEventMsgSpoolUsageThreshold?;
     # The maximum number of consumer flows that can bind to the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int queueMaxBindCount?;
     # The maximum message spool usage allowed by the Queue, in megabytes (MB).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `800000`.
     int queueMaxMsgSpoolUsage?;
     # The default action to take when a receiver client connects to the broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"disallow"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "allow" - Allow client connection unless an exception is found for it.
     # "disallow" - Disallow client connection unless an exception is found for it.
     # </pre>
     "allow"|"disallow" receiverAclConnectDefaultAction?;
     # Enable or disable the ability for receiver clients to consume from the #telemetry queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean receiverEnabled?;
     # The thresholds for the receiver connection count event, relative to `receiverMaxConnectionCountPerClientUsername`.
     MsgVpnTelemetryProfileReceiverEventConnectionCountPerClientUsernameThreshold receiverEventConnectionCountPerClientUsernameThreshold?;
     # The maximum number of receiver connections per Client Username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is the maximum value supported by the platform.
     int receiverMaxConnectionCountPerClientUsername?;
     # Obsolete.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". The default value is `2`. Deprecated since 2.48. The value is now ignored.
     int receiverTcpCongestionWindowSize?;
     # The number of TCP keepalive retransmissions to a client using the Client Profile before declaring that it is not available.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `5`.
     int receiverTcpKeepaliveCount?;
     # The amount of time a client connection using the Client Profile must remain idle before TCP begins sending keepalive probes, in seconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int receiverTcpKeepaliveIdleTime?;
     # The amount of time between TCP keepalive retransmissions to a client using the Client Profile when no acknowledgment is received, in seconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int receiverTcpKeepaliveInterval?;
     # The TCP maximum segment size for clients using the Client Profile, in bytes. Changes are applied to all existing connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1460`.
     int receiverTcpMaxSegmentSize?;
     # Obsolete.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". The default value is `256`. Deprecated since 2.48. The value is now ignored.
     int receiverTcpMaxWindowSize?;
     # The name of the Telemetry Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string telemetryProfileName?;
     # Enable or disable generation of all trace span data messages. When enabled, the state of configured trace filters control which messages get traced. When disabled, trace span data messages are never generated, regardless of the state of trace filters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean traceEnabled?;
     # Enable or disable generation of send spans. For the most complete view of broker message processing, this should be enabled. If the information provided by send spans are not needed, send spans can be disabled to reduce the performance impact of tracing.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.36.
     boolean traceSendSpanGenerationEnabled?;
 };
@@ -2666,106 +2666,106 @@ public type ReplaceMsgVpnAclProfileQueries record {
 
 public type DmrClusterLink record {
     # The password used to authenticate with the remote node when using basic internal authentication. If this per-Link password is not configured, the Cluster's password is used instead.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string authenticationBasicPassword?;
     # The authentication scheme to be used by the Link which initiates connections to the remote node.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"basic"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "basic" - Basic Authentication Scheme (via username and password).
     # "client-certificate" - Client Certificate Authentication Scheme (via certificate file or content).
     # </pre>
     "basic"|"client-certificate" authenticationScheme?;
     # The maximum depth of the "Control 1" (C-1) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `20000`.
     int:Signed32 clientProfileQueueControl1MaxDepth?;
     # The number of messages that are always allowed entry into the "Control 1" (C-1) priority queue, regardless of the `clientProfileQueueControl1MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `4`.
     int:Signed32 clientProfileQueueControl1MinMsgBurst?;
     # The maximum depth of the "Direct 1" (D-1) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `20000`.
     int:Signed32 clientProfileQueueDirect1MaxDepth?;
     # The number of messages that are always allowed entry into the "Direct 1" (D-1) priority queue, regardless of the `clientProfileQueueDirect1MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `4`.
     int:Signed32 clientProfileQueueDirect1MinMsgBurst?;
     # The maximum depth of the "Direct 2" (D-2) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `20000`.
     int:Signed32 clientProfileQueueDirect2MaxDepth?;
     # The number of messages that are always allowed entry into the "Direct 2" (D-2) priority queue, regardless of the `clientProfileQueueDirect2MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `4`.
     int:Signed32 clientProfileQueueDirect2MinMsgBurst?;
     # The maximum depth of the "Direct 3" (D-3) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `20000`.
     int:Signed32 clientProfileQueueDirect3MaxDepth?;
     # The number of messages that are always allowed entry into the "Direct 3" (D-3) priority queue, regardless of the `clientProfileQueueDirect3MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `4`.
     int:Signed32 clientProfileQueueDirect3MinMsgBurst?;
     # The maximum depth of the "Guaranteed 1" (G-1) priority queue, in work units. Each work unit is 2048 bytes of message data.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `20000`.
     int:Signed32 clientProfileQueueGuaranteed1MaxDepth?;
     # The number of messages that are always allowed entry into the "Guaranteed 1" (G-1) priority queue, regardless of the `clientProfileQueueGuaranteed1MaxDepth` value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `255`.
     int:Signed32 clientProfileQueueGuaranteed1MinMsgBurst?;
     # Obsolete.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". The default value is `2`. Deprecated since 2.48. The value is now ignored.
     int clientProfileTcpCongestionWindowSize?;
     # The number of TCP keepalive retransmissions to be carried out before declaring that the remote end is not available.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `5`.
     int clientProfileTcpKeepaliveCount?;
     # The amount of time a connection must remain idle before TCP begins sending keepalive probes, in seconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `3`.
     int clientProfileTcpKeepaliveIdleTime?;
     # The amount of time between TCP keepalive retransmissions when no acknowledgment is received, in seconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1`.
     int clientProfileTcpKeepaliveInterval?;
     # The TCP maximum segment size, in bytes. Changes are applied to all existing connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1460`.
     int clientProfileTcpMaxSegmentSize?;
     # Obsolete.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". The default value is `256`. Deprecated since 2.48. The value is now ignored.
     int clientProfileTcpMaxWindowSize?;
     # The number of retry attempts to establish a connection before moving on to the next remote Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `0`. Available since 2.41.
     int connectionRetryCount?;
     # The number of seconds the broker waits for the bridge connection to be established before attempting a new connection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `3`. Available since 2.41.
     int connectionRetryDelay?;
     # The name of the Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string dmrClusterName?;
     # The number of outstanding guaranteed messages that can be sent over the Link before acknowledgment is received by the sender.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `255`.
     int egressFlowWindowSize?;
     # Enable or disable the Link. When disabled, subscription sets of this and the remote node are not kept up-to-date, and messages are not exchanged with the remote node. Published guaranteed messages will be queued up for future delivery based on current subscription sets.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean enabled?;
     # The initiator of the Link's TCP connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"lexical"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "lexical" - The "higher" node-name initiates.
     # "local" - The local node initiates.
@@ -2773,31 +2773,31 @@ public type DmrClusterLink record {
     # </pre>
     "lexical"|"local"|"remote" initiator?;
     # The name of the Dead Message Queue (DMQ) used by the Queue for discarded messages.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"#DEAD_MSG_QUEUE"`.
     string queueDeadMsgQueue?;
     # The thresholds for the message spool usage event of the Queue, relative to `queueMaxMsgSpoolUsage`.
     DmrClusterLinkQueueEventSpoolUsageThreshold queueEventSpoolUsageThreshold?;
     # The maximum number of messages delivered but not acknowledged per flow for the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1000000`.
     int queueMaxDeliveredUnackedMsgsPerFlow?;
     # The maximum message spool usage by the Queue (quota), in megabytes (MB).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `800000`.
     int queueMaxMsgSpoolUsage?;
     # The maximum number of times the Queue will attempt redelivery of a message prior to it being discarded or moved to the DMQ. A value of 0 means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `0`.
     int queueMaxRedeliveryCount?;
     # The maximum time in seconds a message can stay in the Queue when `queueRespectTtlEnabled` is `true`. A message expires when the lesser of the sender assigned time-to-live (TTL) in the message and the `queueMaxTtl` configured for the Queue, is exceeded. A value of 0 disables expiry.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `0`.
     int queueMaxTtl?;
     # Determines when to return negative acknowledgments (NACKs) to sending clients on message discards. Note that NACKs cause the message to not be delivered to any destination and Transacted Session commits to fail.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"always"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "never" - Silently discard messages.
     # "when-queue-enabled" - NACK each message discard back to the client, except messages that are discarded because an endpoint is administratively disabled.
@@ -2805,32 +2805,32 @@ public type DmrClusterLink record {
     # </pre>
     "never"|"when-queue-enabled"|"always" queueRejectMsgToSenderOnDiscardBehavior?;
     # Enable or disable the respecting of DMQ Eligible for messages in the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.49.
     boolean queueRespectDmqEligibleEnabled?;
     # Enable or disable the respecting of the time-to-live (TTL) for messages in the Queue. When enabled, expired messages are discarded or moved to the DMQ.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean queueRespectTtlEnabled?;
     # The name of the node at the remote end of the Link.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string remoteNodeName?;
     # The span of the Link, either internal or external. Internal Links connect nodes within the same Cluster. External Links connect nodes within different Clusters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"external"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "internal" - Link to same cluster.
     # "external" - Link to other cluster.
     # </pre>
     "internal"|"external" span?;
     # Enable or disable compression on the Link.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean transportCompressedEnabled?;
     # Enable or disable encryption (TLS) on the Link.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean transportTlsEnabled?;
 };
@@ -2917,19 +2917,19 @@ public type CreateDmrClusterCertMatchingRuleQueries record {
 # The thresholds for the transacted sessions event at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventTransactedSessionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is to have no `clearValue`.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is to have no `setValue`.
     int setValue?;
 };
@@ -2958,19 +2958,19 @@ public type GetMsgVpnJndiQueueQueries record {
 
 public type MsgVpnDistributedCacheCluster record {
     # The name of the Distributed Cache.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string cacheName?;
     # The name of the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clusterName?;
     # Enable or disable deliver-to-one override for the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean deliverToOneOverrideEnabled?;
     # Enable or disable the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The thresholds for the cached data incoming byte rate event, in bytes per second.
@@ -2988,43 +2988,43 @@ public type MsgVpnDistributedCacheCluster record {
     # The thresholds for the cache response message rate event, in messages per second.
     MsgVpnDistributedCacheClusterEventResponseRateThreshold eventResponseRateThreshold?;
     # Enable or disable global caching for the Cache Cluster. When enabled, the Cache Instances will fetch topics from remote Home Cache Clusters when requested, and subscribe to those topics to cache them locally. When disabled, the Cache Instances will remove all subscriptions and cached messages for topics from remote Home Cache Clusters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean globalCachingEnabled?;
     # The heartbeat interval, in seconds, used by the Cache Instances to monitor connectivity with the remote Home Cache Clusters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int globalCachingHeartbeat?;
     # The topic lifetime, in seconds. If no client requests are received for a given global topic over the duration of the topic lifetime, then the Cache Instance will remove the subscription and cached messages for that topic. A value of 0 disables aging.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3600`.
     int globalCachingTopicLifetime?;
     # The maximum memory usage, in megabytes (MB), for each Cache Instance in the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `2048`.
     int maxMemory?;
     # The maximum number of messages per topic for each Cache Instance in the Cache Cluster. When at the maximum, old messages are removed as new messages arrive.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int maxMsgsPerTopic?;
     # The maximum queue depth for cache requests received by the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `100000`.
     int maxRequestQueueDepth?;
     # The maximum number of topics for each Cache Instance in the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `2000000`.
     int maxTopicCount?;
     # The message lifetime, in seconds. If a message remains cached for the duration of its lifetime, the Cache Instance will remove the message. A lifetime of 0 results in the message being retained indefinitely.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int msgLifetime?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # Enable or disable the advertising, onto the message bus, of new topics learned by each Cache Instance in the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean newTopicAdvertisementEnabled?;
 };
@@ -3233,19 +3233,19 @@ public type GetMsgVpnTopicEndpointTemplatesQueries record {
 # The thresholds for the transaction count event of the Client Profile, relative to `maxTransactionCount`.
 public type MsgVpnClientProfileEventTransactionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -3401,15 +3401,15 @@ public type UpdateMsgVpnQueueQueries record {
 
 public type DmrClusterLinkTlsTrustedCommonName record {
     # The name of the Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
     string dmrClusterName?;
     # The name of the node at the remote end of the Link.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
     string remoteNodeName?;
     # The expected trusted common name of the remote certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
     string tlsTrustedCommonName?;
 };
@@ -3474,15 +3474,15 @@ public type MsgVpnCertMatchingRuleConditionsResponse record {
 
 public type OauthProfileResourceServerRequiredClaim record {
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string oauthProfileName?;
     # The name of the access token claim to verify.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string resourceServerRequiredClaimName?;
     # The required claim value, which must be a string containing a valid JSON value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string resourceServerRequiredClaimValue?;
 };
@@ -3521,19 +3521,19 @@ public type GetClientCertAuthorityQueries record {
 # The thresholds for the client connection count event of the Message VPN, relative to `maxConnectionCount`.
 public type MsgVpnEventConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -3583,11 +3583,11 @@ public type MsgVpnTopicEndpointTemplateResponse record {
 # The thresholds for the memory usage per instance event, relative to `maxMemory`.
 public type MsgVpnDistributedCacheClusterEventMaxMemoryThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
 };
@@ -3686,19 +3686,19 @@ public type CreateMsgVpnTelemetryProfileTraceFilterSubscriptionQueries record {
 # The thresholds for the transacted session count event of the Message VPN, relative to `maxTransactedSessionCount`.
 public type MsgVpnEventTransactedSessionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -3800,19 +3800,19 @@ public type CreateMsgVpnAuthorizationGroupQueries record {
 # The thresholds for the client username SMF connection count event of the Client Profile, relative to `serviceSmfMaxConnectionCountPerClientUsername`.
 public type MsgVpnClientProfileEventServiceSmfConnectionCountPerClientUsernameThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -3911,19 +3911,19 @@ public type GetOauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionQueries rec
 # The thresholds for the Topic Endpoint consumer flows event, relative to `maxBindCount`.
 public type MsgVpnTopicEndpointTemplateEventBindCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -3945,38 +3945,38 @@ public type MsgVpnSequencedTopicsResponse record {
 # The thresholds for the cache usage event at system level, relative to `guaranteedMsgingMaxCacheUsage`. Available since 2.18.
 public type BrokerGuaranteedMsgingEventCacheUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type MsgVpnClientUsernameAttribute record {
     # The name of the Attribute.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string attributeName?;
     # The value of the Attribute.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string attributeValue?;
     # The name of the Client Username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clientUsername?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
 };
@@ -4007,30 +4007,30 @@ public type ReplaceDomainCertAuthorityQueries record {
 
 public type DmrClusterLinkAttribute record {
     # The name of the Attribute.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string attributeName?;
     # The value of the Attribute.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string attributeValue?;
     # The name of the Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string dmrClusterName?;
     # The name of the node at the remote end of the Link.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string remoteNodeName?;
 };
 
 public type MsgVpnKafkaSenderQueueBinding record {
     # The number of acks required from the remote Kafka Broker. When "none" messages are delivered at-most-once. When "one" or "all" messages are delivered at-least-once but may be reordered. This must be configured as "all" for an idempotent Kafka Sender, otherwise the Queue Binding will be operationally down.
-    # 
+    #
     # This corresponds to the Kafka producer API `acks` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"all"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - No Acks.
     # "one" - Leader Ack Only.
@@ -4038,21 +4038,21 @@ public type MsgVpnKafkaSenderQueueBinding record {
     # </pre>
     "none"|"one"|"all" ackMode?;
     # Enable or disable this queue binding of the Kafka Sender.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The name of the Kafka Sender.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string kafkaSenderName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The hash algorithm to use for consistent partition selection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"crc"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "crc" - CRC Hash.
     # "murmur2" - Murmer2 Hash.
@@ -4060,19 +4060,19 @@ public type MsgVpnKafkaSenderQueueBinding record {
     # </pre>
     "crc"|"murmur2"|"fnv1a" partitionConsistentHash?;
     # The partition number to use for explicit partition selection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int partitionExplicitNumber?;
     # Enable or disable fallback to the random partition selection scheme when the consistent partition scheme is being used but no partition key is available for the message. When enabled a random partition will be selected for each unkeyed messages, otherwise some partition will be selected for groups of unkeyed messages.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean partitionRandomFallbackEnabled?;
     # The partitioning scheme used to select a partition of the topic on the Kafka cluster to send messages to.
-    # 
+    #
     # This corresponds to the Kafka producer API `partitioner.class` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"consistent"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "consistent" - Select a consistent partition for each key value. A hash of the key will be used to select the partition number.
     # "explicit" - Select an explicit partition independent of key value.
@@ -4080,19 +4080,19 @@ public type MsgVpnKafkaSenderQueueBinding record {
     # </pre>
     "consistent"|"explicit"|"random" partitionScheme?;
     # The name of the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string queueName?;
     # The Substitution Expression used to generate the key for each message sent to Kafka. This expression can include fields extracted from the metadata of each individual Solace message as it is taken from the Solace Queue.
-    # 
+    #
     # If empty, no key is included for each message as it is published into Kafka.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string remoteKey?;
     # The Kafka Topic on the Kafka Cluster to send each message taken from the Solace Queue to.
-    # 
+    #
     # If empty, the Queue Binding will not be operational.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string remoteTopic?;
 };
@@ -4107,21 +4107,21 @@ public type CreateMsgVpnJndiQueueQueries record {
 
 public type MsgVpnAclProfileSubscribeShareNameException record {
     # The name of the ACL Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string aclProfileName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The subscribe share name exception to the default action taken. May include wildcard characters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string subscribeShareNameException?;
     # The syntax of the subscribe share name for the exception to the default action taken.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "smf" - Topic uses SMF syntax.
     # "mqtt" - Topic uses MQTT syntax.
@@ -4148,19 +4148,19 @@ public type CreateMsgVpnTelemetryProfileTraceFilterQueries record {
 # The thresholds for the message spool usage event of the Queue, relative to `queueMaxMsgSpoolUsage`.
 public type MsgVpnTelemetryProfileQueueEventMsgSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `2`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -4187,106 +4187,106 @@ public type MsgVpnDistributedCacheClusterLinks record {
 # The thresholds for the Queues and Topic Endpoints count event of the Message VPN, relative to `maxEndpointCount`.
 public type MsgVpnEventEndpointCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type MsgVpnRestDeliveryPointRestConsumerOauthJwtClaim record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the additional claim. Cannot be "exp", "iat", or "jti".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string oauthJwtClaimName?;
     # The value of the additional claim, which must be a string containing a valid JSON value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string oauthJwtClaimValue?;
     # The name of the REST Consumer.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string restConsumerName?;
     # The name of the REST Delivery Point.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string restDeliveryPointName?;
 };
 
 public type DmrCluster record {
     # Enable or disable basic authentication for Cluster Links.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean authenticationBasicEnabled?;
     # The password used to authenticate incoming Cluster Links when using basic internal authentication. The same password is also used by outgoing Cluster Links if a per-Link password is not configured.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string authenticationBasicPassword?;
     # The type of basic authentication to use for Cluster Links.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"internal"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "internal" - Use locally configured password.
     # "none" - No authentication.
     # </pre>
     "internal"|"none" authenticationBasicType?;
     # The PEM formatted content for the client certificate used to login to the remote node. It must consist of a private key and between one and three certificates comprising the certificate trust chain.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`.
     string authenticationClientCertContent?;
     # Enable or disable client certificate authentication for Cluster Links.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean authenticationClientCertEnabled?;
     # The password for the client certificate.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`.
     string authenticationClientCertPassword?;
     # Enable or disable direct messaging only. Guaranteed messages will not be transmitted through the cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The default value is `false`.
     boolean directOnlyEnabled?;
     # The name of the Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string dmrClusterName?;
     # Enable or disable the Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean enabled?;
     # The name of this node in the Cluster. This is the name that this broker (or redundant group of brokers) is know by to other nodes in the Cluster. The name is chosen automatically to be either this broker's Router Name or Mate Router Name, depending on which Active Standby Role (primary or backup) this broker plays in its redundancy group.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string nodeName?;
     # Enable or disable the enforcing of the common name provided by the remote broker against the list of trusted common names configured for the Link. If enabled, the certificate's common name must match one of the trusted common names for the Link to be accepted. Common Name validation is not performed if Server Certificate Name Validation is enabled, even if Common Name validation is enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Deprecated since 2.18. Common Name validation has been replaced by Server Certificate Name validation.
     boolean tlsServerCertEnforceTrustedCommonNameEnabled?;
     # The maximum allowed depth of a certificate chain. The depth of a chain is defined as the number of signing CA certificates that are present in the chain back to a trusted self-signed root CA certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `3`.
     int tlsServerCertMaxChainDepth?;
     # Enable or disable the validation of the "Not Before" and "Not After" validity dates in the certificate. When disabled, the certificate is accepted even if the certificate is not valid based on these dates.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean tlsServerCertValidateDateEnabled?;
     # Enable or disable the standard TLS authentication mechanism of verifying the name used to connect to the bridge. If enabled, the name used to connect to the bridge is checked against the names specified in the certificate returned by the remote broker. Legacy Common Name validation is not performed if Server Certificate Name Validation is enabled, even if Common Name validation is also enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`. Available since 2.18.
     boolean tlsServerCertValidateNameEnabled?;
 };
@@ -4299,112 +4299,112 @@ public type MsgVpnDistributedCachesResponse record {
 
 public type MsgVpnAuthenticationOauthProvider record {
     # The audience claim name, indicating which part of the object to use for determining the audience.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"aud"`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     string audienceClaimName?;
     # The audience claim source, indicating where to search for the audience value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"id-token"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "access-token" - The OAuth v2 access_token.
     # "id-token" - The OpenID Connect id_token.
     # "introspection" - The result of introspecting the OAuth v2 access_token.
     # </pre>
-    #  Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
+    # Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     "access-token"|"id-token"|"introspection" audienceClaimSource?;
     # The required audience value for a token to be considered valid.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     string audienceClaimValue?;
     # Enable or disable audience validation.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     boolean audienceValidationEnabled?;
     # The authorization group claim name, indicating which part of the object to use for determining the authorization group.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"scope"`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     string authorizationGroupClaimName?;
     # The authorization group claim source, indicating where to search for the authorization group name.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"id-token"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "access-token" - The OAuth v2 access_token.
     # "id-token" - The OpenID Connect id_token.
     # "introspection" - The result of introspecting the OAuth v2 access_token.
     # </pre>
-    #  Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
+    # Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     "access-token"|"id-token"|"introspection" authorizationGroupClaimSource?;
     # Enable or disable OAuth based authorization. When enabled, the configured authorization type for OAuth clients is overridden.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     boolean authorizationGroupEnabled?;
     # Enable or disable the disconnection of clients when their tokens expire. Changing this value does not affect existing clients, only new client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     boolean disconnectOnTokenExpirationEnabled?;
     # Enable or disable OAuth Provider client authentication.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     boolean enabled?;
     # The number of seconds between forced JWKS public key refreshing.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `86400`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     int:Signed32 jwksRefreshInterval?;
     # The URI where the OAuth provider publishes its JWKS public keys.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     string jwksUri?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.25. Replaced by authenticationOauthProfiles.
     string msgVpnName?;
     # The name of the OAuth Provider.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.25. Replaced by authenticationOauthProfiles.
     string oauthProviderName?;
     # Enable or disable whether to ignore time limits and accept tokens that are not yet valid or are no longer valid.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     boolean tokenIgnoreTimeLimitsEnabled?;
     # The parameter name used to identify the token during access token introspection. A standards compliant OAuth introspection server expects "token".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"token"`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     string tokenIntrospectionParameterName?;
     # The password to use when logging into the token introspection URI.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     string tokenIntrospectionPassword?;
     # The maximum time in seconds a token introspection is allowed to take.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     int:Signed32 tokenIntrospectionTimeout?;
     # The token introspection URI of the OAuth authentication server.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     string tokenIntrospectionUri?;
     # The username to use when logging into the token introspection URI.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     string tokenIntrospectionUsername?;
     # The username claim name, indicating which part of the object to use for determining the username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"sub"`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     string usernameClaimName?;
     # The username claim source, indicating where to search for the username value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"id-token"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "access-token" - The OAuth v2 access_token.
     # "id-token" - The OpenID Connect id_token.
     # "introspection" - The result of introspecting the OAuth v2 access_token.
     # </pre>
-    #  Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
+    # Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     "access-token"|"id-token"|"introspection" usernameClaimSource?;
     # Enable or disable whether the API provided username will be validated against the username calculated from the token(s); the connection attempt is rejected if they differ.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Deprecated since 2.25. authenticationOauthProviders replaced by authenticationOauthProfiles.
     boolean usernameValidateEnabled?;
 };
@@ -4476,51 +4476,51 @@ public type UpdateMsgVpnTopicEndpointQueries record {
 # The thresholds for the Queue consumer flows event, relative to `queueMaxBindCount`.
 public type MsgVpnTelemetryProfileQueueEventBindCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type MsgVpnQueue record {
     # The access type for delivering messages to consumer flows bound to the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"exclusive"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "exclusive" - Exclusive delivery of messages to the first bound consumer flow.
     # "non-exclusive" - Non-exclusive delivery of messages to bound consumer flows in a round-robin (if partition count is zero) or partitioned (if partition count is non-zero) fashion.
     # </pre>
     "exclusive"|"non-exclusive" accessType?;
     # Enable or disable the propagation of consumer acknowledgments (ACKs) received on the active replication Message VPN to the standby replication Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean consumerAckPropagationEnabled?;
     # The name of the Dead Message Queue (DMQ) used by the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"#DEAD_MSG_QUEUE"`. Available since 2.2.
     string deadMsgQueue?;
     # Enable or disable the ability for client applications to query the message delivery count of messages received from the Queue. This is a controlled availability feature. Please contact support to find out if this feature is supported for your use case.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.19.
     boolean deliveryCountEnabled?;
     # The delay, in seconds, to apply to messages arriving on the Queue before the messages are eligible for delivery.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.22.
     int deliveryDelay?;
     # Enable or disable the transmission of messages from the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean egressEnabled?;
     # The thresholds for the Queue consumer flows event, relative to `maxBindCount`.
@@ -4530,57 +4530,57 @@ public type MsgVpnQueue record {
     # The thresholds for the maximum allowed number of any priority messages queued in the Queue event, relative to `rejectLowPriorityMsgLimit`.
     MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold eventRejectLowPriorityMsgLimitThreshold?;
     # Enable or disable the reception of messages to the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean ingressEnabled?;
     # The maximum number of consumer flows that can bind to the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int maxBindCount?;
     # The maximum number of messages delivered but not acknowledged per flow for the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000`.
     int maxDeliveredUnackedMsgsPerFlow?;
     # The maximum message size allowed in the Queue, in bytes (B).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000000`.
     int:Signed32 maxMsgSize?;
     # The maximum message spool usage allowed by the Queue, in megabytes (MB). A value of 0 only allows spooling of the last message received and disables quota checking.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `5000`.
     int maxMsgSpoolUsage?;
     # The maximum number of times the Queue will attempt redelivery of a message prior to it being discarded or moved to the DMQ. A value of 0 means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxRedeliveryCount?;
     # The maximum time in seconds a message can stay in the Queue when `respectTtlEnabled` is `"true"`. A message expires when the lesser of the sender assigned time-to-live (TTL) in the message and the `maxTtl` configured for the Queue, is exceeded. A value of 0 disables expiry.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxTtl?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The Client Username that owns the Queue and has permission equivalent to `"delete"`.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string owner?;
     # The count of partitions of the queue. Only relevant for queues with an access type of non-exclusive. When zero, bound clients receive messages round-robin. Otherwise, bound clients receive messages from individually assigned partitions.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.35.
     int:Signed32 partitionCount?;
     # The delay (in seconds) before a partition rebalance is started once needed.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `5`. Available since 2.35.
     int partitionRebalanceDelay?;
     # The maximum time (in seconds) to wait before handing off a partition while rebalancing.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`. Available since 2.35.
     int partitionRebalanceMaxHandoffTime?;
     # The permission level for all consumers of the Queue, excluding the owner.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"no-access"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "no-access" - Disallows all access.
     # "read-only" - Read-only access to the messages.
@@ -4590,58 +4590,58 @@ public type MsgVpnQueue record {
     # </pre>
     "no-access"|"read-only"|"consume"|"modify-topic"|"delete" permission?;
     # The name of the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string queueName?;
     # Enable or disable a message redelivery delay. When false, messages are redelivered as soon as possible.  When true, messages are redelivered according to the initial, max and multiplier.  This should only be enabled when redelivery is enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.33.
     boolean redeliveryDelayEnabled?;
     # The delay to be used between the first 2 redelivery attempts.  This value is in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`. Available since 2.33.
     int:Signed32 redeliveryDelayInitialInterval?;
     # The maximum delay to be used between any 2 redelivery attempts.  This value is in milliseconds.  Due to technical limitations, some redelivery attempt delays may slightly exceed this value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `64000`. Available since 2.33.
     int:Signed32 redeliveryDelayMaxInterval?;
     # The amount each delay interval is multiplied by after each failed delivery attempt.  This number is in a fixed-point decimal format in which you must divide by 100 to get the floating point value. For example, a value of 125 would cause the delay to be multiplied by 1.25.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `200`. Available since 2.33.
     int:Signed32 redeliveryDelayMultiplier?;
     # Enable or disable message redelivery. When enabled, the number of redelivery attempts is controlled by maxRedeliveryCount. When disabled, the message will never be delivered from the queue more than once.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.18.
     boolean redeliveryEnabled?;
     # Enable or disable the checking of low priority messages against the `rejectLowPriorityMsgLimit`. This may only be enabled if `rejectMsgToSenderOnDiscardBehavior` does not have a value of `"never"`.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean rejectLowPriorityMsgEnabled?;
     # The number of messages of any priority in the Queue above which low priority messages are not admitted but higher priority messages are allowed.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int rejectLowPriorityMsgLimit?;
     # Determines when to return negative acknowledgments (NACKs) to sending clients on message discards. Note that NACKs cause the message to not be delivered to any destination and Transacted Session commits to fail.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as rejectLowPriorityMsgEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"when-queue-enabled"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "never" - Silently discard messages.
     # "when-queue-enabled" - NACK each message discard back to the client, except messages that are discarded because an endpoint is administratively disabled.
     # "always" - NACK each message discard back to the client, including messages that are discarded because an endpoint is administratively disabled.
     # </pre>
-    #  Available since 2.1.
+    # Available since 2.1.
     "never"|"when-queue-enabled"|"always" rejectMsgToSenderOnDiscardBehavior?;
     # Enable or disable the respecting of DMQ Eligible for messages in the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.49.
     boolean respectDmqEligibleEnabled?;
     # Enable or disable the respecting of message priority. When enabled, messages contained in the Queue are delivered in priority order, from 9 (highest) to 0 (lowest). Regardless of this setting, message priority is not respected when browsing the queue, when the queue is used by a bridge, or if the queue is partitioned.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled and ingressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.8.
     boolean respectMsgPriorityEnabled?;
     # Enable or disable the respecting of the time-to-live (TTL) for messages in the Queue. When enabled, expired messages are discarded or moved to the DMQ.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean respectTtlEnabled?;
 };
@@ -4656,23 +4656,23 @@ public type CreateMsgVpnAuthenticationKerberosRealmQueries record {
 
 public type MsgVpnRestDeliveryPointQueueBindingRequestHeader record {
     # The name of the HTTP request header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string headerName?;
     # A substitution expression for the value of the HTTP request header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string headerValue?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of a queue in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string queueBindingName?;
     # The name of the REST Delivery Point.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string restDeliveryPointName?;
 };
@@ -4750,19 +4750,19 @@ public type CertAuthoritiesResponse record {
 # The thresholds for the spool usage event at system level, relative to `maxSpoolUsage`. Available since 2.18.
 public type BrokerGuaranteedMsgingEventMsgSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -4775,19 +4775,19 @@ public type DomainCertAuthorityLinks record {
 # The thresholds for the Client Username Web Transport connection count event of the Client Profile, relative to `serviceWebMaxConnectionCountPerClientUsername`.
 public type MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -4795,19 +4795,19 @@ public type MsgVpnClientProfileEventServiceWebConnectionCountPerClientUsernameTh
 # The thresholds for the message spool usage event of the Queue, relative to `maxMsgSpoolUsage`.
 public type MsgVpnQueueEventMsgSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `18`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `25`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -4895,19 +4895,19 @@ public type GetDmrClusterLinkQueries record {
 # The thresholds for the subscription count event of the Message VPN, relative to `maxSubscriptionCount`.
 public type MsgVpnEventSubscriptionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -4928,21 +4928,21 @@ public type MsgVpnKafkaSendersResponse record {
 
 public type MsgVpnAclProfilePublishTopicException record {
     # The name of the ACL Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string aclProfileName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The topic for the exception to the default action taken. May include wildcard characters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string publishTopicException?;
     # The syntax of the topic for the exception to the default action taken.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "smf" - Topic uses SMF syntax.
     # "mqtt" - Topic uses MQTT syntax.
@@ -5013,9 +5013,9 @@ public type GetMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeadersQueries
 
 public type AboutUser record {
     # The global access level of the User.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "admin" - Full administrative access.
     # "none" - No access.
@@ -5024,31 +5024,31 @@ public type AboutUser record {
     # </pre>
     "admin"|"none"|"read-only"|"read-write" globalAccessLevel?;
     # Indicates whether a session is active for this request.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". Available since 2.24.
     boolean sessionActive?;
     # The timestamp of when the session was created.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". This attribute may not be returned in a GET. This value represents the number of seconds since 1970-01-01 00:00:00 UTC (Unix time). Available since 2.21.
     int:Signed32 sessionCreateTime?;
     # The current server timestamp. This is provided as a reference point for the other timestamps provided.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". This attribute may not be returned in a GET. This value represents the number of seconds since 1970-01-01 00:00:00 UTC (Unix time). Available since 2.21.
     int:Signed32 sessionCurrentTime?;
     # The hard expiry time for the session. After this time the session will be invalid, regardless of activity.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". This attribute may not be returned in a GET. This value represents the number of seconds since 1970-01-01 00:00:00 UTC (Unix time). Available since 2.21.
     int:Signed32 sessionHardExpiryTime?;
     # An identifier for the session to differentiate this session from other sessions for the same user. This value is not guaranteed to be unique between active sessions for different users.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". This attribute may not be returned in a GET. Available since 2.21.
     string sessionId?;
     # The session idle expiry time. After this time the session will be invalid if there has been no activity.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". This attribute may not be returned in a GET. This value represents the number of seconds since 1970-01-01 00:00:00 UTC (Unix time). Available since 2.21.
     int:Signed32 sessionIdleExpiryTime?;
     # The username of the User.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". Available since 2.21.
     string username?;
 };
@@ -5083,15 +5083,15 @@ public type DmrClusterLinkRemoteAddressResponse record {
 
 public type MsgVpnJndiTopic record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The physical name of the JMS Topic.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string physicalName?;
     # The JNDI name of the JMS Topic.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string topicName?;
 };
@@ -5121,15 +5121,15 @@ public type MsgVpnAclProfileSubscribeTopicExceptionsResponse record {
 
 public type DmrClusterLinkRemoteAddress record {
     # The name of the Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string dmrClusterName?;
     # The FQDN or IP address (and optional port) of the remote node. If a port is not provided, it will vary based on the transport encoding: 55555 (plain-text), 55443 (encrypted), or 55003 (compressed).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string remoteAddress?;
     # The name of the node at the remote end of the Link.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string remoteNodeName?;
 };
@@ -5221,42 +5221,42 @@ public type MsgVpnAclProfileClientConnectExceptionsResponse record {
 
 public type MsgVpnKafkaReceiverTopicBinding record {
     # Enable or disable this topic binding of the Kafka Receiver.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The initial offset to consume from the Kafka Topic if no member of the group has consumed and committed any offset already, or if the last committed offset has been deleted. Offsets are unique per partition.
-    # 
+    #
     # This corresponds to the Kafka consumer API `auto.offset.reset` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"end"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "beginning" - Start with the earliest offset available.
     # "end" - Start with new offsets only.
     # </pre>
     "beginning"|"end" initialOffset?;
     # The name of the Kafka Receiver.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string kafkaReceiverName?;
     # The Substitution Expression used to generate the key for each message received from Kafka. This expression can include fields extracted from the metadata of each individual Kafka message as it is received from the Kafka Topic.
-    # 
+    #
     # If empty, no key is included for each message as it is published into Solace.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string localKey?;
     # The Substitution Expression used to generate the Solace Topic for each message received from Kafka. This expression can include data extracted from the metadata of each individual Kafka message as it is received from the Kafka Topic.
-    # 
+    #
     # If empty, the Topic Binding will not be operational.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string localTopic?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the Topic or a POSIX.2 regular expression starting with '^'.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string topicName?;
 };
@@ -5297,11 +5297,11 @@ public type UpdateMsgVpnAuthenticationOauthProviderQueries record {
 
 public type SystemInformation record {
     # The platform running the SEMP API.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". Deprecated since 2.2. /systemInformation was replaced by /about/api.
     string platform?;
     # The version of the SEMP API.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". Deprecated since 2.2. /systemInformation was replaced by /about/api.
     string sempVersion?;
 };
@@ -5309,19 +5309,19 @@ public type SystemInformation record {
 # The thresholds for the incoming and outgoing TLS connection count event of the broker. Available since 2.17.
 public type BrokerServiceTlsEventConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -5339,19 +5339,19 @@ public type MsgVpnJndiQueueLinks record {
 
 public type MsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
     string msgVpnName?;
     # The name of the REST Consumer.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
     string restConsumerName?;
     # The name of the REST Delivery Point.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
     string restDeliveryPointName?;
     # The expected trusted common name of the remote certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.17. Common Name validation has been replaced by Server Certificate Name validation.
     string tlsTrustedCommonName?;
 };
@@ -5373,17 +5373,17 @@ public type GetMsgVpnAclProfilePublishTopicExceptionsQueries record {
 
 public type MsgVpnReplicatedTopic record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The topic for applying replication. Published messages matching this topic will be replicated to the standby site.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string replicatedTopic?;
     # The replication mode for the Replicated Topic.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"async"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "sync" - Messages are acknowledged when replicated (spooled remotely).
     # "async" - Messages are acknowledged when pending replication (spooled locally).
@@ -5476,11 +5476,11 @@ public type GetMsgVpnRestDeliveryPointRestConsumerOauthJwtClaimQueries record {
 # The thresholds for the number of delivered but unacknowledged messages event at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventDeliveredUnackedThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
 };
@@ -5504,11 +5504,11 @@ public type UpdateMsgVpnAclProfileQueries record {
 # The thresholds for the cached data incoming message rate event, in messages per second.
 public type MsgVpnDistributedCacheClusterEventDataMsgRateThreshold record {
     # The clear threshold for the absolute value of this counter or rate. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `36000`.
     int clearValue?;
     # The set threshold for the absolute value of this counter or rate. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `48000`.
     int setValue?;
 };
@@ -5578,19 +5578,19 @@ public type ReplaceOauthProfileClientAuthorizationParameterQueries record {
 # The thresholds for the maximum allowed number of any priority messages queued in the Queue event, relative to `rejectLowPriorityMsgLimit`.
 public type MsgVpnQueueEventRejectLowPriorityMsgLimitThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -5653,19 +5653,19 @@ public type ClientCertAuthorityResponse record {
 # The thresholds for the message spool usage event of the Topic Endpoint, relative to `maxSpoolUsage`.
 public type MsgVpnTopicEndpointTemplateEventMsgSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `18`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `25`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -5761,28 +5761,28 @@ public type GetDmrClusterCertMatchingRuleConditionQueries record {
 
 public type MsgVpnTelemetryProfileTraceFilterSubscription record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # Messages matching this subscription will follow this filter's configuration.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string subscription?;
     # The syntax of the trace filter subscription.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "smf" - Subscription uses SMF syntax.
     # "mqtt" - Subscription uses MQTT syntax.
     # </pre>
     "smf"|"mqtt" subscriptionSyntax?;
     # The name of the Telemetry Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string telemetryProfileName?;
     # A name used to identify the trace filter. Consider a name that describes the subscriptions contained within the filter, such as the name of the application and/or the scenario in which the trace filter might be enabled, such as "appNameDebug".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string traceFilterName?;
 };
@@ -5879,17 +5879,17 @@ public type GetMsgVpnDistributedCacheQueries record {
 
 public type MsgVpnMqttSession record {
     # Enable or disable the MQTT Session. When disabled, the client is disconnected, new messages matching QoS 0 subscriptions are discarded, and new messages matching QoS 1 subscriptions are stored for future delivery.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The Client ID of the MQTT Session, which corresponds to the ClientId provided in the MQTT CONNECT packet.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string mqttSessionClientId?;
     # The virtual router of the MQTT Session.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "primary" - The MQTT Session belongs to the primary virtual router.
     # "backup" - The MQTT Session belongs to the backup virtual router.
@@ -5897,19 +5897,19 @@ public type MsgVpnMqttSession record {
     # </pre>
     "primary"|"backup"|"auto" mqttSessionVirtualRouter?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The owner of the MQTT Session. For externally-created sessions this defaults to the Client Username of the connecting client. For management-created sessions this defaults to empty.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string owner?;
     # Enable or disable the propagation of consumer acknowledgments (ACKs) received on the active replication Message VPN to the standby replication Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.14.
     boolean queueConsumerAckPropagationEnabled?;
     # The name of the Dead Message Queue (DMQ) used by the MQTT Session Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"#DEAD_MSG_QUEUE"`. Available since 2.14.
     string queueDeadMsgQueue?;
     # Thresholds for the high number of the MQTT Session Queue Consumers Event, relative to `queueMaxBindCount`. Available since 2.14.
@@ -5919,54 +5919,54 @@ public type MsgVpnMqttSession record {
     # The threshold for the maximum allowed number of any priority messages queued in the MQTT Session Queue, relative to `queueRejectLowPriorityMsgLimit`. Available since 2.14.
     MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold queueEventRejectLowPriorityMsgLimitThreshold?;
     # The maximum number of consumer flows that can bind to the MQTT Session Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`. Available since 2.14.
     int queueMaxBindCount?;
     # The maximum number of messages delivered but not acknowledged per flow for the MQTT Session Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000`. Available since 2.14.
     int queueMaxDeliveredUnackedMsgsPerFlow?;
     # The maximum message size allowed in the MQTT Session Queue, in bytes (B).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000000`. Available since 2.14.
     int:Signed32 queueMaxMsgSize?;
     # The maximum message spool usage allowed by the MQTT Session Queue, in megabytes (MB). A value of 0 only allows spooling of the last message received and disables quota checking.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `5000`. Available since 2.14.
     int queueMaxMsgSpoolUsage?;
     # The maximum number of times the MQTT Session Queue will attempt redelivery of a message prior to it being discarded or moved to the DMQ. A value of 0 means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.14.
     int queueMaxRedeliveryCount?;
     # The maximum time in seconds a message can stay in the MQTT Session Queue when `queueRespectTtlEnabled` is `"true"`. A message expires when the lesser of the sender assigned time-to-live (TTL) in the message and the `queueMaxTtl` configured for the MQTT Session Queue, is exceeded. A value of 0 disables expiry.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.14.
     int queueMaxTtl?;
     # Enable or disable the checking of low priority messages against the `queueRejectLowPriorityMsgLimit`. This may only be enabled if `queueRejectMsgToSenderOnDiscardBehavior` does not have a value of `"never"`.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.14.
     boolean queueRejectLowPriorityMsgEnabled?;
     # The number of messages of any priority in the MQTT Session Queue above which low priority messages are not admitted but higher priority messages are allowed.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.14.
     int queueRejectLowPriorityMsgLimit?;
     # Determines when to return negative acknowledgments (NACKs) to sending clients on message discards. Note that NACKs cause the message to not be delivered to any destination and Transacted Session commits to fail.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as queueRejectLowPriorityMsgEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"when-queue-enabled"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "never" - Silently discard messages.
     # "when-queue-enabled" - NACK each message discard back to the client, except messages that are discarded because an endpoint is administratively disabled.
     # "always" - NACK each message discard back to the client, including messages that are discarded because an endpoint is administratively disabled.
     # </pre>
-    #  Available since 2.14.
+    # Available since 2.14.
     "never"|"when-queue-enabled"|"always" queueRejectMsgToSenderOnDiscardBehavior?;
     # Enable or disable the respecting of DMQ Eligible for messages in the MQTT Session Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.49.
     boolean queueRespectDmqEligibleEnabled?;
     # Enable or disable the respecting of the time-to-live (TTL) for messages in the MQTT Session Queue. When enabled, expired messages are discarded or moved to the DMQ.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.14.
     boolean queueRespectTtlEnabled?;
 };
@@ -5987,19 +5987,19 @@ public type MsgVpnAclProfileSubscribeExceptionResponse record {
 # The thresholds for the message spool usage event of the Message VPN, relative to `maxMsgSpoolUsage`.
 public type MsgVpnEventMsgSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -6023,19 +6023,19 @@ public type ReplaceMsgVpnBridgeRemoteMsgVpnQueries record {
 # The thresholds for the Topic Endpoint consumer flows event, relative to `maxBindCount`. Available since 2.4.
 public type MsgVpnTopicEndpointEventBindCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -6080,15 +6080,15 @@ public type MsgVpnMqttSessionSubscriptionLinks record {
 
 public type DmrClusterCertMatchingRule record {
     # The name of the Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string dmrClusterName?;
     # Enable or disable a certificate matching rule.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean enabled?;
     # The name of the rule.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string ruleName?;
 };
@@ -6186,27 +6186,27 @@ public type GetDmrClustersQueries record {
 
 public type MsgVpnRestDeliveryPoint record {
     # The Client Profile of the REST Delivery Point. It must exist in the local Message VPN. Its TCP parameters are used for all REST Consumers in this RDP. Its queue properties are used by the RDP client. The Client Profile is used inside the auto-generated Client Username for this RDP.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"default"`.
     string clientProfileName?;
     # Enable or disable the REST Delivery Point. When disabled, no connections are initiated or messages delivered to any of the contained REST Consumers.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the REST Delivery Point.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string restDeliveryPointName?;
     # The name of the service that this REST Delivery Point connects to. Internally the broker does not use this value; it is informational only.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.19.
     string 'service?;
     # The name of the vendor that this REST Delivery Point connects to. Internally the broker does not use this value; it is informational only.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.19.
     string vendor?;
 };
@@ -6214,19 +6214,19 @@ public type MsgVpnRestDeliveryPoint record {
 # The thresholds for the transmit flow count event of the Client Profile, relative to `maxEgressFlowCount`.
 public type MsgVpnClientProfileEventEgressFlowCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -6248,46 +6248,46 @@ public type GetMsgVpnRestDeliveryPointRestConsumerOauthJwtClaimsQueries record {
 
 public type MsgVpnProxy record {
     # The password to use with basic authentication.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string authenticationBasicPassword?;
     # The username to use with basic authentication.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string authenticationBasicUsername?;
     # The authentication scheme used to connect to the proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - No authentication.
     # "basic" - Username/password authentication.
     # </pre>
     "none"|"basic" authenticationScheme?;
     # Enable or disable the proxy. When disabled, no connections are initiated to this particular Proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean enabled?;
     # The IP address or host name of the proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string host?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The port to connect to on the proxy host.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `0`.
     int:Signed32 port?;
     # The name of the proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string proxyName?;
     # The type of proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"direct"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "direct" - Direct connection (no proxy).
     # "http" - HTTP proxy.
@@ -6329,45 +6329,45 @@ public type GetOauthProfileResourceServerRequiredClaimsQueries record {
 
 public type MsgVpnAclProfile record {
     # The name of the ACL Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string aclProfileName?;
     # The default action to take when a client using the ACL Profile connects to the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"disallow"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "allow" - Allow client connection unless an exception is found for it.
     # "disallow" - Disallow client connection unless an exception is found for it.
     # </pre>
     "allow"|"disallow" clientConnectDefaultAction?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The default action to take when a client using the ACL Profile publishes to a topic in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"disallow"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "allow" - Allow topic unless an exception is found for it.
     # "disallow" - Disallow topic unless an exception is found for it.
     # </pre>
     "allow"|"disallow" publishTopicDefaultAction?;
     # The default action to take when a client using the ACL Profile subscribes to a share-name subscription in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"allow"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "allow" - Allow topic unless an exception is found for it.
     # "disallow" - Disallow topic unless an exception is found for it.
     # </pre>
-    #  Available since 2.14.
+    # Available since 2.14.
     "allow"|"disallow" subscribeShareNameDefaultAction?;
     # The default action to take when a client using the ACL Profile subscribes to a topic in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"disallow"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "allow" - Allow topic unless an exception is found for it.
     # "disallow" - Disallow topic unless an exception is found for it.
@@ -6440,42 +6440,42 @@ public type GetAboutUserQueries record {
 # The thresholds for the maximum allowed number of any priority messages queued in the Queue event, relative to `rejectLowPriorityMsgLimit`.
 public type MsgVpnQueueTemplateEventRejectLowPriorityMsgLimitThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type MsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader record {
     # The name of the protected HTTP request header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string headerName?;
     # The value of the protected HTTP request header. Unlike a non-protected request header, this value cannot be displayed after it is set, and does not support substitution expressions.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string headerValue?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of a queue in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string queueBindingName?;
     # The name of the REST Delivery Point.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string restDeliveryPointName?;
 };
@@ -6490,65 +6490,65 @@ public type GetOauthProfileClientAuthorizationParameterQueries record {
 
 public type OauthProfile record {
     # The name of the groups claim.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"groups"`.
     string accessLevelGroupsClaimName?;
     # The format of the access level groups claim value when it is a string.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"single"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "single" - When the claim is a string, it is interpreted as as single group.
     # "space-delimited" - When the claim is a string, it is interpreted as a space-delimited list of groups, similar to the "scope" claim.
     # </pre>
-    #  Available since 2.32.
+    # Available since 2.32.
     "single"|"space-delimited" accessLevelGroupsClaimStringFormat?;
     # The PEM formatted content for the client certificate used by the broker to login to the token and introspection endpoints. To be used when authenticationScheme is "client-certificate".
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "global/admin". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). The default value is `""`. Available since 2.47.
     string authenticationClientCertContent?;
     # The password for the client certificate. To be used when authenticationScheme is "client-certificate".
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "global/admin". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). The default value is `""`. Available since 2.47.
     string authenticationClientCertPassword?;
     # The authentication scheme for token and introspection requests.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"basic"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "basic" - Basic Authentication Scheme (via client id and client secret).
     # "client-certificate" - Client Certificate Authentication Scheme (via certificate file or content).
     # </pre>
-    #  Available since 2.47.
+    # Available since 2.47.
     "basic"|"client-certificate" authenticationScheme?;
     # The OAuth client id.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string clientId?;
     # The OAuth redirect URI.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string clientRedirectUri?;
     # The required value for the TYP field in the ID token header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"JWT"`.
     string clientRequiredType?;
     # The OAuth scope.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"openid email"`.
     string clientScope?;
     # The OAuth client secret.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string clientSecret?;
     # Enable or disable verification of the TYP field in the ID token header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean clientValidateTypeEnabled?;
     # The default global access level for this OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - User has no access to global data.
     # "read-only" - User has read-only access to global data.
@@ -6558,9 +6558,9 @@ public type OauthProfile record {
     # </pre>
     "none"|"read-only"|"mesh-manager"|"read-write"|"admin" defaultGlobalAccessLevel?;
     # The default message VPN access level for the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - User has no access to a Message VPN.
     # "read-only" - User has read-only access to a Message VPN.
@@ -6568,132 +6568,132 @@ public type OauthProfile record {
     # </pre>
     "none"|"read-only"|"read-write" defaultMsgVpnAccessLevel?;
     # The user friendly name for the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string displayName?;
     # Enable or disable the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean enabled?;
     # The OAuth authorization endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string endpointAuthorization?;
     # The OpenID Connect discovery endpoint or OAuth Authorization Server Metadata endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string endpointDiscovery?;
     # The number of seconds between discovery endpoint requests.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `86400`.
     int:Signed32 endpointDiscoveryRefreshInterval?;
     # The OAuth introspection endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string endpointIntrospection?;
     # The maximum time in seconds a token introspection request is allowed to take.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1`.
     int:Signed32 endpointIntrospectionTimeout?;
     # The OAuth JWKS endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string endpointJwks?;
     # The number of seconds between JWKS endpoint requests.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `86400`.
     int:Signed32 endpointJwksRefreshInterval?;
     # The OAuth token endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string endpointToken?;
     # The maximum time in seconds a token request is allowed to take.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1`.
     int:Signed32 endpointTokenTimeout?;
     # The OpenID Connect Userinfo endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string endpointUserinfo?;
     # The maximum time in seconds a userinfo request is allowed to take.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1`.
     int:Signed32 endpointUserinfoTimeout?;
     # Enable or disable interactive logins via this OAuth provider.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean interactiveEnabled?;
     # The value of the prompt parameter provided to the OAuth authorization server for login requests where the session has expired.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string interactivePromptForExpiredSession?;
     # The value of the prompt parameter provided to the OAuth authorization server for login requests where the session is new or the user has explicitly logged out.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"select_account"`.
     string interactivePromptForNewSession?;
     # The Issuer Identifier for the OAuth provider.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string issuer?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string oauthProfileName?;
     # The OAuth role of the broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"client"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "client" - The broker is in the OAuth client role.
     # "resource-server" - The broker is in the OAuth resource server role.
     # </pre>
     "client"|"resource-server" oauthRole?;
     # The name of the proxy to use for discovery, user info, jwks, introspection, and token requests. Leave empty for no proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`. Available since 2.41.
     string proxyName?;
     # Enable or disable parsing of the access token as a JWT.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean resourceServerParseAccessTokenEnabled?;
     # The required audience value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string resourceServerRequiredAudience?;
     # The required issuer value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string resourceServerRequiredIssuer?;
     # A space-separated list of scopes that must be present in the scope claim.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string resourceServerRequiredScope?;
     # The required TYP value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"at+jwt"`.
     string resourceServerRequiredType?;
     # Enable or disable verification of the audience claim in the access token or introspection response.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean resourceServerValidateAudienceEnabled?;
     # Enable or disable verification of the issuer claim in the access token or introspection response.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean resourceServerValidateIssuerEnabled?;
     # Enable or disable verification of the scope claim in the access token or introspection response.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean resourceServerValidateScopeEnabled?;
     # Enable or disable verification of the TYP field in the access token header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean resourceServerValidateTypeEnabled?;
     # Enable or disable authentication of SEMP requests with OAuth tokens.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean sempEnabled?;
     # The name of the username claim.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"sub"`.
     string usernameClaimName?;
 };
@@ -6701,19 +6701,19 @@ public type OauthProfile record {
 # The thresholds for the subscription count event of the Client Profile, relative to `maxSubscriptionCount`.
 public type MsgVpnClientProfileEventSubscriptionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -6721,11 +6721,11 @@ public type MsgVpnClientProfileEventSubscriptionCountThreshold record {
 # The thresholds for the cache response message rate event, in messages per second.
 public type MsgVpnDistributedCacheClusterEventResponseRateThreshold record {
     # The clear threshold for the absolute value of this counter or rate. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int clearValue?;
     # The set threshold for the absolute value of this counter or rate. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80000`.
     int setValue?;
 };
@@ -6739,11 +6739,11 @@ public type MsgVpnMqttSessionLinks record {
 
 public type MsgVpnSequencedTopic record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.42. Primarily used by SolCache-RS which has been replaced by the Replay feature.
     string msgVpnName?;
     # Topic for applying sequence numbers.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.42. Primarily used by SolCache-RS which has been replaced by the Replay feature.
     string sequencedTopic?;
 };
@@ -6857,13 +6857,13 @@ public type GetMsgVpnCertMatchingRuleQueries record {
 
 public type MsgVpnMqttSessionSubscription record {
     # The Client ID of the MQTT Session, which corresponds to the ClientId provided in the MQTT CONNECT packet.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string mqttSessionClientId?;
     # The virtual router of the MQTT Session.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "primary" - The MQTT Session belongs to the primary virtual router.
     # "backup" - The MQTT Session belongs to the backup virtual router.
@@ -6871,15 +6871,15 @@ public type MsgVpnMqttSessionSubscription record {
     # </pre>
     "primary"|"backup"|"auto" mqttSessionVirtualRouter?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The quality of service (QoS) for the subscription as either 0 (deliver at most once) or 1 (deliver at least once). QoS 2 is not supported, but QoS 2 messages attracted by QoS 0 or QoS 1 subscriptions are accepted and delivered accordingly.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int subscriptionQos?;
     # The MQTT subscription topic.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string subscriptionTopic?;
 };
@@ -6901,23 +6901,23 @@ public type GetMsgVpnSequencedTopicsQueries record {
 
 public type MsgVpnCertMatchingRuleAttributeFilter record {
     # Client Username Attribute to be tested.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string attributeName?;
     # Expected attribute value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string attributeValue?;
     # The name of the filter.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string filterName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the rule.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string ruleName?;
 };
@@ -6935,31 +6935,31 @@ public type MsgVpnJndiConnectionFactoriesResponse record {
 
 public type MsgVpnAuthorizationGroup record {
     # The ACL Profile of the Authorization Group.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"default"`.
     string aclProfileName?;
     # The name of the Authorization Group. For LDAP groups, special care is needed if the group name contains special characters such as '#', '+', ';', '=' as the value of the group name returned from the LDAP server might prepend those characters with '\'. For example a group name called 'test#,lab,com' will be returned from the LDAP server as 'test\#,lab,com'.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string authorizationGroupName?;
     # The Client Profile of the Authorization Group.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"default"`.
     string clientProfileName?;
     # Enable or disable the Authorization Group in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # Lower the priority to be less than this group.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     string orderAfterAuthorizationGroupName?;
     # Raise the priority to be greater than this group.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     string orderBeforeAuthorizationGroupName?;
 };
@@ -7009,48 +7009,48 @@ public type DmrClusterCertMatchingRulesResponse record {
 
 public type MsgVpnReplayLogTopicFilterSubscription record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the Replay Log.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string replayLogName?;
     # The topic of the Subscription.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string topicFilterSubscription?;
 };
 
 public type MsgVpnRestDeliveryPointQueueBinding record {
     # Enable or disable whether the authority for the request-target is replaced with that configured for the REST Consumer remote. When enabled, the broker sends HTTP requests in absolute-form, with the request-target's authority taken from the REST Consumer's remote host and port configuration. When disabled, the broker sends HTTP requests whose request-target matches that of the original request message, including whether to use absolute-form or origin-form. This configuration is applicable only when the Message VPN is in REST gateway mode.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.6.
     boolean gatewayReplaceTargetAuthorityEnabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The request-target string to use when sending requests. It identifies the target resource on the far-end REST Consumer upon which to apply the request. There are generally two common forms for the request-target. The origin-form is most often used in practice and contains the path and query components of the target URI. If the path component is empty then the client must generally send a "/" as the path. When making a request to a proxy, most often the absolute-form is required. This configuration is only applicable when the Message VPN is in REST messaging mode.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string postRequestTarget?;
     # The name of a queue in the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string queueBindingName?;
     # The type of evaluation to perform on the request target.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - Do not evaluate substitution expressions on the request target.
     # "substitution-expressions" - Evaluate substitution expressions on the request target.
     # </pre>
-    #  Available since 2.23.
+    # Available since 2.23.
     "none"|"substitution-expressions" requestTargetEvaluation?;
     # The name of the REST Delivery Point.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string restDeliveryPointName?;
 };
@@ -7071,11 +7071,11 @@ public type CreateMsgVpnJndiConnectionFactoryQueries record {
 
 public type OauthProfileClientAllowedHost record {
     # An allowed value for the Host header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string allowedHost?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string oauthProfileName?;
 };
@@ -7088,15 +7088,15 @@ public type MsgVpnCertMatchingRuleConditionResponse record {
 
 public type MsgVpnJndiQueue record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The physical name of the JMS Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string physicalName?;
     # The JNDI name of the JMS Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string queueName?;
 };
@@ -7155,19 +7155,19 @@ public type GetMsgVpnJndiQueuesQueries record {
 
 public type MsgVpnDistributedCacheClusterTopic record {
     # The name of the Distributed Cache.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string cacheName?;
     # The name of the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clusterName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The value of the Topic in the form a/b/c.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string topic?;
 };
@@ -7216,13 +7216,13 @@ public type GetDmrClusterLinkTlsTrustedCommonNameQueries record {
 
 public type Broker record {
     # Enable or disable protection against brute force password guessing attacks on local management accounts.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.40.
     boolean authBruteForceProtectionEnabled?;
     # The client certificate revocation checking mode used when a client authenticates with a client certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - Do not perform any certificate revocation checking.
     # "ocsp" - Use the Online Certificate Status Protocol (OCSP) for certificate revocation checking.
@@ -7231,89 +7231,89 @@ public type Broker record {
     # </pre>
     "none"|"ocsp"|"crl"|"ocsp-crl" authClientCertRevocationCheckMode?;
     # The access level required to generate encrypted gather-diagnostics output, which can only be decrypted by Solace support. global/admin is always required to generate unencrypted gather-diagnostics output. Gather-diagnostics output may contain sensitive information.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"global-read-only"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "global-read-only" - Generating encrypted gather-diagnostics output requires global/read-only.
     # "global-admin" - Generating encrypted gather-diagnostics output requires global/admin.
     # </pre>
-    #  Available since 2.48.
+    # Available since 2.48.
     "global-read-only"|"global-admin" authRequiredAccessLevelGatherDiagnostics?;
     # The maximum depth for a client certificate chain. The depth of a chain is defined as the number of signing CA certificates that are present in the chain back to a trusted self-signed root CA certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `3`. Deprecated since 2.48. Client certificate authentication is deprecated for config-sync.
     int configSyncAuthenticationClientCertMaxChainDepth?;
     # Enable or disable validation of the "Not Before" and "Not After" validity dates in the authentication certificate(s).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `true`. Deprecated since 2.48. Client certificate authentication is deprecated for config-sync.
     boolean configSyncAuthenticationClientCertValidateDateEnabled?;
     # Obsolete.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `2`. Deprecated since 2.48. The value is now ignored.
     int configSyncClientProfileTcpInitialCongestionWindow?;
     # The number of TCP keepalive retransmissions to a client using the Client Profile before declaring that it is not available.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `5`. Available since 2.22.
     int configSyncClientProfileTcpKeepaliveCount?;
     # The amount of time a client connection using the Client Profile must remain idle before TCP begins sending keepalive probes, in seconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `3`. Available since 2.22.
     int configSyncClientProfileTcpKeepaliveIdle?;
     # The amount of time between TCP keepalive retransmissions to a client using the Client Profile when no acknowledgment is received, in seconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `1`. Available since 2.22.
     int configSyncClientProfileTcpKeepaliveInterval?;
     # Obsolete.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `256`. Deprecated since 2.48. The value is now ignored.
     int configSyncClientProfileTcpMaxWindow?;
     # The TCP maximum segment size for clients using the Client Profile, in bytes. Changes are applied to all existing connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `1460`. Available since 2.22.
     int configSyncClientProfileTcpMss?;
     # Enable or disable configuration synchronization for High Availability or Disaster Recovery.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `false`. Available since 2.22.
     boolean configSyncEnabled?;
     # Enable or disable the synchronizing of usernames within High Availability groups. The transition from not synchronizing to synchronizing will cause the High Availability mate to fall out of sync. Recommendation: leave this as enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`. Available since 2.22.
     boolean configSyncSynchronizeUsernameEnabled?;
     # Enable or disable the use of TLS encryption of the configuration synchronization communications between brokers in High Availability groups and/or Disaster Recovery sites.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `false`. Available since 2.22.
     boolean configSyncTlsEnabled?;
     # The days of the week to schedule defragmentation runs, specified as "daily" or as a comma-separated list of days. Days must be specified as "Sun", "Mon", "Tue", "Wed", "Thu", "Fri, or "Sat", with no spaces, and in sorted order from Sunday to Saturday. Please note "Sun,Mon,Tue,Wed,Thu,Fri,Sat" is not allowed, use "daily" instead.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"daily"`. Available since 2.25.
     string guaranteedMsgingDefragmentationScheduleDayList?;
     # Enable or disable schedule-based defragmentation of Guaranteed Messaging spool files.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.25.
     boolean guaranteedMsgingDefragmentationScheduleEnabled?;
     # The times of the day to schedule defragmentation runs, specified as "hourly" or as a comma-separated list of 24-hour times in the form hh:mm, or h:mm. There must be no spaces, and times (up to 4) must be in sorted order from 0:00 to 23:59.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"0:00"`. Available since 2.25.
     string guaranteedMsgingDefragmentationScheduleTimeList?;
     # Enable or disable threshold-based defragmentation of Guaranteed Messaging spool files.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.25.
     boolean guaranteedMsgingDefragmentationThresholdEnabled?;
     # Percentage of spool fragmentation needed to trigger defragmentation run. The minimum value allowed is 30%.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `50`. Available since 2.25.
     int guaranteedMsgingDefragmentationThresholdFragmentationPercentage?;
     # Minimum interval of time (in minutes) between defragmentation runs triggered by thresholds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `15`. Available since 2.25.
     int guaranteedMsgingDefragmentationThresholdMinInterval?;
     # Percentage of spool usage needed to trigger defragmentation run. The minimum value allowed is 30%.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `50`. Available since 2.25.
     int guaranteedMsgingDefragmentationThresholdUsagePercentage?;
     # Enable or disable Guaranteed Messaging.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `false`. Available since 2.18.
     boolean guaranteedMsgingEnabled?;
     # The thresholds for the cache usage event at system level, relative to `guaranteedMsgingMaxCacheUsage`. Available since 2.18.
@@ -7341,217 +7341,217 @@ public type Broker record {
     # The thresholds for the transactions event at system level, relative to the maximum system limit. Available since 2.18.
     BrokerGuaranteedMsgingEventTransactionCountThreshold guaranteedMsgingEventTransactionCountThreshold?;
     # Guaranteed messaging cache usage limit. Expressed as a maximum percentage of the NAB's egress queueing. resources that the guaranteed message cache is allowed to use.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `10`. Available since 2.18.
     int:Signed32 guaranteedMsgingMaxCacheUsage?;
     # The maximum total message spool usage allowed across all VPNs on this broker, in megabytes. Recommendation: the maximum value should be less than 90% of the disk space allocated for the guaranteed message spool.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1500`. Available since 2.18.
     int guaranteedMsgingMaxMsgSpoolUsage?;
     # The maximum time, in milliseconds, that can be tolerated for remote acknowledgment of synchronization messages before which the remote system will be considered out of sync.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `10000`. Available since 2.18.
     int guaranteedMsgingMsgSpoolSyncMirroredMsgAckTimeout?;
     # The maximum time, in milliseconds, that can be tolerated for remote disk writes before which the remote system will be considered out of sync.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `10000`. Available since 2.18.
     int guaranteedMsgingMsgSpoolSyncMirroredSpoolFileAckTimeout?;
     # The replication compatibility mode for the broker. The default value is `"legacy"`. The allowed values and their meaning are:"legacy" - All transactions originated by clients are replicated to the standby site without using transactions."transacted" - All transactions originated by clients are replicated to the standby site using transactions.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"legacy"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "legacy" - All transactions originated by clients are replicated to the standby site without using transactions.
     # "transacted" - All transactions originated by clients are replicated to the standby site using transactions.
     # </pre>
-    #  Available since 2.18.
+    # Available since 2.18.
     "legacy"|"transacted" guaranteedMsgingTransactionReplicationCompatibilityMode?;
     # The default OAuth profile for OAuth authenticated SEMP requests.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`. Available since 2.24.
     string oauthProfileDefault?;
     # Enable or disable the AMQP service. When disabled new AMQP Clients may not connect through the global or per-VPN AMQP listen-ports, and all currently connected AMQP Clients are immediately disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.17.
     boolean serviceAmqpEnabled?;
     # TCP port number that AMQP clients can use to connect to the broker using raw TCP over TLS.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceAmqpEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `0`. Available since 2.17.
     int serviceAmqpTlsListenPort?;
     # The thresholds for the connection count event. Available since 2.17.
     BrokerServiceEventConnectionCountThreshold serviceEventConnectionCountThreshold?;
     # Enable or disable the plain-text health-check service.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.17.
     boolean serviceHealthCheckEnabled?;
     # The port number for the plain-text health-check service. The port must be unique across the message backbone. The health-check service must be disabled to change the port.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceHealthCheckEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `5550`. Available since 2.17.
     int serviceHealthCheckListenPort?;
     # Enable or disable the TLS health-check service.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.34.
     boolean serviceHealthCheckTlsEnabled?;
     # The port number for the TLS health-check service. The port must be unique across the message backbone. The health-check service must be disabled to change the port.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceHealthCheckTlsEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `0`. Available since 2.34.
     int serviceHealthCheckTlsListenPort?;
     # Enable or disable the mate-link service.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `true`. Available since 2.17.
     boolean serviceMateLinkEnabled?;
     # The port number for the mate-link service. The port must be unique across the message backbone. The mate-link service must be disabled to change the port.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceMateLinkEnabled will be temporarily set to false to apply the change. The default value is `8741`. Available since 2.17.
     int serviceMateLinkListenPort?;
     # Enable or disable the MQTT service. When disabled new MQTT Clients may not connect through the per-VPN MQTT listen-ports, and all currently connected MQTT Clients are immediately disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.17.
     boolean serviceMqttEnabled?;
     # Enable or disable the msg-backbone service. When disabled new Clients may not connect through global or per-VPN listen-ports, and all currently connected Clients are immediately disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `true`. Available since 2.17.
     boolean serviceMsgBackboneEnabled?;
     # Enable or disable the redundancy service.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `true`. Available since 2.17.
     boolean serviceRedundancyEnabled?;
     # The first listen-port used for the redundancy service. Redundancy uses this port and the subsequent 2 ports. These port must be unique across the message backbone. The redundancy service must be disabled to change this port.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceRedundancyEnabled will be temporarily set to false to apply the change. The default value is `8300`. Available since 2.17.
     int serviceRedundancyFirstListenPort?;
     # The thresholds for the REST outgoing connection count event. Available since 2.17.
     BrokerServiceRestEventOutgoingConnectionCountThreshold serviceRestEventOutgoingConnectionCountThreshold?;
     # Enable or disable the REST service incoming connections on the broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.17.
     boolean serviceRestIncomingEnabled?;
     # Enable or disable the REST service outgoing connections on the broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.17.
     boolean serviceRestOutgoingEnabled?;
     # Enable or disable cross origin resource requests for the SEMP service.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`. Available since 2.24.
     boolean serviceSempCorsAllowAnyHostEnabled?;
     # Enable or disable extended SEMP timeouts for paged responses. When a request times out, it returns the current page of content, even if the page is not full.  When enabled, the timeout is 60 seconds. When disabled, the timeout is 5 seconds.  The recommended setting is disabled (no legacy-timeout).  This parameter is intended as a temporary workaround to be used until SEMP clients can handle short pages.  This setting will be removed in a future release.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.18.
     boolean serviceSempLegacyTimeoutEnabled?;
     # Enable or disable plain-text SEMP service.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`. Available since 2.17.
     boolean serviceSempPlainTextEnabled?;
     # The TCP port for plain-text SEMP client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute cannot be cannot be changed while serviceSempPlainTextEnabled are set to true. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`. Available since 2.17.
     int serviceSempPlainTextListenPort?;
     # The session idle timeout, in minutes. Sessions will be invalidated if there is no activity in this period of time.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `15`. Available since 2.21.
     int:Signed32 serviceSempSessionIdleTimeout?;
     # The maximum lifetime of a session, in minutes. Sessions will be invalidated after this period of time, regardless of activity.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `43200`. Available since 2.21.
     int:Signed32 serviceSempSessionMaxLifetime?;
     # Enable or disable TLS SEMP service.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`. Available since 2.17.
     boolean serviceSempTlsEnabled?;
     # The TCP port for TLS SEMP client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute cannot be cannot be changed while serviceSempTlsEnabled are set to true. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1943`. Available since 2.17.
     int serviceSempTlsListenPort?;
     # TCP port number that SMF clients can use to connect to the broker using raw compression TCP.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceSmfEnabled will be temporarily set to false to apply the change. The default value is `55003`. Available since 2.17.
     int serviceSmfCompressionListenPort?;
     # Enable or disable the SMF service. When disabled new SMF Clients may not connect through the global listen-ports, and all currently connected SMF Clients are immediately disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `true`. Available since 2.17.
     boolean serviceSmfEnabled?;
     # The thresholds for the SMF connection count event. Available since 2.17.
     BrokerServiceSmfEventConnectionCountThreshold serviceSmfEventConnectionCountThreshold?;
     # TCP port number that SMF clients can use to connect to the broker using raw TCP.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceSmfEnabled will be temporarily set to false to apply the change. The default value is `55555`. Available since 2.17.
     int serviceSmfPlainTextListenPort?;
     # TCP port number that SMF clients can use to connect to the broker using raw routing control TCP.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceSmfEnabled will be temporarily set to false to apply the change. The default value is `55556`. Available since 2.17.
     int serviceSmfRoutingControlListenPort?;
     # TCP port number that SMF clients can use to connect to the broker using raw TCP over TLS.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceSmfEnabled will be temporarily set to false to apply the change. The default value is `55443`. Available since 2.17.
     int serviceSmfTlsListenPort?;
     # The thresholds for the incoming and outgoing TLS connection count event of the broker. Available since 2.17.
     BrokerServiceTlsEventConnectionCountThreshold serviceTlsEventConnectionCountThreshold?;
     # Enable or disable the web-transport service. When disabled new web-transport Clients may not connect through the global listen-ports, and all currently connected web-transport Clients are immediately disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.17.
     boolean serviceWebTransportEnabled?;
     # The TCP port for plain-text WEB client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceWebTransportEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `8008`. Available since 2.17.
     int serviceWebTransportPlainTextListenPort?;
     # The TCP port for TLS WEB client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceWebTransportEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1443`. Available since 2.17.
     int serviceWebTransportTlsListenPort?;
     # Used to specify the Web URL suffix that will be used by Web clients when communicating with the broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as serviceWebTransportEnabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.17.
     string serviceWebTransportWebUrlSuffix?;
     # Enable or disable the blocking of TLS version 1.1 connections. When blocked, all existing incoming and outgoing TLS 1.1 connections with Clients, SEMP users, and LDAP servers remain connected while new connections are blocked. Note that support for TLS 1.1 will eventually be discontinued, at which time TLS 1.1 connections will be blocked regardless of this setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean tlsBlockVersion11Enabled?;
     # The colon-separated list of cipher suites used for TLS management connections (e.g. SEMP, LDAP) when using TLS 1.2 and lower. The value "default" implies all supported suites ordered from most secure to least secure.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"default"`.
     string tlsCipherSuiteManagementList?;
     # The colon-separated list of cipher suites used for TLS data connections (e.g. client pub/sub) when using TLS 1.2 and lower. The value "default" implies all supported suites ordered from most secure to least secure.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"default"`.
     string tlsCipherSuiteMsgBackboneList?;
     # The colon-separated list of cipher suites used for secure shell connections (e.g. SSH, SFTP, SCP). The value "default" implies all supported suites ordered from most secure to least secure.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"default"`.
     string tlsCipherSuiteSecureShellList?;
     # Enable or disable protection against the CRIME exploit. When enabled, TLS+compressed messaging performance is degraded. This protection should only be disabled if sufficient ACL and authentication features are being employed such that a potential attacker does not have sufficient access to trigger the exploit.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`.
     boolean tlsCrimeExploitProtectionEnabled?;
     # The PEM formatted content for the server certificate used for TLS connections. It must consist of a private key and between one and three certificates comprising the certificate trust chain.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). The default value is `""`.
     string tlsServerCertContent?;
     # The password for the server certificate used for TLS connections.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "global/admin". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). The default value is `""`.
     string tlsServerCertPassword?;
     # Enable or disable the standard domain certificate authority list.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `true`. Available since 2.19.
     boolean tlsStandardDomainCertificateAuthoritiesEnabled?;
     # The TLS ticket lifetime in seconds. When a client connects with TLS, a session with a session ticket is created using the TLS ticket lifetime which determines how long the client has to resume the session.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". The default value is `86400`. Deprecated since 2.45. This attribute had been deprecated. TLS session tickets are no longer supported.
     int:Signed32 tlsTicketLifetime?;
     # Enable or disable the use of unencrypted wizards in the Web-based Manager UI. This setting should be left at its default on all production systems or other systems that need to be secure.  Enabling this option will permit the broker to forward plain-text data to other brokers, making important information or credentials available for snooping.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Available since 2.28.
     boolean webManagerAllowUnencryptedWizardsEnabled?;
     # Reserved for internal use by Solace.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`. Available since 2.25.
     string webManagerCustomization?;
     # Enable or disable redirection of HTTP requests for the broker manager to HTTPS.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `true`. Available since 2.24.
     boolean webManagerRedirectHttpEnabled?;
     # The HTTPS port that HTTP requests will be redirected towards in a HTTP 301 redirect response. Zero is a special value that means use the value specified for the SEMP TLS port value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `0`. Available since 2.24.
     int:Signed32 webManagerRedirectHttpOverrideTlsPort?;
 };
@@ -7606,19 +7606,19 @@ public type UpdateMsgVpnJndiTopicQueries record {
 # The thresholds for the Client Username connection count event of the Client Profile, relative to `maxConnectionCountPerClientUsername`.
 public type MsgVpnClientProfileEventConnectionCountPerClientUsernameThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -7642,28 +7642,28 @@ public type CreateMsgVpnRestDeliveryPointRestConsumerOauthJwtClaimQueries record
 # The thresholds for the transaction count event of the Message VPN, relative to `maxTransactionCount`.
 public type MsgVpnEventTransactionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type AboutUserMsgVpn record {
     # The Message VPN access level of the User.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - No access.
     # "read-only" - Read only access.
@@ -7671,7 +7671,7 @@ public type AboutUserMsgVpn record {
     # </pre>
     "none"|"read-only"|"read-write" accessLevel?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none".
     string msgVpnName?;
 };
@@ -7684,15 +7684,15 @@ public type OauthProfileResourceServerRequiredClaimResponse record {
 
 public type MsgVpnDmrBridge record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The remote Message VPN of the DMR Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string remoteMsgVpnName?;
     # The name of the node at the remote end of the DMR Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string remoteNodeName?;
 };
@@ -7716,19 +7716,19 @@ public type UpdateMsgVpnAuthenticationKerberosRealmQueries record {
 # The thresholds for the MQTT client connection count event of the Message VPN, relative to `serviceMqttMaxConnectionCount`. Available since 2.1.
 public type MsgVpnEventServiceMqttConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -7764,13 +7764,13 @@ public type UpdateMsgVpnTelemetryProfileTraceFilterQueries record {
 
 public type OauthProfileAccessLevelGroup record {
     # A description for the group.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string description?;
     # The global access level for this group.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - User has no access to global data.
     # "read-only" - User has read-only access to global data.
@@ -7780,13 +7780,13 @@ public type OauthProfileAccessLevelGroup record {
     # </pre>
     "none"|"read-only"|"mesh-manager"|"read-write"|"admin" globalAccessLevel?;
     # The name of the group.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string groupName?;
     # The default message VPN access level for this group.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - User has no access to a Message VPN.
     # "read-only" - User has read-only access to a Message VPN.
@@ -7794,7 +7794,7 @@ public type OauthProfileAccessLevelGroup record {
     # </pre>
     "none"|"read-only"|"read-write" msgVpnAccessLevel?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string oauthProfileName?;
 };
@@ -7824,19 +7824,19 @@ public type UpdateMsgVpnReplayLogQueries record {
 
 public type MsgVpnAuthenticationOauthProfileClientRequiredClaim record {
     # The name of the ID token claim to verify.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clientRequiredClaimName?;
     # The required claim value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clientRequiredClaimValue?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string oauthProfileName?;
 };
@@ -7874,19 +7874,19 @@ public type GetMsgVpnDmrBridgeQueries record {
 # The thresholds for the incoming REST client connection count event of the Message VPN, relative to `serviceRestIncomingMaxConnectionCount`.
 public type MsgVpnEventServiceRestIncomingConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -7953,19 +7953,19 @@ public type CreateDmrClusterCertMatchingRuleAttributeFilterQueries record {
 
 public type MsgVpnDistributedCacheClusterGlobalCachingHomeCluster record {
     # The name of the Distributed Cache.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string cacheName?;
     # The name of the Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clusterName?;
     # The name of the remote Home Cache Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string homeClusterName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
 };
@@ -7973,69 +7973,69 @@ public type MsgVpnDistributedCacheClusterGlobalCachingHomeCluster record {
 # The thresholds for the Queue consumer flows event, relative to `maxBindCount`.
 public type MsgVpnQueueEventBindCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type ClientCertAuthority record {
     # The name of the Certificate Authority.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string certAuthorityName?;
     # The PEM formatted content for the trusted root certificate of a client Certificate Authority.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string certContent?;
     # The scheduled CRL refresh day(s), specified as "daily" or a comma-separated list of days. Days must be specified as "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", or "Sat", with no spaces, and in sorted order from Sunday to Saturday. The empty-string ("") can also be specified, indicating no schedule is configured ("crlTimeList" must also be configured to the empty-string).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"daily"`.
     string crlDayList?;
     # The scheduled CRL refresh time(s), specified as "hourly" or a comma-separated list of 24-hour times in the form hh:mm, or h:mm. There must be no spaces, and times (up to 4) must be in sorted order from 0:00 to 23:59. The empty-string ("") can also be specified, indicating no schedule is configured ("crlDayList" must also be configured to the empty-string).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"3:00"`.
     string crlTimeList?;
     # The URL for the CRL source. This is a required attribute for CRL to be operational and the URL must be complete with http:// included. IPv6 addresses must be enclosed in square-brackets.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as revocationCheckEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string crlUrl?;
     # Enable or disable allowing a non-responder certificate to sign an OCSP response. Typically used with an OCSP override URL in cases where a single certificate is used to sign client certificates and OCSP responses.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean ocspNonResponderCertEnabled?;
     # The OCSP responder URL to use for overriding the one supplied in the client certificate. The URL must be complete with http:// included.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string ocspOverrideUrl?;
     # The timeout in seconds to receive a response from the OCSP responder after sending a request or making the initial connection attempt.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `5`.
     int ocspTimeout?;
     # Enable or disable Certificate Authority revocation checking.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean revocationCheckEnabled?;
 };
 
 public type ClientCertAuthorityOcspTlsTrustedCommonName record {
     # The name of the Certificate Authority.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string certAuthorityName?;
     # The expected Trusted Common Name of the OCSP responder remote certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string ocspTlsTrustedCommonName?;
 };
@@ -8229,15 +8229,15 @@ public type GetMsgVpnMqttRetainCacheQueries record {
 
 public type VirtualHostname record {
     # Enable or disable Virtual Hostname to Message VPN mapping.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean enabled?;
     # The message VPN to which this virtual hostname is mapped.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string msgVpnName?;
     # The virtual hostname.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string virtualHostname?;
 };
@@ -8290,19 +8290,19 @@ public type MsgVpnTelemetryProfileLinks record {
 # The thresholds for the receive flow count event of the Message VPN, relative to `maxIngressFlowCount`.
 public type MsgVpnEventIngressFlowCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -8328,11 +8328,11 @@ public type MsgVpnDistributedCacheClusterInstanceResponse record {
 # The thresholds for the request queue depth event, relative to `maxRequestQueueDepth`.
 public type MsgVpnDistributedCacheClusterEventRequestQueueDepthThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
 };
@@ -8358,26 +8358,26 @@ public type MsgVpnDistributedCacheClusterGlobalCachingHomeClusterLinks record {
 
 public type MsgVpnAclProfilePublishException record {
     # The name of the ACL Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.14. Replaced by publishTopicExceptions.
     string aclProfileName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.14. Replaced by publishTopicExceptions.
     string msgVpnName?;
     # The topic for the exception to the default action taken. May include wildcard characters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.14. Replaced by publishTopicExceptions.
     string publishExceptionTopic?;
     # The syntax of the topic for the exception to the default action taken.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "smf" - Topic uses SMF syntax.
     # "mqtt" - Topic uses MQTT syntax.
     # </pre>
-    #  Deprecated since 2.14. Replaced by publishTopicExceptions.
+    # Deprecated since 2.14. Replaced by publishTopicExceptions.
     "smf"|"mqtt" topicSyntax?;
 };
 
@@ -8430,11 +8430,11 @@ public type MsgVpnTelemetryProfileReceiverAclConnectExceptionsResponse record {
 # The thresholds for the egress message rate event of the Message VPN.
 public type MsgVpnEventEgressMsgRateThreshold record {
     # The clear threshold for the absolute value of this counter or rate. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3000000`.
     int clearValue?;
     # The set threshold for the absolute value of this counter or rate. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `4000000`.
     int setValue?;
 };
@@ -8467,11 +8467,11 @@ public type MsgVpnBridgeTlsTrustedCommonNameResponse record {
 # The thresholds for the cached data incoming byte rate event, in bytes per second.
 public type MsgVpnDistributedCacheClusterEventDataByteRateThreshold record {
     # The clear threshold for the absolute value of this counter or rate. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `187500000`.
     int clearValue?;
     # The set threshold for the absolute value of this counter or rate. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `250000000`.
     int setValue?;
 };
@@ -8479,19 +8479,19 @@ public type MsgVpnDistributedCacheClusterEventDataByteRateThreshold record {
 # The thresholds for the SMF connection count event. Available since 2.17.
 public type BrokerServiceSmfEventConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -8529,11 +8529,11 @@ public type GetMsgVpnAuthenticationOauthProfileClientRequiredClaimsQueries recor
 # The thresholds for the spool file count event at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventMsgSpoolFileCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
 };
@@ -8554,23 +8554,23 @@ public type CertAuthorityOcspTlsTrustedCommonNamesResponse record {
 
 public type DmrClusterCertMatchingRuleAttributeFilter record {
     # Link Attribute to be tested.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string attributeName?;
     # Expected attribute value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string attributeValue?;
     # The name of the Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string dmrClusterName?;
     # The name of the filter.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string filterName?;
     # The name of the rule.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string ruleName?;
 };
@@ -8591,19 +8591,19 @@ public type GetMsgVpnClientUsernameQueries record {
 
 public type MsgVpnMqttRetainCache record {
     # The name of the MQTT Retain Cache.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string cacheName?;
     # Enable or disable this MQTT Retain Cache. When the cache is disabled, neither retain messages nor retain requests will be delivered by the cache. However, live retain messages will continue to be delivered to currently connected MQTT clients.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The message lifetime, in seconds. If a message remains cached for the duration of its lifetime, the cache will remove the message. A lifetime of 0 results in the message being retained indefinitely, otherwise it must be 3 seconds or more.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int msgLifetime?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
 };
@@ -8630,9 +8630,9 @@ public type MsgVpnReplicatedTopicsResponse record {
 
 public type OauthProfileAccessLevelGroupMsgVpnAccessLevelException record {
     # The message VPN access level.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - User has no access to a Message VPN.
     # "read-only" - User has read-only access to a Message VPN.
@@ -8640,15 +8640,15 @@ public type OauthProfileAccessLevelGroupMsgVpnAccessLevelException record {
     # </pre>
     "none"|"read-only"|"read-write" accessLevel?;
     # The name of the group.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string groupName?;
     # The name of the message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string msgVpnName?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string oauthProfileName?;
 };
@@ -8764,7 +8764,7 @@ public type ConnectionConfig record {|
 
 public type SempMeta record {
     # The total number of objects requested, irrespective of page size. This may be a count of all objects in a collection or a filtered subset. It represents a snapshot in time and may change when paging through results.
-    # 
+    #
     # This attribute is only supported for [specific collections](https://docs.solace.com/Admin/SEMP/SEMP-Features.htm#retrieving-the-number-of-objects-in-a-collection).
     int count?;
     SempError 'error?;
@@ -8791,19 +8791,19 @@ public type MsgVpnMqttSessionSubscriptionsResponse record {
 # The thresholds for the maximum allowed number of any priority messages queued in the Topic Endpoint event, relative to `rejectLowPriorityMsgLimit`.
 public type MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -8880,19 +8880,19 @@ public type GetMsgVpnClientUsernameAttributeQueries record {
 # The threshold for the maximum allowed number of any priority messages queued in the MQTT Session Queue, relative to `queueRejectLowPriorityMsgLimit`. Available since 2.14.
 public type MsgVpnMqttSessionQueueEventRejectLowPriorityMsgLimitThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -8908,19 +8908,19 @@ public type GetMsgVpnRestDeliveryPointQueueBindingQueries record {
 # The thresholds for the message spool usage event of the Queue, relative to `queueMaxMsgSpoolUsage`.
 public type DmrClusterLinkQueueEventSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `1`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `2`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -9006,15 +9006,15 @@ public type UpdateMsgVpnDistributedCacheClusterQueries record {
 
 public type MsgVpnAclProfileClientConnectException record {
     # The name of the ACL Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string aclProfileName?;
     # The IP address/netmask of the client connect exception in canonical CIDR form.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clientConnectExceptionAddress?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
 };
@@ -9086,15 +9086,15 @@ public type GetMsgVpnClientProfileQueries record {
 
 public type OauthProfileClientAuthorizationParameter record {
     # The name of the authorization parameter.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string authorizationParameterName?;
     # The authorization parameter value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string authorizationParameterValue?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string oauthProfileName?;
 };
@@ -9203,35 +9203,35 @@ public type MsgVpnLinks record {
 
 public type MsgVpnClientUsername record {
     # The ACL Profile of the Client Username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"default"`.
     string aclProfileName?;
     # The Client Profile of the Client Username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"default"`.
     string clientProfileName?;
     # The name of the Client Username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string clientUsername?;
     # Enable or disable the Client Username. When disabled, all clients currently connected as the Client Username are disconnected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # Enable or disable guaranteed endpoint permission override for the Client Username. When enabled all guaranteed endpoints may be accessed, modified or deleted with the same permission as the owner.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean guaranteedEndpointPermissionOverrideEnabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The password for the Client Username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string password?;
     # Enable or disable the subscription management capability of the Client Username. This is the ability to manage subscriptions on behalf of other Client Usernames.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean subscriptionManagerEnabled?;
 };
@@ -9254,15 +9254,15 @@ public type MsgVpnTopicEndpointTemplatesResponse record {
 
 public type MsgVpnQueueSubscription record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the Queue.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string queueName?;
     # The topic of the Subscription.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string subscriptionTopic?;
 };
@@ -9276,13 +9276,13 @@ public type MsgVpnReplayLogLinks record {
 
 public type MsgVpnBridgeRemoteMsgVpn record {
     # The name of the Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string bridgeName?;
     # The virtual router of the Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "primary" - The Bridge is used for the primary virtual router.
     # "backup" - The Bridge is used for the backup virtual router.
@@ -9290,55 +9290,55 @@ public type MsgVpnBridgeRemoteMsgVpn record {
     # </pre>
     "primary"|"backup"|"auto" bridgeVirtualRouter?;
     # The Client Username the Bridge uses to login to the remote Message VPN. This per remote Message VPN value overrides the value provided for the Bridge overall.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string clientUsername?;
     # Enable or disable data compression for the remote Message VPN connection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean compressedDataEnabled?;
     # The preference given to incoming connections from remote Message VPN hosts, from 1 (highest priority) to 4 (lowest priority).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `4`.
     int:Signed32 connectOrder?;
     # The number of outstanding guaranteed messages that can be transmitted over the remote Message VPN connection before an acknowledgment is received.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `255`.
     int egressFlowWindowSize?;
     # Enable or disable the remote Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The password for the Client Username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string password?;
     # The queue binding of the Bridge in the remote Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string queueBinding?;
     # The physical interface on the local Message VPN host for connecting to the remote Message VPN. By default, an interface is chosen automatically (recommended), but if specified, `remoteMsgVpnLocation` must not be a virtual router name.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string remoteMsgVpnInterface?;
     # The location of the remote Message VPN as either an FQDN with port, IP address with port, or virtual router name (starting with "v:").
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string remoteMsgVpnLocation?;
     # The name of the remote Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string remoteMsgVpnName?;
     # Enable or disable encryption (TLS) for the remote Message VPN connection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean tlsEnabled?;
     # The Client Profile for the unidirectional Bridge of the remote Message VPN. The Client Profile must exist in the local Message VPN, and it is used only for the TCP parameters. Note that the default client profile has a TCP maximum window size of 2 MB.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"#client-profile"`.
     string unidirectionalClientProfile?;
 };
@@ -9351,11 +9351,11 @@ public type MsgVpnBridgeResponse record {
 
 public type CertAuthorityOcspTlsTrustedCommonName record {
     # The name of the Certificate Authority.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". Deprecated since 2.19. Replaced by clientCertAuthorities.
     string certAuthorityName?;
     # The expected Trusted Common Name of the OCSP responder remote certificate.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". Deprecated since 2.19. Replaced by clientCertAuthorities.
     string ocspTlsTrustedCommonName?;
 };
@@ -9368,89 +9368,89 @@ public type OauthProfileDefaultMsgVpnAccessLevelExceptionsResponse record {
 
 public type MsgVpnRestDeliveryPointRestConsumer record {
     # The AWS access key id.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.26.
     string authenticationAwsAccessKeyId?;
     # The AWS region id.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.26.
     string authenticationAwsRegion?;
     # The AWS secret access key.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.26.
     string authenticationAwsSecretAccessKey?;
     # The AWS service id.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.26.
     string authenticationAwsService?;
     # The PEM formatted content for the client certificate that the REST Consumer will present to the REST host. It must consist of a private key and between one and three certificates comprising the certificate trust chain.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.9.
     string authenticationClientCertContent?;
     # The password for the client certificate.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.9.
     string authenticationClientCertPassword?;
     # The password for the username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationHttpBasicPassword?;
     # The username that the REST Consumer will use to login to the REST host. Normally a username is only configured when basic authentication is selected for the REST Consumer.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationHttpBasicUsername?;
     # The authentication header name.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.15.
     string authenticationHttpHeaderName?;
     # The authentication header value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.15.
     string authenticationHttpHeaderValue?;
     # The OAuth client ID.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.19.
     string authenticationOauthClientId?;
     # The name of the proxy to use. Leave empty for no proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.42.
     string authenticationOauthClientProxyName?;
     # The OAuth scope.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.19.
     string authenticationOauthClientScope?;
     # The OAuth client secret.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.19.
     string authenticationOauthClientSecret?;
     # The OAuth token endpoint URL that the REST Consumer will use to request a token for login to the REST host.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.19.
     string authenticationOauthClientTokenEndpoint?;
     # The default expiry time for a token, in seconds. Only used when the token endpoint does not return an expiry time. Changes to this attribute are synchronized to HA mates and replication sites via config-sync.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `900`. Available since 2.30.
     int:Signed32 authenticationOauthClientTokenExpiryDefault?;
     # The name of the proxy to use. Leave empty for no proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.42.
     string authenticationOauthJwtProxyName?;
     # The OAuth secret key used to sign the token request JWT.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.21.
     string authenticationOauthJwtSecretKey?;
     # The OAuth token endpoint URL that the REST Consumer will use to request a token for login to the REST host.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.21.
     string authenticationOauthJwtTokenEndpoint?;
     # The default expiry time for a token, in seconds. Only used when the token endpoint does not return an expiry time. Changes to this attribute are synchronized to HA mates and replication sites via config-sync.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `900`. Available since 2.30.
     int:Signed32 authenticationOauthJwtTokenExpiryDefault?;
     # The authentication scheme used by the REST Consumer to login to the REST host.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - Login with no authentication. This may be useful for anonymous connections or when a REST Consumer does not require authentication.
     # "http-basic" - Login with a username and optional password according to HTTP Basic authentication as per RFC 2616.
@@ -9463,69 +9463,69 @@ public type MsgVpnRestDeliveryPointRestConsumer record {
     # </pre>
     "none"|"http-basic"|"client-certificate"|"http-header"|"oauth-client"|"oauth-jwt"|"transparent"|"aws" authenticationScheme?;
     # Enable or disable the REST Consumer. When disabled, no connections are initiated or messages delivered to this particular REST Consumer.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The HTTP method to use (POST or PUT). This is used only when operating in the REST service "messaging" mode and is ignored in "gateway" mode.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"post"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "post" - Use the POST HTTP method.
     # "put" - Use the PUT HTTP method.
     # </pre>
-    #  Available since 2.17.
+    # Available since 2.17.
     "post"|"put" httpMethod?;
     # The interface that will be used for all outgoing connections associated with the REST Consumer. When unspecified, an interface is automatically chosen.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string localInterface?;
     # The maximum amount of time (in seconds) to wait for an HTTP POST response from the REST Consumer. Once this time is exceeded, the TCP connection is reset.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `30`.
     int:Signed32 maxPostWaitTime?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The number of concurrent TCP connections open to the REST Consumer.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int:Signed32 outgoingConnectionCount?;
     # The name of the proxy to use. Leave empty for no proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.36.
     string proxyName?;
     # Comma-separated list of HTTP status codes or status code ranges which should be processed as a "rejected" (do not retry) outcome.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.47.
     string rejectedStatusCodeList?;
     # The IP address or DNS name to which the broker is to connect to deliver messages for the REST Consumer. A host value must be configured for the REST Consumer to be operationally up.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string remoteHost?;
     # The port associated with the host of the REST Consumer.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `8080`.
     int remotePort?;
     # The name of the REST Consumer.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string restConsumerName?;
     # The name of the REST Delivery Point.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string restDeliveryPointName?;
     # The number of seconds that must pass before retrying the remote REST Consumer connection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int:Signed32 retryDelay?;
     # The colon-separated list of cipher suites the REST Consumer uses in its encrypted connection when using TLS 1.2 and lower. The value `"default"` implies all supported suites ordered from most secure to least secure. The list of default cipher suites is available in the `tlsCipherSuiteMsgBackboneDefaultList` attribute of the Broker object in the Monitoring API. The REST Consumer should choose the first suite from this list that it supports.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"default"`.
     string tlsCipherSuiteList?;
     # Enable or disable encryption (TLS) for the REST Consumer.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean tlsEnabled?;
 };
@@ -9543,38 +9543,38 @@ public type GetMsgVpnBridgeRemoteMsgVpnsQueries record {
 # The thresholds for the AMQP client connection count event of the Message VPN, relative to `serviceAmqpMaxConnectionCount`. Available since 2.7.
 public type MsgVpnEventServiceAmqpConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type MsgVpnAuthenticationOauthProfileResourceServerRequiredClaim record {
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string oauthProfileName?;
     # The name of the access token claim to verify.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string resourceServerRequiredClaimName?;
     # The required claim value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string resourceServerRequiredClaimValue?;
 };
@@ -9625,19 +9625,19 @@ public type CreateOauthProfileAccessLevelGroupQueries record {
 # The thresholds for the message spool usage event of the Queue, relative to `maxMsgSpoolUsage`.
 public type MsgVpnQueueTemplateEventMsgSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `18`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `25`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -9681,15 +9681,15 @@ public type GetOauthProfileResourceServerRequiredClaimQueries record {
 
 public type OauthProfileClientRequiredClaim record {
     # The name of the ID token claim to verify.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string clientRequiredClaimName?;
     # The required claim value, which must be a string containing a valid JSON value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string clientRequiredClaimValue?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string oauthProfileName?;
 };
@@ -9702,39 +9702,39 @@ public type MsgVpnDistributedCacheClusterResponse record {
 
 public type CertAuthority record {
     # The name of the Certificate Authority.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". Deprecated since 2.19. Replaced by clientCertAuthorities and domainCertAuthorities.
     string certAuthorityName?;
     # The PEM formatted content for the trusted root certificate of a Certificate Authority.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`. Deprecated since 2.19. certAuthorities replaced by clientCertAuthorities and domainCertAuthorities.
     string certContent?;
     # The scheduled CRL refresh day(s), specified as "daily" or a comma-separated list of days. Days must be specified as "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", or "Sat", with no spaces, and in sorted order from Sunday to Saturday.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"daily"`. Deprecated since 2.19. certAuthorities replaced by clientCertAuthorities and domainCertAuthorities.
     string crlDayList?;
     # The scheduled CRL refresh time(s), specified as "hourly" or a comma-separated list of 24-hour times in the form hh:mm, or h:mm. There must be no spaces, and times must be in sorted order from 0:00 to 23:59.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"3:00"`. Deprecated since 2.19. certAuthorities replaced by clientCertAuthorities and domainCertAuthorities.
     string crlTimeList?;
     # The URL for the CRL source. This is a required attribute for CRL to be operational and the URL must be complete with http:// included. IPv6 addresses must be enclosed in square-brackets.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as revocationCheckEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`. Deprecated since 2.19. certAuthorities replaced by clientCertAuthorities and domainCertAuthorities.
     string crlUrl?;
     # Enable or disable allowing a non-responder certificate to sign an OCSP response. Typically used with an OCSP override URL in cases where a single certificate is used to sign client certificates and OCSP responses.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Deprecated since 2.19. certAuthorities replaced by clientCertAuthorities and domainCertAuthorities.
     boolean ocspNonResponderCertEnabled?;
     # The OCSP responder URL to use for overriding the one supplied in the client certificate. The URL must be complete with http:// included.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`. Deprecated since 2.19. certAuthorities replaced by clientCertAuthorities and domainCertAuthorities.
     string ocspOverrideUrl?;
     # The timeout in seconds to receive a response from the OCSP responder after sending a request or making the initial connection attempt.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `5`. Deprecated since 2.19. certAuthorities replaced by clientCertAuthorities and domainCertAuthorities.
     int ocspTimeout?;
     # Enable or disable Certificate Authority revocation checking.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`. Deprecated since 2.19. certAuthorities replaced by clientCertAuthorities and domainCertAuthorities.
     boolean revocationCheckEnabled?;
 };
@@ -9829,42 +9829,42 @@ public type CreateMsgVpnAclProfileClientConnectExceptionQueries record {
 
 public type Proxy record {
     # The password to use with basic authentication.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string authenticationBasicPassword?;
     # The username to use with basic authentication.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string authenticationBasicUsername?;
     # The authentication scheme used to connect to the proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - No authentication.
     # "basic" - Username/password authentication.
     # </pre>
     "none"|"basic" authenticationScheme?;
     # Enable or disable the proxy. When disabled, no connections are initiated to this particular Proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `false`.
     boolean enabled?;
     # The IP address or host name of the proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string host?;
     # The port to connect to on the proxy host.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `0`.
     int:Signed32 port?;
     # The name of the proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string proxyName?;
     # The type of proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `"direct"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "direct" - Direct connection (no proxy).
     # "http" - HTTP proxy.
@@ -9888,11 +9888,11 @@ public type CreateCertAuthorityQueries record {
 # The thresholds for the cache request message rate event, in messages per second.
 public type MsgVpnDistributedCacheClusterEventRequestRateThreshold record {
     # The clear threshold for the absolute value of this counter or rate. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`.
     int clearValue?;
     # The set threshold for the absolute value of this counter or rate. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `25000`.
     int setValue?;
 };
@@ -9937,19 +9937,19 @@ public type MsgVpnRestDeliveryPointRestConsumerResponse record {
 # Thresholds for the high number of the MQTT Session Queue Consumers Event, relative to `queueMaxBindCount`. Available since 2.14.
 public type MsgVpnMqttSessionQueueEventBindCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -9998,19 +9998,19 @@ public type MsgVpnTelemetryProfileTraceFilterResponse record {
 # The thresholds for the Web Transport client connection count event of the Message VPN, relative to `serviceWebMaxConnectionCount`.
 public type MsgVpnEventServiceWebConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -10018,43 +10018,43 @@ public type MsgVpnEventServiceWebConnectionCountThreshold record {
 # The thresholds for the maximum allowed number of any priority messages queued in the Topic Endpoint event, relative to `rejectLowPriorityMsgLimit`.
 public type MsgVpnTopicEndpointEventRejectLowPriorityMsgLimitThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
 
 public type MsgVpnTopicEndpointTemplate record {
     # The access type for delivering messages to consumer flows.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"exclusive"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "exclusive" - Exclusive delivery of messages to the first bound consumer flow.
     # "non-exclusive" - Non-exclusive delivery of messages to bound consumer flows in a round-robin fashion.
     # </pre>
     "exclusive"|"non-exclusive" accessType?;
     # Enable or disable the propagation of consumer acknowledgments (ACKs) received on the active replication Message VPN to the standby replication Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean consumerAckPropagationEnabled?;
     # The name of the Dead Message Queue (DMQ).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"#DEAD_MSG_QUEUE"`.
     string deadMsgQueue?;
     # The delay, in seconds, to apply to messages arriving on the Topic Endpoint before the messages are eligible for delivery.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.22.
     int deliveryDelay?;
     # The thresholds for the Topic Endpoint consumer flows event, relative to `maxBindCount`.
@@ -10064,37 +10064,37 @@ public type MsgVpnTopicEndpointTemplate record {
     # The thresholds for the maximum allowed number of any priority messages queued in the Topic Endpoint event, relative to `rejectLowPriorityMsgLimit`.
     MsgVpnTopicEndpointTemplateEventRejectLowPriorityMsgLimitThreshold eventRejectLowPriorityMsgLimitThreshold?;
     # The maximum number of consumer flows that can bind.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int maxBindCount?;
     # The maximum number of messages delivered but not acknowledged per flow.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000`.
     int maxDeliveredUnackedMsgsPerFlow?;
     # The maximum message size allowed, in bytes (B).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000000`.
     int:Signed32 maxMsgSize?;
     # The maximum message spool usage allowed, in megabytes (MB). A value of 0 only allows spooling of the last message received and disables quota checking.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `5000`.
     int maxMsgSpoolUsage?;
     # The maximum number of message redelivery attempts that will occur prior to the message being discarded or moved to the DMQ. A value of 0 means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxRedeliveryCount?;
     # The maximum time in seconds a message can stay in the Topic Endpoint when `respectTtlEnabled` is `"true"`. A message expires when the lesser of the sender assigned time-to-live (TTL) in the message and the `maxTtl` configured for the Topic Endpoint, is exceeded. A value of 0 disables expiry.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxTtl?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The permission level for all consumers, excluding the owner.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"no-access"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "no-access" - Disallows all access.
     # "read-only" - Read-only access to the messages.
@@ -10104,37 +10104,37 @@ public type MsgVpnTopicEndpointTemplate record {
     # </pre>
     "no-access"|"read-only"|"consume"|"modify-topic"|"delete" permission?;
     # Enable or disable a message redelivery delay. When false, messages are redelivered as-soon-as-possible.  When true, messages are redelivered according to the initial, max and multiplier.  This should only be enabled when redelivery is enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.33.
     boolean redeliveryDelayEnabled?;
     # The delay to be used between the first 2 redelivery attempts.  This value is in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`. Available since 2.33.
     int:Signed32 redeliveryDelayInitialInterval?;
     # The maximum delay to be used between any 2 redelivery attempts.  This value is in milliseconds.  Due to technical limitations, some redelivery attempt delays may slightly exceed this value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `64000`. Available since 2.33.
     int:Signed32 redeliveryDelayMaxInterval?;
     # The amount each delay interval is multiplied by after each failed delivery attempt.  This number is in a fixed-point decimal format in which you must divide by 100 to get the floating point value. For example, a value of 125 would cause the delay to be multiplied by 1.25.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `200`. Available since 2.33.
     int:Signed32 redeliveryDelayMultiplier?;
     # Enable or disable message redelivery. When enabled, the number of redelivery attempts is controlled by maxRedeliveryCount. When disabled, the message will never be delivered from the topic-endpoint more than once.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.18.
     boolean redeliveryEnabled?;
     # Enable or disable the checking of low priority messages against the `rejectLowPriorityMsgLimit`. This may only be enabled if `rejectMsgToSenderOnDiscardBehavior` does not have a value of `"never"`.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean rejectLowPriorityMsgEnabled?;
     # The number of messages that are permitted before low priority messages are rejected.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int rejectLowPriorityMsgLimit?;
     # Determines when to return negative acknowledgments (NACKs) to sending clients on message discards. Note that NACKs cause the message to not be delivered to any destination and Transacted Session commits to fail.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"never"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "never" - Silently discard messages.
     # "when-topic-endpoint-enabled" - NACK each message discard back to the client, except messages that are discarded because an endpoint is administratively disabled.
@@ -10142,23 +10142,23 @@ public type MsgVpnTopicEndpointTemplate record {
     # </pre>
     "never"|"when-topic-endpoint-enabled"|"always" rejectMsgToSenderOnDiscardBehavior?;
     # Enable or disable the respecting of DMQ Eligible for messages in the Topic Endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.49.
     boolean respectDmqEligibleEnabled?;
     # Enable or disable the respecting of message priority. When enabled, messages are delivered in priority order, from 9 (highest) to 0 (lowest).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean respectMsgPriorityEnabled?;
     # Enable or disable the respecting of the time-to-live (TTL) for messages. When enabled, expired messages are discarded or moved to the DMQ.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean respectTtlEnabled?;
     # A pattern used to determine which Topic Endpoints use settings from this Template. Two different wildcards can be used in the pattern: * and &gt;. Similar to topic filters or subscription patterns, a &gt; matches anything (but only when used at the end), and a * matches zero or more characters but never a slash (/). A &gt; is only a wildcard when  used at the end, after a /. A * is only allowed at the end, after a slash (/).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string topicEndpointNameFilter?;
     # The name of the Topic Endpoint Template.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string topicEndpointTemplateName?;
 };
@@ -10203,13 +10203,13 @@ public type GetMsgVpnAclProfileSubscribeTopicExceptionsQueries record {
 
 public type MsgVpnBridge record {
     # The name of the Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string bridgeName?;
     # The virtual router of the Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "primary" - The Bridge is used for the primary virtual router.
     # "backup" - The Bridge is used for the backup virtual router.
@@ -10217,37 +10217,37 @@ public type MsgVpnBridge record {
     # </pre>
     "primary"|"backup"|"auto" bridgeVirtualRouter?;
     # Enable or disable the Bridge.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The maximum time-to-live (TTL) in hops. Messages are discarded if their TTL exceeds this value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `8`.
     int maxTtl?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The Client Username the Bridge uses to login to the remote Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string remoteAuthenticationBasicClientUsername?;
     # The password for the Client Username.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string remoteAuthenticationBasicPassword?;
     # The PEM formatted content for the client certificate used by the Bridge to login to the remote Message VPN. It must consist of a private key and between one and three certificates comprising the certificate trust chain.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.9.
     string remoteAuthenticationClientCertContent?;
     # The password for the client certificate.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.9.
     string remoteAuthenticationClientCertPassword?;
     # The authentication scheme for the remote Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"basic"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "basic" - Basic Authentication Scheme (via username and password).
     # "client-certificate" - Client Certificate Authentication Scheme (via certificate file or content).
@@ -10255,17 +10255,17 @@ public type MsgVpnBridge record {
     # </pre>
     "basic"|"client-certificate"|"tls-psk" remoteAuthenticationScheme?;
     # The number of retry attempts to establish a connection before moving on to the next remote Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int remoteConnectionRetryCount?;
     # The number of seconds the broker waits for the bridge connection to be established before attempting a new connection.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3`.
     int remoteConnectionRetryDelay?;
     # The priority for deliver-to-one (DTO) messages transmitted from the remote Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"p1"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "p1" - The 1st or highest priority.
     # "p2" - The 2nd highest priority.
@@ -10275,7 +10275,7 @@ public type MsgVpnBridge record {
     # </pre>
     "p1"|"p2"|"p3"|"p4"|"da" remoteDeliverToOnePriority?;
     # The colon-separated list of cipher suites supported for TLS connections to the remote Message VPN when using TLS 1.2 and lower. The value "default" implies all supported suites ordered from most secure to least secure.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"default"`.
     string tlsCipherSuiteList?;
 };
@@ -10303,11 +10303,11 @@ public type MsgVpnReplayLogsResponse record {
 # The thresholds for the transacted session resources at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventTransactedSessionResourceCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
 };
@@ -10377,19 +10377,19 @@ public type GetMsgVpnDistributedCacheClusterQueries record {
 # The thresholds for the message spool usage event of the Topic Endpoint, relative to `maxSpoolUsage`.
 public type MsgVpnTopicEndpointEventSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `18`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `25`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -10494,11 +10494,11 @@ public type MsgVpnDistributedCacheClusterTopicsResponse record {
 
 public type AboutApi record {
     # The platform running the SEMP API.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none".
     string platform?;
     # The version of the SEMP API.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/none".
     string sempVersion?;
 };
@@ -10506,11 +10506,11 @@ public type AboutApi record {
 # The thresholds for the active disk partition usage event at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventDiskUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
 };
@@ -10598,11 +10598,11 @@ public type ProxiesResponse record {
 # The thresholds for the spool message count event at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventMsgCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
 };
@@ -10658,11 +10658,11 @@ public type OauthProfileAccessLevelGroupMsgVpnAccessLevelExceptionResponse recor
 # The thresholds for the message spool usage event of Queues and Topic Endpoints provisioned by clients, relative to `maxMsgSpoolUsage` for these Queues and Topic Endpoints. Changing these values during operation does not affect existing sessions. For provisioned durable Queues and Topic Endpoints, this value applies when initially provisioned, but can then be changed afterwards by configuring the Queue or Topic Endpoint.
 public type MsgVpnClientProfileEventClientProvisionedEndpointSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `18`.
     int clearPercent?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `25`.
     int setPercent?;
 };
@@ -10700,33 +10700,33 @@ public type GetMsgVpnJndiTopicsQueries record {
 
 public type MsgVpnTopicEndpoint record {
     # The access type for delivering messages to consumer flows bound to the Topic Endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"exclusive"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "exclusive" - Exclusive delivery of messages to the first bound consumer flow.
     # "non-exclusive" - Non-exclusive delivery of messages to bound consumer flows in a round-robin fashion.
     # </pre>
-    #  Available since 2.4.
+    # Available since 2.4.
     "exclusive"|"non-exclusive" accessType?;
     # Enable or disable the propagation of consumer acknowledgments (ACKs) received on the active replication Message VPN to the standby replication Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean consumerAckPropagationEnabled?;
     # The name of the Dead Message Queue (DMQ) used by the Topic Endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"#DEAD_MSG_QUEUE"`. Available since 2.2.
     string deadMsgQueue?;
     # Enable or disable the ability for client applications to query the message delivery count of messages received from the Topic Endpoint. This is a controlled availability feature. Please contact support to find out if this feature is supported for your use case.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.19.
     boolean deliveryCountEnabled?;
     # The delay, in seconds, to apply to messages arriving on the Topic Endpoint before the messages are eligible for delivery.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`. Available since 2.22.
     int deliveryDelay?;
     # Enable or disable the transmission of messages from the Topic Endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean egressEnabled?;
     # The thresholds for the Topic Endpoint consumer flows event, relative to `maxBindCount`. Available since 2.4.
@@ -10736,45 +10736,45 @@ public type MsgVpnTopicEndpoint record {
     # The thresholds for the message spool usage event of the Topic Endpoint, relative to `maxSpoolUsage`.
     MsgVpnTopicEndpointEventSpoolUsageThreshold eventSpoolUsageThreshold?;
     # Enable or disable the reception of messages to the Topic Endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean ingressEnabled?;
     # The maximum number of consumer flows that can bind to the Topic Endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`. Available since 2.4.
     int maxBindCount?;
     # The maximum number of messages delivered but not acknowledged per flow for the Topic Endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000`.
     int maxDeliveredUnackedMsgsPerFlow?;
     # The maximum message size allowed in the Topic Endpoint, in bytes (B).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000000`.
     int:Signed32 maxMsgSize?;
     # The maximum number of times the Topic Endpoint will attempt redelivery of a message prior to it being discarded or moved to the DMQ. A value of 0 means to retry forever.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxRedeliveryCount?;
     # The maximum message spool usage allowed by the Topic Endpoint, in megabytes (MB). A value of 0 only allows spooling of the last message received and disables quota checking.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `5000`.
     int maxSpoolUsage?;
     # The maximum time in seconds a message can stay in the Topic Endpoint when `respectTtlEnabled` is `"true"`. A message expires when the lesser of the sender assigned time-to-live (TTL) in the message and the `maxTtl` configured for the Topic Endpoint, is exceeded. A value of 0 disables expiry.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int maxTtl?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The Client Username that owns the Topic Endpoint and has permission equivalent to `"delete"`.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string owner?;
     # The permission level for all consumers of the Topic Endpoint, excluding the owner.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"no-access"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "no-access" - Disallows all access.
     # "read-only" - Read-only access to the messages.
@@ -10784,37 +10784,37 @@ public type MsgVpnTopicEndpoint record {
     # </pre>
     "no-access"|"read-only"|"consume"|"modify-topic"|"delete" permission?;
     # Enable or disable a message redelivery delay. When false, messages are redelivered as-soon-as-possible.  When true, messages are redelivered according to the initial, max and multiplier.  This should only be enabled when redelivery is enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.33.
     boolean redeliveryDelayEnabled?;
     # The delay to be used between the first 2 redelivery attempts.  This value is in milliseconds.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000`. Available since 2.33.
     int:Signed32 redeliveryDelayInitialInterval?;
     # The maximum delay to be used between any 2 redelivery attempts.  This value is in milliseconds.  Due to technical limitations, some redelivery attempt delays may slightly exceed this value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `64000`. Available since 2.33.
     int:Signed32 redeliveryDelayMaxInterval?;
     # The amount each delay interval is multiplied by after each failed delivery attempt.  This number is in a fixed-point decimal format in which you must divide by 100 to get the floating point value. For example, a value of 125 would cause the delay to be multiplied by 1.25.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `200`. Available since 2.33.
     int:Signed32 redeliveryDelayMultiplier?;
     # Enable or disable message redelivery. When enabled, the number of redelivery attempts is controlled by maxRedeliveryCount. When disabled, the message will never be delivered from the topic-endpoint more than once.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`. Available since 2.18.
     boolean redeliveryEnabled?;
     # Enable or disable the checking of low priority messages against the `rejectLowPriorityMsgLimit`. This may only be enabled if `rejectMsgToSenderOnDiscardBehavior` does not have a value of `"never"`.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean rejectLowPriorityMsgEnabled?;
     # The number of messages of any priority in the Topic Endpoint above which low priority messages are not admitted but higher priority messages are allowed.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `0`.
     int rejectLowPriorityMsgLimit?;
     # Determines when to return negative acknowledgments (NACKs) to sending clients on message discards. Note that NACKs cause the message to not be delivered to any destination and Transacted Session commits to fail.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as rejectLowPriorityMsgEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"never"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "never" - Silently discard messages.
     # "when-topic-endpoint-enabled" - NACK each message discard back to the client, except messages that are discarded because an endpoint is administratively disabled.
@@ -10822,19 +10822,19 @@ public type MsgVpnTopicEndpoint record {
     # </pre>
     "never"|"when-topic-endpoint-enabled"|"always" rejectMsgToSenderOnDiscardBehavior?;
     # Enable or disable the respecting of DMQ Eligible for messages in the Topic Endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.49.
     boolean respectDmqEligibleEnabled?;
     # Enable or disable the respecting of message priority. When enabled, messages contained in the Topic Endpoint are delivered in priority order, from 9 (highest) to 0 (lowest).
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as egressEnabled and ingressEnabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`. Available since 2.8.
     boolean respectMsgPriorityEnabled?;
     # Enable or disable the respecting of the time-to-live (TTL) for messages in the Topic Endpoint. When enabled, expired messages are discarded or moved to the DMQ.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean respectTtlEnabled?;
     # The name of the Topic Endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string topicEndpointName?;
 };
@@ -10934,19 +10934,19 @@ public type GetMsgVpnBridgeTlsTrustedCommonNamesQueries record {
 
 public type MsgVpnAuthenticationKerberosRealm record {
     # Enable or disable the Realm.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # Address (FQDN or IP) and optional port of the Key Distribution Center for principals in this Realm.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string kdcAddress?;
     # The Realm Name. Must start with "@", typically all uppercase.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string kerberosRealmName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
 };
@@ -10962,19 +10962,19 @@ public type GetMsgVpnDistributedCacheClusterTopicQueries record {
 # The thresholds for the transacted session count event of the Client Profile, relative to `maxTransactedSessionCount`.
 public type MsgVpnClientProfileEventTransactedSessionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "global/mesh-manager". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -11041,11 +11041,11 @@ public type MsgVpnAuthorizationGroupResponse record {
 
 public type DomainCertAuthority record {
     # The name of the Certificate Authority.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string certAuthorityName?;
     # The PEM formatted content for the trusted root certificate of a domain Certificate Authority.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/admin". Changes to this attribute are synchronized to HA mates via config-sync. The default value is `""`.
     string certContent?;
 };
@@ -11089,11 +11089,11 @@ public type GetMsgVpnDistributedCacheClustersQueries record {
 # The thresholds for the receive message rate event of the Message VPN.
 public type MsgVpnEventIngressMsgRateThreshold record {
     # The clear threshold for the absolute value of this counter or rate. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `3000000`.
     int clearValue?;
     # The set threshold for the absolute value of this counter or rate. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `4000000`.
     int setValue?;
 };
@@ -11108,26 +11108,26 @@ public type ReplaceMsgVpnJndiTopicQueries record {
 
 public type MsgVpnAclProfileSubscribeException record {
     # The name of the ACL Profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.14. Replaced by subscribeTopicExceptions.
     string aclProfileName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.14. Replaced by subscribeTopicExceptions.
     string msgVpnName?;
     # The topic for the exception to the default action taken. May include wildcard characters.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". Deprecated since 2.14. Replaced by subscribeTopicExceptions.
     string subscribeExceptionTopic?;
     # The syntax of the topic for the exception to the default action taken.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "smf" - Topic uses SMF syntax.
     # "mqtt" - Topic uses MQTT syntax.
     # </pre>
-    #  Deprecated since 2.14. Replaced by subscribeTopicExceptions.
+    # Deprecated since 2.14. Replaced by subscribeTopicExceptions.
     "smf"|"mqtt" topicSyntax?;
 };
 
@@ -11147,81 +11147,81 @@ public type MsgVpnClientUsernamesResponse record {
 
 public type MsgVpnKafkaSender record {
     # The AWS Access Key identifier, typically beginning "AKIA...".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamAccessKeyId?;
     # The AWS Region code, such as "us-east-1".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamRegion?;
     # The AWS Access Key secret.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamSecretAccessKey?;
     # The External ID is a unique identifier that might be required when assuming a role. Used with STS only; optional.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamStsExternalId?;
     # The Amazon Resource Name (ARN) of the role to assume, typically beginning "arn:aws:iam::...". Used with STS only.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamStsRoleArn?;
     # An identifier for the assumed role's session. Used with STS only.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.46.
     string authenticationAwsMskIamStsRoleSessionName?;
     # The password for the Username. To be used when authenticationScheme is "basic".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationBasicPassword?;
     # The username the Kafka Sender uses to login to the remote Kafka broker. To be used when authenticationScheme is "basic".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationBasicUsername?;
     # The PEM formatted content for the client certificate used by the Kafka Sender to login to the remote Kafka broker. To be used when authenticationScheme is "client-certificate". Alternatively this will be used for other values of authenticationScheme when the Kafka Broker has an `ssl.client.auth` setting of "requested" or "required" and KIP-684 (mTLS) is supported by the Kafka Broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`.
     string authenticationClientCertContent?;
     # The password for the client certificate. To be used when authenticationScheme is "client-certificate". Alternatively this will be used for other values of authenticationScheme when the Kafka Broker has an `ssl.client.auth` setting of "requested" or "required" and KIP-684 (mTLS) is supported by the Kafka Broker.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`.
     string authenticationClientCertPassword?;
     # The base64-encoded content of this User Principal's keytab.
-    # 
+    #
     # The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.40.
     string authenticationKerberosKeytabContent?;
     # The name of this User Principal's keytab file.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.40.
     string authenticationKerberosKeytabFileName?;
     # The Kerberos service name of the remote Kafka broker, not including /hostname@REALM.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.40.
     string authenticationKerberosServiceName?;
     # The Kerberos user principal name of the Kafka Sender. This must include the @&lt;REALM&gt; suffix.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. The default value is `""`. Available since 2.40.
     string authenticationKerberosUserPrincipalName?;
     # The OAuth client ID. To be used when authenticationScheme is "oauth-client".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationOauthClientId?;
     # The OAuth scope. To be used when authenticationScheme is "oauth-client".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationOauthClientScope?;
     # The OAuth client secret. To be used when authenticationScheme is "oauth-client".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationOauthClientSecret?;
     # The OAuth token endpoint URL that the Kafka Sender will use to request a token for login to the Kafka broker. Must begin with "https". To be used when authenticationScheme is "oauth-client".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationOauthClientTokenEndpoint?;
     # The authentication scheme for the Kafka Sender. The bootstrap addresses must resolve to an appropriately configured and compatible listener port on the Kafka Broker for the given scheme.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"none"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "none" - Anonymous Authentication. Used with Kafka Broker PLAINTEXT listener ports.
     # "aws-msk-iam" - Amazon Web Services (AWS) Managed Streaming for Kafka (MSK) Identity and Access Management (IAM) Authentication. Requires encryption.
@@ -11234,78 +11234,78 @@ public type MsgVpnKafkaSender record {
     # </pre>
     "none"|"aws-msk-iam"|"aws-msk-iam-sts"|"basic"|"scram"|"client-certificate"|"kerberos"|"oauth-client" authenticationScheme?;
     # The hash used for SCRAM authentication. To be used when authenticationScheme is "scram".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"sha-512"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "sha-256" - SHA-2 256 bits.
     # "sha-512" - SHA-2 512 bits.
     # </pre>
     "sha-256"|"sha-512" authenticationScramHash?;
     # The password for the Username. To be used when authenticationScheme is "scram".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationScramPassword?;
     # The username the Kafka Sender uses to login to the remote Kafka broker. To be used when authenticationScheme is "scram".
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string authenticationScramUsername?;
     # Delay (in ms) to wait to accumulate a batch of messages to send. Batching is done for all Senders on a per-partition basis.
-    # 
+    #
     # This corresponds to the Kafka producer API `linger.ms` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `5`.
     int:Signed32 batchDelay?;
     # Maximum number of messages sent in a single batch. Batching is done for all Senders on a per-partition basis.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `10000`.
     int:Signed32 batchMaxMsgCount?;
     # Maximum size of a message batch, in bytes (B). Batching is done for all Senders on a per-partition basis.
-    # 
+    #
     # This corresponds to the Kafka producer API `batch.size` configuration setting, and should not exceed either the Kafka broker `message.max.bytes` configuration setting, or the per-Topic override of `max.message.bytes`.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1000000`.
     int:Signed32 batchMaxSize?;
     # Comma separated list of addresses (and optional ports) of brokers in the Kafka Cluster from which the state of the entire Kafka Cluster can be learned. If a port is not provided with an address it will default to 9092.
-    # 
+    #
     # This corresponds to the Kafka producer API `bootstrap.servers` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string bootstrapAddressList?;
     # Enable or disable the Kafka Sender.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # Enable or disable idempotence for the Kafka Sender. Idempotence guarantees in order at-least-once message delivery to the remote Kafka Topic, at the expense of performance. When idempotence is enabled the Queue Bindings of the Kafka Sender must have ackMode of "all" to be operational.
-    # 
+    #
     # This corresponds to the Kafka producer API `enable.idempotence` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean idempotenceEnabled?;
     # The name of the Kafka Sender.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string kafkaSenderName?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # Enable or disable compression for the Kafka Sender.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean transportCompressionEnabled?;
     # Compression level. The valid range is dependent on the compression type.
-    # 
+    #
     # This corresponds to the Kafka producer API `compression.level` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `-1`.
     int:Signed32 transportCompressionLevel?;
     # Compression type. Only relevant if compression is enabled.
-    # 
+    #
     # This corresponds to the Kafka producer API `compression.type` configuration setting.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"gzip"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "gzip" - GZIP Compression.
     # "snappy" - Snappy Compression.
@@ -11314,32 +11314,32 @@ public type MsgVpnKafkaSender record {
     # </pre>
     "gzip"|"snappy"|"lz4"|"zstd" transportCompressionType?;
     # Enable or disable encryption (TLS) for the Kafka Sender. The bootstrap addresses must resolve to PLAINTEXT or SASL_PLAINTEXT listener ports when disabled, and SSL or SASL_SSL listener ports when enabled.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Modifying this attribute while the object (or the relevant part of the object) is administratively enabled may be service impacting as enabled will be temporarily set to false to apply the change. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean transportTlsEnabled?;
 };
 
 public type DmrClusterCertMatchingRuleCondition record {
     # Link Attribute to be compared with certificate content. Either an attribute or an expression must be provided on creation, but not both.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The default value is `""`.
     string attribute?;
     # The name of the Cluster.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string dmrClusterName?;
     # Glob expression to be matched with certificate content. Either an expression or an attribute must be provided on creation, but not both.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The default value is `""`.
     string expression?;
     # The name of the rule.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only".
     string ruleName?;
     # Certificate field to be compared with the Attribute.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "certificate-thumbprint" - The attribute is computed as the SHA-1 hash over the entire DER-encoded contents of the client certificate.
     # "common-name" - The attribute is extracted from the certificate's first instance of the Common Name attribute in the Subject DN.
@@ -11365,19 +11365,19 @@ public type SempMetaOnlyResponse record {
 # The thresholds for the transmit flow count event at system level, relative to the maximum system limit. Available since 2.18.
 public type BrokerGuaranteedMsgingEventEgressFlowCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -11401,19 +11401,19 @@ public type UpdateMsgVpnBridgeRemoteMsgVpnQueries record {
 # The thresholds for the connection count event. Available since 2.17.
 public type BrokerServiceEventConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -11421,19 +11421,19 @@ public type BrokerServiceEventConnectionCountThreshold record {
 # The threshold for the Message Spool usage event of the MQTT Session Queue, relative to `queueMaxMsgSpoolUsage`. Available since 2.14.
 public type MsgVpnMqttSessionQueueEventMsgSpoolUsageThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `18`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `25`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -11446,25 +11446,25 @@ public type DmrClusterLinkAttributesResponse record {
 
 public type MsgVpnCertMatchingRuleCondition record {
     # Client Username Attribute to be compared with certificate content. Either an attribute or an expression must be provided on creation, but not both.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The default value is `""`.
     string attribute?;
     # Glob expression to be matched with certificate content. Either an expression or an attribute must be provided on creation, but not both.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The default value is `""`.
     string expression?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the rule.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string ruleName?;
     # Certificate field to be compared with the Attribute.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "certificate-thumbprint" - The attribute is computed as the SHA-1 hash over the entire DER-encoded contents of the client certificate.
     # "common-name" - The attribute is extracted from the certificate's first instance of the Common Name attribute in the Subject DN.
@@ -11492,11 +11492,11 @@ public type MsgVpnTelemetryProfileResponse record {
 # The thresholds for the topics per instance event, relative to `maxTopicCount`.
 public type MsgVpnDistributedCacheClusterEventMaxTopicsThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `60`.
     int clearPercent?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `80`.
     int setPercent?;
 };
@@ -11509,19 +11509,19 @@ public type OauthProfileClientRequiredClaimLinks record {
 # The thresholds for the REST outgoing connection count event. Available since 2.17.
 public type BrokerServiceRestEventOutgoingConnectionCountThreshold record {
     # The clear threshold for the value of this counter as a percentage of its maximum value. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `60`.
     int clearPercent?;
     # The clear threshold for the absolute value of this counter. Falling below this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int clearValue?;
     # The set threshold for the value of this counter as a percentage of its maximum value. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default value is `80`.
     int setPercent?;
     # The set threshold for the absolute value of this counter. Exceeding this value will trigger a corresponding event.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "global/read-only". The minimum access scope/level required to change this attribute is "global/read-write". This attribute may not be returned in a GET. Changes to this attribute are synchronized to HA mates via config-sync. The default is not applicable.
     int setValue?;
 };
@@ -11553,142 +11553,142 @@ public type MsgVpnCertMatchingRuleAttributeFiltersResponse record {
 
 public type MsgVpnAuthenticationOauthProfile record {
     # The name of the groups claim. If non-empty, the specified claim will be used to determine groups for authorization. If empty, the authorizationType attribute of the Message VPN will be used to determine authorization.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"groups"`.
     string authorizationGroupsClaimName?;
     # The format of the authorization groups claim value when it is a string.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"single"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "single" - When the claim is a string, it is interpreted as as single group.
     # "space-delimited" - When the claim is a string, it is interpreted as a space-delimited list of groups, similar to the "scope" claim.
     # </pre>
-    #  Available since 2.32.
+    # Available since 2.32.
     "single"|"space-delimited" authorizationGroupsClaimStringFormat?;
     # The OAuth client id.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string clientId?;
     # The required value for the TYP field in the ID token header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"JWT"`.
     string clientRequiredType?;
     # The OAuth client secret.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". This attribute is absent from a GET and not updated when absent in a PUT, subject to the exceptions [here](https://docs.solace.com/Admin/SEMP/SEMP-API-Archit.htm#HTTP_Methods). Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string clientSecret?;
     # Enable or disable verification of the TYP field in the ID token header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean clientValidateTypeEnabled?;
     # Enable or disable the disconnection of clients when their tokens expire. Changing this value does not affect existing clients, only new client connections.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean disconnectOnTokenExpirationEnabled?;
     # Enable or disable the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean enabled?;
     # The OpenID Connect discovery endpoint or OAuth Authorization Server Metadata endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string endpointDiscovery?;
     # The number of seconds between discovery endpoint requests.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `86400`.
     int:Signed32 endpointDiscoveryRefreshInterval?;
     # The OAuth introspection endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string endpointIntrospection?;
     # The maximum time in seconds a token introspection request is allowed to take.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int:Signed32 endpointIntrospectionTimeout?;
     # The OAuth JWKS endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string endpointJwks?;
     # The number of seconds between JWKS endpoint requests.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `86400`.
     int:Signed32 endpointJwksRefreshInterval?;
     # The OpenID Connect Userinfo endpoint.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string endpointUserinfo?;
     # The maximum time in seconds a userinfo request is allowed to take.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `1`.
     int:Signed32 endpointUserinfoTimeout?;
     # The Issuer Identifier for the OAuth provider.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string issuer?;
     # Enable or disable whether the API provided MQTT client username will be validated against the username calculated from the token(s). When enabled, connection attempts by MQTT clients are rejected if they differ. Note that this value only applies to MQTT clients; SMF client usernames will not be validated.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `false`.
     boolean mqttUsernameValidateEnabled?;
     # The name of the Message VPN.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string msgVpnName?;
     # The name of the OAuth profile.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only".
     string oauthProfileName?;
     # The OAuth role of the broker.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"client"`. The allowed values and their meaning are:
-    # 
+    #
     # <pre>
     # "client" - The broker is in the OAuth client role.
     # "resource-server" - The broker is in the OAuth resource server role.
     # </pre>
     "client"|"resource-server" oauthRole?;
     # The name of the proxy to use for discovery, user info, jwks, and introspection requests. Leave empty for no proxy.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`. Available since 2.41.
     string proxyName?;
     # Enable or disable parsing of the access token as a JWT.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean resourceServerParseAccessTokenEnabled?;
     # The required audience value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string resourceServerRequiredAudience?;
     # The required issuer value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string resourceServerRequiredIssuer?;
     # A space-separated list of scopes that must be present in the scope claim.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `""`.
     string resourceServerRequiredScope?;
     # The required TYP value.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"at+jwt"`.
     string resourceServerRequiredType?;
     # Enable or disable verification of the audience claim in the access token or introspection response.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean resourceServerValidateAudienceEnabled?;
     # Enable or disable verification of the issuer claim in the access token or introspection response.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean resourceServerValidateIssuerEnabled?;
     # Enable or disable verification of the scope claim in the access token or introspection response.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean resourceServerValidateScopeEnabled?;
     # Enable or disable verification of the TYP field in the access token header.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `true`.
     boolean resourceServerValidateTypeEnabled?;
     # The name of the username claim.
-    # 
+    #
     # The minimum access scope/level required to retrieve this attribute is "vpn/read-only". The minimum access scope/level required to change this attribute is "vpn/read-write". Changes to this attribute are synchronized to HA mates and replication sites via config-sync. The default value is `"sub"`.
     string usernameClaimName?;
 };
