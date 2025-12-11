@@ -342,7 +342,7 @@ modules = [
 [[package]]
 org = "xlibb"
 name = "solace.semp"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
 	{org = "ballerina", name = "constraint"},
 	{org = "ballerina", name = "data.jsondata"},
