@@ -1,5 +1,5 @@
 
-# Ballerina Solace SEMP v2 Connector
+# Ballerina Solace SEMP v2 Connector 
 
 This Ballerina module provides a connector for interacting with Solace PubSub+ brokers via the [**SEMP v2**](https://docs.solace.com/Admin/SEMP/Using-SEMP.htm) (Solace Element Management Protocol, version 2) — the REST-based management API for configuring and monitoring Solace message brokers.
 
